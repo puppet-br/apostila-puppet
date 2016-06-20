@@ -8,9 +8,9 @@ Para contribuir basta fazer um fork e submeter seu pull request para nós.
 
 #### Conteúdo
 
-1. [Instruções para compilar a apostila (gerar o PDF)][Instruções]
-    - [No Ubuntu Desktop 14.04/16.04][Ubuntu]
-    - [Usando uma VM box no Vagrant][Vagrant]
+1. [Instruções para compilar a apostila (gerar o PDF)][Instruções para compilar a apostila (gerar o PDF)]
+    - [No Ubuntu Desktop 14.04/16.04][No Ubuntu Desktop 14.04/16.04]
+    - [Usando uma VM box no Vagrant][Usando uma VM box no Vagrant]
 
 
 # Instruções para compilar a apostila (gerar o PDF)
