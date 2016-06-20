@@ -18,13 +18,13 @@
 
         .. class:: center
         
-        Apostila Puppet Básico versão 1.0
+        Apostila Puppet versão 2.0
 
     .. container::
         
         .. class:: center
         
-        Apostila Puppet Básico versão 1.0
+        Apostila Puppet versão 2.0
 
 .. footer::
 
@@ -34,7 +34,7 @@
 
         .. class:: center
 
-        Copyright |copy| Instruct Treinamento e Desenvolvimento - Licença CC BY-SA 3.0 BR
+        Licença CC BY-SA 3.0 BR - Apostila cedida pela Instruct e mantida pela Puppet-BR
 
         .. class:: right
         
@@ -44,7 +44,7 @@
         
         .. class:: center
 
-        Copyright |copy| Instruct Treinamento e Desenvolvimento - Licença CC BY-SA 3.0 BR
+        Licença CC BY-SA 3.0 BR - Apostila cedida pela Instruct e mantida pela Puppet-BR
 
         .. class:: right
         
