@@ -2,16 +2,23 @@
 
 Para contribuir basta fazer um fork e submeter seu pull request para nós.
 
+[Editando arquivos RST]: #editando-arquivos-rst
 [Instruções para compilar a apostila (gerar o PDF)]: #instruções-para-compilar-a-apostila-gerar-o-pdf
 [No Ubuntu Desktop 14.04/16.04]: #no-ubuntu-desktop-14041604
 [Usando uma VM box no Vagrant]: #usando-uma-vm-box-no-vagrant
 
 #### Conteúdo
 
-1. [Instruções para compilar a apostila (gerar o PDF)][Instruções para compilar a apostila (gerar o PDF)]
+1. [Editando arquivos RST][Editando arquivos RST]
+2. [Instruções para compilar a apostila (gerar o PDF)][Instruções para compilar a apostila (gerar o PDF)]
     - [No Ubuntu Desktop 14.04/16.04][No Ubuntu Desktop 14.04/16.04]
     - [Usando uma VM box no Vagrant][Usando uma VM box no Vagrant]
 
+# Editando arquivos RST
+
+O conteúdo da apostila está distribuído em vários arquivos RST. Para saber o que é um arquivo no formato RST acesse está página: http://www.reviversoft.com/pt/file-extensions/rst
+
+Para editar os arquivos, use o editor de texto de sua preferência. Pode ser vim, gedit, nano, etc...
 
 # Instruções para compilar a apostila (gerar o PDF)
 
