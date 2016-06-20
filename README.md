@@ -1,10 +1,21 @@
-# Apostila Puppet
+# Apostila Puppet #
 
 Para contribuir basta fazer um fork e submeter seu pull request para nós.
 
-# Instruções para compilar a apostila
+[Instruções]: #instrucoes
+[Ubuntu]: #ubuntu
+[Vagrant]: #vagrant
 
-# No Ubuntu Desktop 14.04/16.04
+#### Conteúdo
+
+1. [Instruções][Instruções para compilar a apostila (gerar o PDF)]
+    - [Ubuntu][No Ubuntu Desktop 14.04/16.04]
+    - [Vagrant][Usando uma VM box no Vagrant]
+
+
+# Instruções para compilar a apostila (gerar o PDF)
+
+## No Ubuntu Desktop 14.04/16.04
 
 * O `LibreOffice` é um requisito para a compilação e edição de alguns arquivos da apostila. 
 Ele já vem instalado por padrão no Ubuntu 14.04/16.04.
@@ -18,7 +29,7 @@ sudo apt-get install rst2pdf
 * Clone o repositório da apostila com o comando abaixo:
 
 ```
-$ git clone https://github.com/puppet-br/apostila-puppet.git
+git clone https://github.com/puppet-br/apostila-puppet.git
 ```
 
 Acesse o diretório no qual você baixou os arquivos fontes da apostila:
@@ -50,7 +61,7 @@ chmod +x compila.sh
 
 A apostila será gerada e armazenada em `apostila-puppet/apostla/apostila-puppet.pdf`.
 
-# Usando uma VM
+## Usando uma VM box no Vagrant
 
 * Instale o VirtualBox disponibilizado em: https://www.virtualbox.org
 
@@ -59,13 +70,13 @@ A apostila será gerada e armazenada em `apostila-puppet/apostla/apostila-puppet
 * Instale a box `puppetlabs/debian-6.0.10-64-puppet` com o comando abaixo.
 
 ```
-$ vagrant box add puppetlabs/debian-6.0.10-64-puppet
+vagrant box add puppetlabs/debian-6.0.10-64-puppet
 ```
 
 * Clone o repositório da apostila com o comando abaixo:
 
 ```
-$ git clone https://github.com/puppet-br/apostila-puppet.git
+git clone https://github.com/puppet-br/apostila-puppet.git
 ```
 
 Acesse o diretório no qual você baixou os arquivos fontes da apostila:
