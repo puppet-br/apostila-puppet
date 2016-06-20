@@ -16,9 +16,10 @@ Para contribuir basta fazer um fork e submeter seu pull request para nós.
 
 # Editando arquivos RST
 
-O conteúdo da apostila está distribuído em vários arquivos RST. Para saber o que é um arquivo no formato RST acesse está página: http://www.reviversoft.com/pt/file-extensions/rst
+O conteúdo da apostila está distribuído em vários arquivos RST.
+Para saber o que é um arquivo no formato RST acesse esta página: http://www.reviversoft.com/pt/file-extensions/rst
 
-Para editar os arquivos, use o editor de texto de sua preferência. Pode ser vim, gedit, nano, etc...
+Para editar os arquivos, use o editor de texto de sua preferência (Exemplo.: vim, gedit, nano, etc...).
 
 # Instruções para compilar a apostila (gerar o PDF)
 
