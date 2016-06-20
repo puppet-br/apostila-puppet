@@ -7,7 +7,7 @@ Puppet é uma ferramenta e **plataforma Open Source** para automação e gerenci
 * Utiliza uma arquitetura cliente/servidor para a distribuição da configuração para clientes, que possuem um agente que sempre valida e corrige quaisquer problemas encontrados.
 * Extensível via módulos e plugins, permite adicionar funcionalidades sob demanda e compartilhar suas soluções com outros SysAdmins, tornando seu trabalho  mais ágil.
 
-Tradicionalmente, a gestão das configurações de um grande conjunto de computadores é feita de práticas imperativas e comandos sequenciais, ou seja, simplesmente executando comandos via SSH em um loop. Essa abordagem simples de executar comandos sequencialmente melhorou ao longo do tempo, mas ainda carrega fundamentais limitações, como vistas no tópico anterior.
+Tradicionalmente, a gestão das configurações de um grande conjunto de computadores é feita de práticas imperativas e comandos sequenciais, ou seja, simplesmente executando comandos via SSH em um loop. Essa abordagem simples de executar comandos sequencialmente melhorou ao longo do tempo, mas ainda carrega fundamentais limitações, como vistas no capítulo anterior.
 
 O Puppet tem uma abordagem diferente: cada sistema recebe um catálogo de *resources* (recursos) e relacionamentos, compara com o estado atual do sistema e faz as alterações necessárias para colocar o sistema em conformidade com o catálogo.
 
@@ -55,10 +55,7 @@ A camada de transação é o motor do Puppet. Nela é realizada a configuração
 
 4. Reportar os resultados para o master.
 
-O Puppet analisa a sua configuração e calcula como aplicá-la no agente.
-Para isso, é criado um grafo que contém todos os resources e suas relações
-uns com os outros. Isso permite ao Puppet decidir a melhor ordem para
-aplicação da configuração com base em relacionamentos criados pelo SysAdmin.
+O Puppet analisa a sua configuração e calcula como aplicá-la no agente. Para isso, é criado um grafo que contém todos os resources e suas relações uns com os outros. Isso permite ao Puppet decidir a melhor ordem para aplicação da configuração com base em relacionamentos criados pelo SysAdmin.
 
 Os resourses são compilados no que chamamos de catálogo, que é enviado aos nodes e aplicado pelos agentes, que devolvem ao master um relatório sobre o que foi feito. Isso não faz o Puppet ser totalmente transacional, como um tradicional banco de dados onde alterações podem ser revertidas. Porém, é possível modelar sua configuração com um modo "noop" (*no operation*, sem operação), onde é possível testar a execução de sua configuração sem realmente aplicá-la.
 
