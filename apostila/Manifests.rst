@@ -52,7 +52,7 @@ Além disso, algumas regras são fundamentais sobre a sintaxe:
 
 * Letras maiúsculas e minúsculas fazem diferença! Na declaração de recursos, ``File {'teste':...`` significa outra coisa que veremos mais adiante.
 
-* Colocar aspas nos valores faz diferença! Valores e palavras reservadas da linguagem, como ``present``, não precisam estar entre aspas, apenas strings. Para o Puppet, tudo é string, mesmo números.
+* Colocar aspas nos valores faz diferença! Valores e palavras reservadas da linguagem, como ``present``, não precisam estar entre aspas, apenas strings.
 
 * Aspas simples são para valores literais e o único escape é para a própria aspa (``'``) e a barra invertida (``\``).
 
@@ -168,6 +168,9 @@ Nós declaramos que ``/tmp/teste2/`` teria permissões 0644, porém, o ``ls -lah
 
 O tipo ``file`` tem diversos valores para o atributo ``ensure``: ``present``, ``absent``, ``file``, ``directory`` e ``link``. Para saber mais, leia a referência do tipo ``file``.
 
+:
+  # puppet describe file
+
 Prática: conhecendo os resources
 --------------------------------
 
@@ -183,12 +186,12 @@ Salve o conteúdo de cada exercício em um arquivo ``.pp`` e aplique-o usando o 
     ip           => '192.168.56.99',
   }
   
-2. Crie um usuário chamado elvis com shell padrão ``/bin/csh`` e grupo ``adm``:
+2. Crie um usuário chamado elvis com shell padrão ``/bin/sh`` e grupo ``adm``:
 
 .. code-block:: ruby
 
   user {'elvis':
-    shell      => '/bin/csh',
+    shell      => '/bin/sh',
     gid        => 'adm',
     managehome => true,
   }
@@ -201,3 +204,28 @@ Salve o conteúdo de cada exercício em um arquivo ``.pp`` e aplique-o usando o 
   group {'super':
     gid => 777,
   }
+
+.. raw:: pdf
+ 
+ PageBreak
+
+4. Desfaça as alterações anteriores:
+
+.. code-block:: ruby
+
+  file{ 'remove_dir':
+    path   => '/home/elvis',
+    ensure => absent,
+    force  => true,
+  }
+
+  user{ 'remove_user':
+    name   => elvis,
+    ensure => absent,
+  }
+
+  group{ 'remove_group':
+    name   => super,
+    ensure => absent,
+  }
+  
