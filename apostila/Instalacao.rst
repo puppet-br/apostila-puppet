@@ -71,7 +71,7 @@ Você também pode acessar a página http://apt.puppetlabs.com e localizar o pac
   # export PATH=/opt/puppetlabs/bin:$PATH
 
 CentOS e Red Hat
----------------
+----------------
 
 1. Adicione o repositório da Puppet Labs:
 

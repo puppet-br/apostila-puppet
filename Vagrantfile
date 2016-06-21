@@ -5,8 +5,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.define "apostila" do |apostila|
-    apostila.vm.hostname = "apostila.instruct"
-    apostila.vm.box = "puppetlabs/debian-6.0.10-64-puppet"
+    apostila.vm.hostname = "apostila.puppet"
+    apostila.vm.box = "puppetlabs/ubuntu-16.04-64-puppet"
     apostila.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--ioapic", "on"]
       v.cpus = 2

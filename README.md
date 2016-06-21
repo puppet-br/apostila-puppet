@@ -75,10 +75,10 @@ A apostila será gerada e armazenada em `apostila-puppet/apostla/apostila-puppet
 
 * Instale o Vagrant dispobilizado em: https://www.vagrantup.com/downloads.html
 
-* Instale a box `puppetlabs/debian-6.0.10-64-puppet` com o comando abaixo.
+* Instale a box `puppetlabs/ubuntu-16.04-64-puppet` com o comando abaixo.
 
 ```
-vagrant box add puppetlabs/debian-6.0.10-64-puppet
+vagrant box add puppetlabs/ubuntu-16.04-64-puppet
 ```
 
 * Clone o repositório da apostila com o comando abaixo:
