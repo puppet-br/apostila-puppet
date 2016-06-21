@@ -36,6 +36,10 @@ Debian e Ubuntu
   # dpkg -i  puppetlabs-release-pc1-jessie.deb
   # apt-get update
 
+.. raw:: pdf
+ 
+ PageBreak
+
 * Ubuntu 14.04 LTS (Trusty)
 
 ::
@@ -95,6 +99,10 @@ Você também pode acessar a página http://yum.puppetlabs.com e localizar o pac
 ::
 
   # yum -y install puppet-agent
+
+.. raw:: pdf
+ 
+ PageBreak
 
 3. Torne os comandos do pacote ``puppet-agent`` disponíveis no *path* do sistema:
 

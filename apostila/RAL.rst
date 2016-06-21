@@ -1,17 +1,12 @@
 Resource Abstraction Layer (RAL)
 ================================
 
-O que existe em um sistema operacional? Arquivos, pacotes, processos e
-serviços em execução, programas, contas de usuários, grupos, etc. Para o
-Puppet, isso são *resources* (recursos).
+O que existe em um sistema operacional? Arquivos, pacotes, processos e serviços em execução, programas, contas de usuários, grupos, etc. Para o Puppet, isso são *resources* (recursos).
 
-Os resources têm certas similaridades entre si. Por exemplo, um arquivo tem um
-caminho e um dono, todo usuário possui um grupo e um número identificador.
-Essas características chamamos de *atributos*, e unindo os atributos que sempre estão
-presentes possibilita a criação de *resource types* (tipos de recursos).
+Os resources têm certas similaridades entre si. Por exemplo, um arquivo tem um caminho e um dono, todo usuário possui um grupo e um número identificador.
+Essas características chamamos de *atributos*, e unindo os atributos que sempre estão presentes possibilita a criação de *resource types* (tipos de recursos).
 
-Os atributos mais importantes de um *resource type* geralmente são conceitualmente idênticos em todos os sistemas operacionais,
-independentemente de como as implementações venham a diferir. A descrição de um resource pode ser separada de como ela é implementada.
+Os atributos mais importantes de um *resource type* geralmente são conceitualmente idênticos em todos os sistemas operacionais, independentemente de como as implementações venham a diferir. A descrição de um resource pode ser separada de como ela é implementada.
 
 Essa combinação de *resources*, *resource types* e atributos formam o *Resource Abstraction Layer* (RAL) do Puppet. O RAL divide resources em tipos (alto nível) e *providers* (provedores, implementações específicas de cada plataforma), e isso nos permite manipular resources (pacotes, usuários, arquivos, etc) de maneira independente de sistema operacional.
 
@@ -83,7 +78,11 @@ Tradicionalmente, para criarmos um usuário usamos comandos como ``useradd`` ou 
     ensure => 'present',
     home   => '/home/joe',
   }
- 
+
+Verifique se o usuario jor foi criado.
+
+::
+
   # id joe
   uid=500(joe) gid=500(joe) groups=500(joe)
 
@@ -114,7 +113,7 @@ Vamos continuar explorando mais *resources*. Outro *resource type* muito útil �
   }
   ...
 
-O comando acima listou todos os serviços da máquina e seus estados. Podemos manipular os serviços via Puppet, ao invés de utilizarmos os tradicionais comandos ``update-rc.d`` no Debian ou ``chkconfig`` no Red Hat. Além disso, também podemos parar e iniciar serviços.
+O comando acima listou todos os serviços da máquina e seus estados. Podemos manipular os serviços via Puppet, ao invés de utilizarmos os tradicionais comandos ``update-rc.d`` no Debian/Ubuntu ou ``chkconfig`` no CentOS\Red Hat. Além disso, também podemos parar e iniciar serviços.
 
 Parando um serviço que está em execução:
 
@@ -144,10 +143,6 @@ Inciando um serviço que estava parado:
   
   # service saslauthd status
   iptables (pid  2731) is running...
-
-.. raw:: pdf
- 
- PageBreak
 
 Gerenciando pacotes
 ```````````````````
@@ -305,4 +300,15 @@ Vamos colocar o usuário **joe** aos grupos **adm** e **bin**. Normalmente farí
   Info: Applying configuration version '1447253347'
   Notice: /Stage[main]/Main/User[joe]/groups: groups changed '' to ['adm', 'bin']
   Notice: Applied catalog in 0.07 seconds
-  
+
+5. Remova o usuário joe com o comando a seguir.
+
+::
+
+  # puppet resource user joe ensure=absent
+ 
+6. Remova o diretório /home/joe com o comando a seguir.
+
+::
+
+  # puppet resource file /home/joe ensure=absent force=true  
