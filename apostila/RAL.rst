@@ -311,4 +311,34 @@ Vamos colocar o usuário **joe** aos grupos **adm** e **bin**. Normalmente farí
 
 ::
 
-  # puppet resource file /home/joe ensure=absent force=true  
+  # puppet resource file /home/joe ensure=absent force=true
+  
+7. Instale a última versão do ``nmap``.
+
+::
+  
+  # puppet resource package nmap ensure=latest     
+  
+8. Crie o grupo de usuário ``teste``.
+
+::
+  
+  # puppet resource group teste ensure=present
+  
+9. Verifique o status do serviço ssh.
+
+::
+
+  # puppet resource service ssh  
+  
+10. Crie o arquivo /tmp/teste com o conteúdo "isso é um teste".
+
+::
+  
+  # puppet resource file /tmp/teste.txt ensure=file content='isso eh um teste'
+  
+11. Execute um comando de ping para o Google.com e direcione a saída do comando para um arquivo /tmp/ping.txt.
+
+::
+
+  # puppet resource exec 'ping -c3 google.com > /tmp/ping.txt' path='/bin:/usr/bin'  
