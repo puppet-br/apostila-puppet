@@ -2,6 +2,13 @@
 
 Para contribuir basta fazer um fork e submeter seu pull request para nós.
 
+Seguem alguns links que explicam como fazer um fork e o pull request.
+
+https://help.github.com/articles/fork-a-repo/
+https://guides.github.com/activities/forking/
+https://help.github.com/articles/using-pull-requests/
+https://gist.github.com/piscisaureus/3342247
+
 [Editando arquivos RST]: #editando-arquivos-rst
 [Instruções para compilar a apostila (gerar o PDF)]: #instruções-para-compilar-a-apostila-gerar-o-pdf
 [No Ubuntu Desktop 14.04/16.04]: #no-ubuntu-desktop-14041604
