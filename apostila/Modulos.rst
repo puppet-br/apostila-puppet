@@ -1,5 +1,6 @@
 Classes e Módulos
 =================
+
 Ao criar diversos resources para vários nodes, em algum momento passa a fazer sentido que certos resources que são relacionados estejam juntos, ou resources que sejam utilizados muitas vezes possam ser resumidos.
 
 Muitas vezes, configurações específicas de um node precisam ser aproveitadas em outro e torna-se necessário copiar tudo para o outro node. Quando alterações são necessárias, é preciso realizar diversas modificações.
@@ -8,6 +9,7 @@ O Puppet fornece alguns mecanismos chamados *resource collections*, que são a a
 
 Classes
 -------
+
 Deixe seu conhecimento sobre programação orientada a objetos de lado a partir de agora.
 
 Para o Puppet, uma classe é a junção de vários resources sob um nome, uma unidade. É um bloco de código que pode ser ativado ou desativado.
@@ -31,8 +33,8 @@ Dentro do bloco de código da classe podemos colocar qualquer código Puppet, po
     }
         
     service { 'ntpd':
-      ensure    => running,
-      enable    => true,
+      ensure  => running,
+      enable  => true,
       require => Package['ntp'],
     }
   }
@@ -60,8 +62,8 @@ Simplesmente nada aconteceu, pois nós apenas definimos a classe. Para utilizá-
     }
         
     service { 'ntpd':
-      ensure    => running,
-      enable    => true,
+      ensure  => running,
+      enable  => true,
       require => Package['ntp'],
     }
   }
@@ -142,15 +144,15 @@ Vamos olhar mais de perto o que há em cada diretório.
 
   * ``um_diretorio/``: o nome do diretório afeta o nome das classes abaixo
 
-   * ``foo.pp``: contém uma classe chamada meu_modulo::um_diretorio::foo
+   * ``minha_outra_classe1pp``: contém uma classe chamada meu_modulo::um_diretorio::minha_outra_classe1
 
-   * ``bar.pp``: contém uma classe chamada meu_modulo::um_diretorio::bar
+   * ``minha_outra_classe2.pp``: contém uma classe chamada meu_modulo::um_diretorio::minha_outra_classe2
 
  * ``files/``: arquivos estáticos que podem ser baixados pelos agentes
 
  * ``lib/``: plugins e fatos customizados implementados em Ruby
 
- * ``templates/``: contém templates usadas no módulo
+ * ``templates/``: contém templates usados no módulo
 
  * ``tests/``: exemplos de como classes e tipos do módulo podem ser chamados
 
@@ -175,13 +177,19 @@ Prática: criando um módulo
 
   # vim /etc/puppetlabs/code/environments/production/modules/ntp/manifests/init.pp
   class ntp {
+    case $::operatingsystem {
+      centos, redhat: { $service_ntp = "ntpd" }
+      debian, ubuntu: { $service_ntp = "ntp" }
+      default: { fail("sistema operacional desconhecido") }
+    }
+  
     package { 'ntp':
       ensure => installed,
     }
         
-    service { 'ntpd':
-      ensure    => running,
-      enable    => true,
+    service { $service_ntp:
+      ensure  => running,
+      enable  => true,
       require => Package['ntp'],
     }
   }
@@ -191,7 +199,7 @@ Prática: criando um módulo
 .. code-block:: ruby
 
   # vim /etc/puppetlabs/code/environments/production/manifests/site.pp
-  node 'node1.puppet' {
+  node 'node1.domain.com.br' {
     include ntp
   }
   
@@ -214,7 +222,7 @@ Agora temos um módulo para configuração de NTP sempre a disposição!
 
   |nota| **Nome do serviço NTP**
 
-  No Debian/Ubuntu, o nome do serviço é ``ntp``. No CentOS/Red Hat, o nome do serviço é ``ntpd``. Ajuste isso no arquivo ``init.pp`` do módulo ``ntp``.
+  No Debian/Ubuntu, o nome do serviço é ``ntp``. No CentOS/Red Hat, o nome do serviço é ``ntpd``.
 
 .. raw:: pdf
 
@@ -250,12 +258,12 @@ Além de conter manifests, módulos também podem servir arquivos. Para isso, fa
       path     => '/etc/ntp.conf',
       require  => Package['ntp'],
       source   => "puppet:///modules/ntp/ntp.conf",
-      notify   => Service['ntpd'],
+      notify   => Service[$service_ntp],
     }
   
   }
 
-4. Faça qualquer alteração no arquivo ``ntp.conf`` do módulo (em ``/etc/puppet/modules/ntp/files/ntp.conf``), por exemplo, acrescentando ou removendo um comentário.
+4. Faça qualquer alteração no arquivo ``ntp.conf`` do módulo (em ``/etc/puppetlabs/code/environments/production/modules/ntp/files/ntp.conf``), por exemplo, acrescentando ou removendo um comentário.
 
 5. Aplique a nova configuração no **node1**.
 
@@ -267,4 +275,4 @@ Além de conter manifests, módulos também podem servir arquivos. Para isso, fa
 
   |dica| **Servidor de arquivos do Puppet**
 
-  O Puppet pode servir arquivos dos módulos, e funciona da mesma maneira se você está operando de maneira serverless ou master/agente. Todos os arquivos no diretório ``files`` do módulo ``ntp`` estão disponíveis na URL ``puppet:///modules/ntp/``.
+  O Puppet pode servir os arquivos dos módulos, e funciona da mesma maneira se você está operando de maneira serverless ou master/agente. Todos os arquivos no diretório ``files`` do módulo ``ntp`` estão disponíveis na URL ``puppet:///modules/ntp/``.
