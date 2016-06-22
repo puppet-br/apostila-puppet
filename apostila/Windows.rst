@@ -164,7 +164,7 @@ Para mais detalhes sobre as diferenças na declaração dos resources no Windows
 
   PageBreak
 
-..
+
 Prática: manipulando o registro
 -------------------------------
 
@@ -179,7 +179,8 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
   Downloading from https://forge.puppetlabs.com ...
   Installing -- do not interrupt ...
   /etc/puppetlabs/code/environments/production/modules
-  |-- puppetlabs-registry (v0.1.1)
+  |-- puppetlabs-registry (v1.1.3)
+    |-- puppetlabs-stdlib (v4.12.0)
 
 
 2. Execute o agente no Windows para instalação do módulo **puppetlabs-registry** (lembre-se de abrir o terminal do Puppet como *Administrator*):
@@ -211,4 +212,5 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
 .. image:: images/windows-regedit.png
   :scale: 80%
+
 
