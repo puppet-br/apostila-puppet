@@ -275,7 +275,7 @@ Se precisar refazer a assinatura de certificados do host puppet-agent é só par
 
   # puppet resource service puppet ensure=stop
   
-O log do puppet-agent ficam em:
+Os logs do puppet-agent ficam em:
 
 * ``/var/log/messages`` (no Debian/Ubuntu)
 * ``/var/log/syslog`` (no CentOS/Red Hat).
