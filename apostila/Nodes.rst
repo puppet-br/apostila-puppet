@@ -1,30 +1,32 @@
 Nodes
 =====
+
 O Puppet começa a compilação da configuração de um catálogo pelo arquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp``. O ``site.pp`` é o ponto de entrada do master para identificar a configuração que será enviada a um agente.
 
 Para saber qual configuração deve ser enviada a um agente, precisamos declarar o hostname do agente, utilizando a diretiva ``node``. Diretivas ``node`` casam sempre com o nome do agente. Por padrão, o nome do agente é o valor de ``certname`` presente no certificado de um agente (por padrão, o FQDN).
 
 Declarando nodes
 ----------------
+
 Sintaxe para se declarar um node:
 
 .. code-block:: ruby
 
   # vim /etc/puppetlabs/code/environments/production/manifests/site.pp
   
-  node 'node1.puppet' {
+  node 'node1.domain.com.br' {
     package {'nano':
       ensure => 'present',
     }
   }
   
-  node 'node2.puppet' {
+  node 'node2.domain.com.br' {
     package {'vim':
       ensure => 'present',
     }
   }
 
-No exemplo acima, o agente que se identificar como ``node1.puppet`` receberá a ordem de instalar o pacote ``nano``, enquanto  ``node2.puppet`` deverá instalar o pacote ``vim``.
+No exemplo acima, o agente que se identificar como ``node1.domain.com.br`` receberá a ordem de instalar o pacote ``nano``, enquanto  ``node2.domain.com.br`` deverá instalar o pacote ``vim``.
 
 .. nota::
 
@@ -32,23 +34,28 @@ No exemplo acima, o agente que se identificar como ``node1.puppet`` receberá a 
   
   O Puppet fornece um recurso chamado *External Node Classifier* (ENC), que tem a finalidade de delegar o registro de nodes para uma entidade externa, evitando a configuração de longos manifests. Esse recurso será visto mais adiante.
 
-  A documentação oficial está em https://docs.puppetlabs.com/guides/external_nodes.html
+  A documentação oficial está em: https://docs.puppet.com/guides/external_nodes.html
 
 Nomes
 -----
-A diretiva *node* casa com agentes por nome. O nome de um node é um identificador único que por padrão é valor de **certname**, ou seja o FQDN.
+
+A diretiva *node* casa com agentes por nome. O nome de um node é um identificador único, que por padrão é valor de **certname**, ou seja o FQDN.
+
+.. raw:: pdf
+ 
+ PageBreak
 
 É possível casar nomes de nodes usando expressões regulares:
 
 .. code-block:: ruby
 
-  # www1, www13, www999
+  Para: www1, www13, www999, a declaracao pode ser:
   node /^www\d+$/ {
   
   }
   
-  # foo.dominio.com.br ou bar.dominio.com.br
-  node /^(foo|bar)\.dominio\.com\.br$/ {
+  Para: foo.domain.com.br ou bar.domain.com.br, a declaração pode ser:
+  node /^(foo|bar)\.domain\.com\.br$/ {
   
   }
 
@@ -56,12 +63,13 @@ Também podemos aproveitar uma configuração em comum usando uma lista de nomes
 
 .. code-block:: ruby
 
-  node 'www1.dominio.com.br', 'www2.dominio.com.br', 'www3.dominio.com.br' {
+  node 'www1.domain.com.br', 'www2.domain.com.br', 'www3.domain.com.br' {
   
   }
 
 O node default
 --------------
+
 Caso o Puppet Master não encontre nenhuma declaração de ``node`` explícita para um agente, em última instância pode-se criar um node simplesmente chamado ``default``, que casará apenas para os agentes que não encontraram uma definição de ``node``.
 
 .. code-block:: ruby
@@ -73,14 +81,14 @@ Caso o Puppet Master não encontre nenhuma declaração de ``node`` explícita p
 Prática
 -------
 
-1. Declare a máquina **node1.puppet** no ``site.pp`` do master.
+1. Declare a máquina **node1.domain.com.br** no arquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp`` do master.
 
-2. Declare o pacote ``nano`` como instalado para **node1.puppet**.
+2. Declare o pacote ``tcpdump`` como instalado para **node1.domain.com.br**.
 
-3. Execute ``puppet agent -t`` no node1, certifique-se de que o ``nano`` foi instalado.
+3. Execute o comando ``puppet agent -t`` no ``node1``, certifique-se de que o pacote ``tcpdump`` foi instalado.
 
 .. dica::
 
   |dica| **Simulando a configuração**
 
-  Para simularmos as alterações que serão ou não feitas, usamos ``puppet agent -t --noop``.
+  Para simularmos as alterações que serão ou não realizadas no host cliente, usamos o comando ``puppet agent -t --noop``.
