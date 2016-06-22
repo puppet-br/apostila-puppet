@@ -1,16 +1,18 @@
 Puppet no Windows
 =================
-O suporte a Windows no Puppet vem melhorando a cada nova versão. Mas não é possível hospedar o Puppet Master no Windows, sendo somente o agente suportado.
 
-Praticamente onde é possível criar compatibilidade, os resources do Puppet suportam Windows normalmente. Em alguns casos são necessários certos cuidados devido a  diferenças semânticas entre sistemas Unix-like e Windows.
+O suporte a Windows no Puppet vem melhorando a cada nova versão. Mas não é possível hospedar o Puppet Server no Windows, sendo somente o agente suportado.
+
+Praticamente onde é possível criar compatibilidade, os resources do Puppet suportam Windows normalmente. Em alguns casos são necessários certos cuidados devido as diferenças semânticas entre sistemas Unix-like e Windows.
 
 Prática: Instalação
 -------------------
-Essa prática é realizada em **win7.puppet** e **master.puppet**.
 
-1. Faça login na máquina **win7.puppet**, usuário *puppet* e senha *puppet*. No desktop está o instalador do Puppet para Windows. Instale.
+Para a realização dessa prática é necessário você instalar uma terceira máquina com o Windows 8 e aqui chamaremos de **win8.domain.com.br**. Também precisaremos usar a máquina **master.domain.com.br**.
 
-2. Aparecerá a tela abaixo perguntando qual é o servidor master, preencha com **master.puppet**.
+1. Faça login na máquina **win8.domain.com.br**.
+
+2. Aparecerá a tela abaixo perguntando qual é o servidor master, preencha com **master.domain.com.br**.
 
 .. image:: images/windows-puppet-install.png
   :scale: 80%
@@ -19,7 +21,7 @@ Essa prática é realizada em **win7.puppet** e **master.puppet**.
 
 ::
 
-  msiexec /qn /i puppet.msi PUPPET_MASTER_SERVER=master.puppet
+  msiexec /qn /i puppet.msi PUPPET_MASTER_SERVER=master.domain.com.br
 
 
 4. Pare o serviço **Puppet**, pois realizaremos manualmente nossas atividades:
@@ -37,12 +39,12 @@ Essa prática é realizada em **win7.puppet** e **master.puppet**.
 ::
 
   # puppet cert list
-    "win7.puppet" (SHA256) EE:58:97:E3:6F:64:15:DF:68:A4:21:DA:A3:E2:81:43:3F: ...
+    "win8.domain.com.br" (SHA256) EE:58:97:E3:6F:64:15:DF:68:A4:21:DA:A3:E2:81:43:3F: ...
   
-  # puppet cert sign win7.puppet
-  Signed certificate request for win7.puppet
-  Removing file Puppet::SSL::CertificateRequest win7.puppet at \
-            '/var/lib/puppet/ssl/ca/requests/win7.puppet.pem'
+  # puppet cert sign win8.domain.com.br
+  Signed certificate request for win8.domain.com.br
+  Removing file Puppet::SSL::CertificateRequest win8.domain.com.br at \
+            '/var/lib/puppet/ssl/ca/requests/win8.domain.com.br.pem'
 
 6. Abra um prompt de comando como Administrador, conforme ilustra a figura abaixo:
 
@@ -67,9 +69,10 @@ Essa prática é realizada em **win7.puppet** e **master.puppet**.
 
 Prática: resources para Windows
 -------------------------------
-Essa prática é realizada em **win7.puppet** e **master.puppet**.
 
-1. Na máquina win7.puppet já temos baixado um pacote MSI que usaremos de exemplo para realizar a instalação. Declarar o seguinte no ``site.pp``:
+Essa prática é realizada em **win8.domain.com.br** e **master.domain.com.br**.
+
+1. Na máquina win8.domain.com.br já temos baixado um pacote MSI que usaremos de exemplo para realizar a instalação. Declarar o seguinte no ``site.pp``:
 
 ::
 
@@ -155,20 +158,18 @@ Para mais detalhes sobre as diferenças na declaração dos resources no Windows
 
 Prática: manipulando o registro
 -------------------------------
-Essa prática é realizada em **win7.puppet** e **master.puppet**.
 
-1. Instalando o módulo **puppetlabs-registry**:
+Essa prática é realizada em **win8.domain.com.br** e **master.domain.com.br**.
+
+1. Instalando o módulo **puppetlabs-registry** em **master.domain.com.br**:
 
 ::
 
-  # pwd
-  /etc/puppet/modules
-  
   # puppet module install puppetlabs/registry
-  Preparing to install into /etc/puppet/modules ...
+  Preparing to install into /etc/puppetlabs/code/environments/production/modules ...
   Downloading from https://forge.puppetlabs.com ...
   Installing -- do not interrupt ...
-  /etc/puppet/modules
+  /etc/puppetlabs/code/environments/production/modules
   |-- puppetlabs-registry (v0.1.1)
 
 
@@ -182,7 +183,7 @@ Essa prática é realizada em **win7.puppet** e **master.puppet**.
 
 ::
 
-  node 'win7.puppet' {
+  node 'win8.domain.com.br' {
     registry::value { 'Adware':
       key   => 'HKLM\Software\Microsoft\Windows\CurrentVersion\Run',
       value => 'Adware',
