@@ -53,11 +53,10 @@ Repare que as variáveis do manifest estão disponíveis dentro da template, inc
   |nota| **Localização de uma template no sistema de arquivos**
   
   Note que o caminho que deve ser passado para a função ``template()`` deve conter o nome do módulo, seguido do nome do arquivo de template que usaremos.
-  Portanto, ``template('foo/foo.conf.erb')`` significa abrir o arquivo
-  ``/etc/puppetlabs/code/environments/production/modules/foo/templates/foo.conf.erb``.
+  Portanto, ``template('foo/foo.conf.erb')`` significa abrir o arquivo ``/etc/puppetlabs/code/environments/production/modules/foo/templates/foo.conf.erb``.
 
 
-Usando o módulo ``foo`` em uma máquina CentOS:
+Usando o módulo ``foo`` em uma máquina CentOS/Red Hat:
 
 ::
 
@@ -84,6 +83,7 @@ Usando o módulo ``foo`` em uma máquina CentOS:
 
 Sintaxe ERB
 -----------
+
 Um arquivo de template no Puppet usa a sintaxe ERB, que é a linguagem padrão de templates do Ruby. Ela é simples e poderosa.
 
 * Comentário:
@@ -118,12 +118,12 @@ Um arquivo de template no Puppet usa a sintaxe ERB, que é a linguagem padrão d
     Essa maquina é do fabricante type: <%= @boardmanufacturer %>
   <% end %>
 
-* Iteração em um array chamado **bar**:
+* Iteração em um array chamado **frutas**:
 
 ::
 
-  <% @bar.each do |val| %>
-  Valor: <%= val %> 
+  <% @frutas.each do |val| %>
+  Nome: <%= val %> 
   <% end %>
 
 .. dica::
@@ -140,7 +140,11 @@ Um arquivo de template no Puppet usa a sintaxe ERB, que é a linguagem padrão d
 
   2. A outra opção é colocar um hífen no final de cada tag, assim o ERB não retornará uma linha em branco:
   
-  ``<% if @osfamily == '!RedHat' -%>``
+  ``<% if @osfamily == 'RedHat' -%>``
+  ``var3=RedHat``
+  ``<% else -%>``
+  ``var3=Outro``
+  ``<% end -%>``
 
 
 .. dica::
@@ -149,15 +153,16 @@ Um arquivo de template no Puppet usa a sintaxe ERB, que é a linguagem padrão d
 
   Para saber mais detalhes sobre a sintaxe ERB, acesse a página abaixo.
   
-  https://docs.puppetlabs.com/puppet/latest/reference/lang_template_erb.html
+  https://docs.puppet.com/puppet/latest/reference/lang_template_erb.html
   
   Para saber mais detalhes sobre o uso de linguagens para manipulação de templates no Puppet, acesse a página abaixo.
   
-  https://docs.puppetlabs.com/puppet/latest/reference/lang_template.html
+  https://docs.puppet.com/puppet/latest/reference/lang_template.html
   
   
 Prática: usando templates
 -------------------------
+
 1. Crie a estrutura básica de um módulo chamado ``motd``:
 
 ::
