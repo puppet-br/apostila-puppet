@@ -255,10 +255,10 @@ Além de conter manifests, módulos também podem servir arquivos. Para isso, fa
     ...
     
     file { 'ntp.conf':
-      path     => '/etc/ntp.conf',
-      require  => Package['ntp'],
-      source   => "puppet:///modules/ntp/ntp.conf",
-      notify   => Service[$service_ntp],
+      path    => '/etc/ntp.conf',
+      require => Package['ntp'],
+      source  => "puppet:///modules/ntp/ntp.conf",
+      notify  => Service[$service_ntp],
     }
   
   }
