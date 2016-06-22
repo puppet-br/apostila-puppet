@@ -1,10 +1,11 @@
 Laboratório 2
 =============
+
 1. Criar um módulo chamado ``ssh``, aproveitando o código do laboratório anterior. Sendo o resultado final usar o módulo dessa maneira em um node:
 
 ::
 
-  node 'node1.puppet' {
+  node 'node1.domain.com.br' {
     include ssh
   }
 
@@ -19,7 +20,7 @@ Laboratório 2
 
 ::
 
-  node 'node1.puppet' {
+  node 'node1.domain.com.br' {
     include masterssh
   }
 
@@ -37,7 +38,7 @@ Laboratório 2
 
 ::
 
-  node 'node1.puppet' {
+  node 'node1.domain.com.br' {
     include puppet
   }
 

@@ -1,5 +1,6 @@
 External Node Classifier
 ========================
+
 Um ENC (External Node Classifier) é uma fonte externa que o Puppet pode utilizar para dar classes a nodes, podendo substituir ou funcionar em conjunto com as definições de nodes no arquivo ``site.pp``. Caso um ENC e o arquivo site.pp precisem coexistir, as classes declaradas em cada um são mescladas.
 
 Um ENC é um executável que pode ser chamado pelo master e pode ser escrito em qualquer linguagem. Ele recebe como argumento o nome do node a ser classificado, e retorna um documento YAML descrevendo as classes para o node.
@@ -39,7 +40,7 @@ Exemplo de um YAML válido para o Puppet:
 Prática: Shell Script como ENC
 ------------------------------
 
-Os comandos abaixo serão executados na máquina **master.puppet** e aplicaremos a configuração no **node2**.
+Os comandos abaixo serão executados na máquina **master.domain.com.br** e aplicaremos a configuração no **node1**.
 
 1. Crie um shell script com o seguinte conteúdo em ``/etc/puppet/enc.sh``:
 
@@ -52,7 +53,7 @@ Os comandos abaixo serão executados na máquina **master.puppet** e aplicaremos
       motd:
       autofsck:
   parameters:
-    puppetserver: master.puppet
+    puppetserver: master.domain.com.br
   END
   exit 0
 
@@ -73,14 +74,14 @@ Os comandos abaixo serão executados na máquina **master.puppet** e aplicaremos
   external_nodes = /etc/puppet/enc.sh
 
 
-4. Reinicie o Puppet Master:
+4. Reinicie o Puppet Server:
 
 ::
 
-  # service puppetmaster restart
+  # service puppetserver restart
 
 
-5. Certifique-se de que em ``/etc/puppet/manifests/site.pp`` o node2 **não** tenha as classes ``motd`` e ``autofsck`` declaradas.
+5. Certifique-se de que em ``/etc/puppetlabs/code/environments/production/manifests/site.pp`` o node1 **não** tenha as classes ``motd`` e ``autofsck`` declaradas.
 
 6. Execute o agente e veja que as classes foram aplicadas, vindo do ENC.
 
@@ -93,15 +94,15 @@ Nesse caso, o ENC está fazendo o equivalente a esse código:
 
 .. code-block:: ruby
 
-  node 'node2.puppet' {
+  node 'node1.domain.com.br' {
     include motd
     include autofsck
-    $puppetserver = 'master.puppet'
+    $puppetserver = 'master.domain.com.br'
   }
 
 .. aviso::
 
   |aviso| **ENC como ponto único de falha**
   
-  Fazendo o Puppet Master depender de um ENC pode comprometer a disponibilidade de seu serviço. Se o ENC estiver fora do ar, o Puppet Master abortará o envio de configuração para os nodes. Portanto, o ENC pode der um ponto único de falha.
+  Fazendo o Puppet Master depender de um ENC pode comprometer a disponibilidade de seu serviço. Se o ENC estiver fora do ar, o Puppet Server abortará o envio de configuração para os nodes. Portanto, o ENC pode ser um ponto único de falha.
 
