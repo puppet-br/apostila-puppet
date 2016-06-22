@@ -164,6 +164,7 @@ Para mais detalhes sobre as diferenças na declaração dos resources no Windows
 
   PageBreak
 
+..
 Prática: manipulando o registro
 -------------------------------
 
