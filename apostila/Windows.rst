@@ -78,15 +78,17 @@ Prática: resources para Windows
 
 Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
-1. Na máquina win7.domain.com.br já temos baixado um pacote MSI que usaremos de exemplo para realizar a instalação. Declarar o seguinte no ``site.pp``:
+1. Na máquina win7.domain.com.br, baixe o pacote http://www.7-zip.org/a/7z1602.exe e copie para c:\. Declare o seguinte no arquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp``:
 
 ::
 
-  package {'7-Zip 9.20':
-    ensure => 'installed',
-    source => 'c:\Users\Puppet\Downloads\7z920.msi',
-    install_options => ['/q', { 'INSTALLDIR' => 'C:\Program Files\7-Zip' } ],
-  }
+  node win7.domain.com.br {
+    package {'7-Zip 16.02':
+      ensure => 'installed',
+      source => 'c:\Users\Puppet\Downloads\7z1602.exe',
+      install_options => ['/q', { 'INSTALLDIR' => 'C:\Program Files\7-Zip' } ],
+    }
+  }  
 
 2. Aplique o agente (lembre-se de usar um prompt com privilégios elevados)
 
@@ -109,7 +111,7 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
   PageBreak
 
-4. Agora vamos configurar um serviço. Declare o seguinte no ``site.pp``:
+4. Agora vamos configurar um serviço. Declare o seguinte no ``site.pp`` para o node **win7.domain.com.br**:
 
 ::
 
@@ -123,7 +125,7 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
 ::
 
-  C:\Users\Puppet> sc query audiosrv
+  C:\> sc query audiosrv
    
   SERVICE_NAME: audiosrv
           TYPE               : 20  WIN32_SHARE_PROCESS
@@ -145,7 +147,7 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
 ::
 
-  C:\Users\Puppet>sc query audiosrv
+  C:\>sc query audiosrv
    
   SERVICE_NAME: audiosrv
           TYPE               : 20  WIN32_SHARE_PROCESS
@@ -196,7 +198,6 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
       data  => 'c:\adware\adware.exe'
     }
   }
-
 
 4. Execute o agente no Windows para que a chave no registro seja criada (lembre-se de abrir o terminal do Puppet como *Administrator*):
 
