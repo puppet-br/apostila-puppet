@@ -5,26 +5,32 @@ O suporte a Windows no Puppet vem melhorando a cada nova versão. Mas não é po
 
 Praticamente onde é possível criar compatibilidade, os resources do Puppet suportam Windows normalmente. Em alguns casos são necessários certos cuidados devido as diferenças semânticas entre sistemas Unix-like e Windows.
 
+Para obter detalhes sobre a instalação do Puppet Agent no Windows acesse: https://docs.puppet.com/puppet/latest/reference/install_windows.html
+
 Prática: Instalação
 -------------------
 
-Para a realização dessa prática é necessário você instalar uma terceira máquina com o Windows 8 e aqui chamaremos de **win8.domain.com.br**. Também precisaremos usar a máquina **master.domain.com.br**.
+Para a realização dessa prática é necessário você instalar uma terceira máquina com o Windows 7 e aqui chamaremos de **win7.domain.com.br**. Também precisaremos usar a máquina **master.domain.com.br**.
 
-1. Faça login na máquina **win8.domain.com.br**.
+1. Faça login na máquina **win7.domain.com.br**. Baixe o instalado mais novo do Puppet-Agent para Windows em: 
 
-2. Aparecerá a tela abaixo perguntando qual é o servidor master, preencha com **master.domain.com.br**.
+* https://downloads.puppetlabs.com/windows/puppet-agent-x64-latest.msi (Windows 64 bits)
+* https://downloads.puppetlabs.com/windows/puppet-agent-x86-latest.msi (Windows 32 bits)
 
-.. image:: images/windows-puppet-install.png
+2. Execute o instalador do Puppet-Agent. Aparecerão as telas a seguir. Em uma delas será perguntando qual é o servidor master, preencha com **master.domain.com.br**.
+
+.. image:: images/puppet-windows1.png
   :scale: 80%
-
-3. (Opcional) É possível fazer a instalação de maneira automatizada:
-
-::
-
-  msiexec /qn /i puppet.msi PUPPET_MASTER_SERVER=master.domain.com.br
-
-
-4. Pare o serviço **Puppet**, pois realizaremos manualmente nossas atividades:
+.. image:: images/puppet-windows2.png
+  :scale: 80%
+.. image:: images/puppet-windows3.png
+  :scale: 80%
+.. image:: images/puppet-windows4.png
+  :scale: 80%
+.. image:: images/puppet-windows5.png
+  :scale: 80%
+  
+3. Pare o serviço **Puppet**, pois realizaremos manualmente nossas atividades:
 
 ::
 
@@ -39,18 +45,18 @@ Para a realização dessa prática é necessário você instalar uma terceira m�
 ::
 
   # puppet cert list
-    "win8.domain.com.br" (SHA256) EE:58:97:E3:6F:64:15:DF:68:A4:21:DA:A3:E2:81:43:3F: ...
+    "win7.domain.com.br" (SHA256) EE:58:97:E3:6F:64:15:DF:68:A4:21:DA:A3:E2:81:43:3F: ...
   
-  # puppet cert sign win8.domain.com.br
-  Signed certificate request for win8.domain.com.br
-  Removing file Puppet::SSL::CertificateRequest win8.domain.com.br at \
-            '/var/lib/puppet/ssl/ca/requests/win8.domain.com.br.pem'
+  # puppet cert sign win7.domain.com.br
+  Signed certificate request for win7.domain.com.br
+  Removing file Puppet::SSL::CertificateRequest win7.domain.com.br at \
+            '/var/lib/puppet/ssl/ca/requests/win7.domain.com.br.pem'
 
 6. Abra um prompt de comando como Administrador, conforme ilustra a figura abaixo:
 
 .. image:: images/windows-run-as-admin.png
 
-7. Execute o agente da mesma maneira que no Linux.
+7. Execute o agente da mesma maneira que no GNU/Linux.
 
 ::
 
@@ -70,9 +76,9 @@ Para a realização dessa prática é necessário você instalar uma terceira m�
 Prática: resources para Windows
 -------------------------------
 
-Essa prática é realizada em **win8.domain.com.br** e **master.domain.com.br**.
+Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
-1. Na máquina win8.domain.com.br já temos baixado um pacote MSI que usaremos de exemplo para realizar a instalação. Declarar o seguinte no ``site.pp``:
+1. Na máquina win7.domain.com.br já temos baixado um pacote MSI que usaremos de exemplo para realizar a instalação. Declarar o seguinte no ``site.pp``:
 
 ::
 
@@ -159,7 +165,7 @@ Para mais detalhes sobre as diferenças na declaração dos resources no Windows
 Prática: manipulando o registro
 -------------------------------
 
-Essa prática é realizada em **win8.domain.com.br** e **master.domain.com.br**.
+Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
 1. Instalando o módulo **puppetlabs-registry** em **master.domain.com.br**:
 
@@ -183,7 +189,7 @@ Essa prática é realizada em **win8.domain.com.br** e **master.domain.com.br**.
 
 ::
 
-  node 'win8.domain.com.br' {
+  node 'win7.domain.com.br' {
     registry::value { 'Adware':
       key   => 'HKLM\Software\Microsoft\Windows\CurrentVersion\Run',
       value => 'Adware',
