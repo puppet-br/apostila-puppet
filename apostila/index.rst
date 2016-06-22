@@ -75,6 +75,7 @@
 .. include:: Lab.rst
 .. include:: MasterAgent.rst
 .. include:: Nodes.rst
+.. include:: Dashboards.rst
 .. include:: Modulos.rst
 .. include:: Forge.rst
 .. include:: Templates.rst
