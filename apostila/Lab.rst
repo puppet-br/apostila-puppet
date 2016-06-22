@@ -8,7 +8,7 @@ Codifique um manifest que declare o seguinte:
 
 2. O arquivo de configuração ``/etc/ssh/sshd_config`` depende do pacote ``openssh-server`` e tem como fonte o caminho ``/root/manifests/sshd_config``.
 
- * Dica: faça uma cópia do arquivo para ``/root/manifests``.
+ * Dica: faça uma cópia do arquivo ``/etc/ssh/sshd_config`` para ``/root/manifests``.
 
 3. O serviço ``sshd`` deve ser recarregado quando o arquivo de configuração ``sshd_config`` for modificado.
 
