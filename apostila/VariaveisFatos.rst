@@ -3,31 +3,33 @@ Variáveis, fatos e condições
 
 Variáveis
 ---------
+
 A linguagem declarativa do Puppet pode usar variáveis, como no exemplo abaixo:
 
 .. code-block:: ruby
 
-  $dns1 = '8.8.8.8'
-  $dns2 = '8.8.4.4'
-  $arquivo = '/etc/resolv.conf'
+  $dns1     = '8.8.8.8'
+  $dns2     = '8.8.4.4'
+  $arquivo  = '/etc/resolv.conf'
   $conteudo = "nameserver ${dns1}\nnameserver ${dns2}"
   
-  file {$arquivo:
-    ensure => 'present',
+  file { $arquivo:
+    ensure  => 'present',
     content => $conteudo,
   }
 
 
 Mais alguns detalhes sobre variáveis:
 
-* Variáveis começam com o símbolo de cifrão (``$``)
-* Variáveis podem ser usadas para dar nomes em resources e em atributos
-* Para interpolar variáveis, a string deve estar entre aspas duplas e a variável deve estar entre chaves: ``${var}``
-* Variáveis do topo do escopo (algo como global) podem ser acessadas assim: ``$::variavel_global``
-* Uma variável só pode ter seu valor atribuído uma vez
+* Variáveis começam com o símbolo de cifrão (``$``).
+* Variáveis podem ser usadas para dar nomes em resources e atributos.
+* Para interpolar variáveis, a string deve estar entre aspas duplas e a variável deve estar entre chaves: ``${var}``.
+* Variáveis do topo do escopo (algo como global) podem ser acessadas assim: ``$::variavel_global``.
+* Uma variável só pode ter seu valor atribuído uma vez.
 
 Fatos
 -----
+
 Antes de gerar a configuração, o Puppet executa o ``facter``.
 
 O ``facter`` é uma ferramenta fundamental do ecossistema do Puppet, que gera uma lista de variáveis chamadas de fatos, que contém diversas informações sobre o sistema operacional.
@@ -99,31 +101,31 @@ Exemplo de saída da execução do comando ``facter``:
   virtual => virtualbox
 
 
-Todas essas variáveis estão disponíveis para uso dentro de qualquer manifest e dizemos que estão no escopo de topo (*top scope*).
+Todas essas variáveis estão disponíveis para uso dentro de qualquer manifest e dizemos que estão no escopo do topo (*top scope*).
 
-O exemplo abaixo usa algumas das variáveis geradas pelo ``facter``:
+O manifest ``facter.pp`` a seguir usa algumas das variáveis geradas pelo ``facter``:
 
 .. code-block:: ruby
 
   notify {'kernel':
-    message => "O sistema operacional é ${::kernel} e versão ${::kernelversion}"
+    message => "O sistema operacional é ${::kernel} versão ${::kernelversion}."
   }
   
   notify {'distro':
-    message => "A distribuição é ${::operatingsystem} e versão ${::operatingsystemrelease}"
+    message => "A distribuição GNU/Linux é ${::operatingsystem} versão ${::operatingsystemrelease}."
   }
 
 E teremos a seguinte saída:
 
 ::
 
-  # puppet apply a.pp
-  Notice: O sistema operacional é Linux e versão 3.16.0
+  # puppet apply facter.pp
+  Notice: O sistema operacional é Linux versão 3.16.0
   Notice: /Stage[main]/Main/Notify[kernel]/message: defined 'message' as \
-     'O sistema operacional é Linux e versão 3.16.0'
+     'O sistema operacional é Linux versão 3.16.0'
   Notice: A distribuição é Debian e versão 8.2
   Notice: /Stage[main]/Main/Notify[distro]/message: defined 'message' as \
-     'A distribuição é Debian e versão 8.2'
+     'A distribuição é Debian versão 8.2'
   Notice: Applied catalog in 0.03 second
 
 .. nota::
@@ -132,32 +134,34 @@ E teremos a seguinte saída:
   
   Alguns fatos podem variar de um sistema operacional para outro. Além disso, é possível estender as variáveis do ``facter``.
 
-.. Prática: facter
-.. ```````````````
-.. 1. Execute o facter:
-.. 
-.. ::
-.. 
-..   # facter
-.. 
-.. 2. Veja que é possível extrair fatos específicos:
-.. 
-.. ::
-.. 
-..   # facter ipaddress
-..   
-..   # facter ipaddress_eth0
-.. 
-.. 3. É possível extrair os fatos em formatos como YAML e JSON.
-.. 
-.. ::
-.. 
-..   # facter --json
-..   
-..   # facter --yaml
+Prática: facter
+```````````````
+
+1. Execute o facter:
+ 
+::
+ 
+   # facter
+ 
+2. Veja que é possível extrair fatos específicos:
+ 
+::
+ 
+   # facter ipaddress
+   
+   # facter ipaddress_eth0
+ 
+3. É possível extrair os fatos em formatos como YAML e JSON.
+ 
+::
+ 
+  # facter --json
+   
+  # facter --yaml
 
 Condicionais
 ------------
+
 A linguagem declarativa do Puppet possui mecanismos de condição que funcionam de maneira parecida em relação às linguagens de programação. Mas existem algumas diferenças.
 
 if
@@ -180,10 +184,6 @@ Exemplo de um bloco de condição ``if``:
 
 O ``else`` e o ``elsif`` são opcionais.
 
-.. raw:: pdf
-
- PageBreak
-
 Outro exemplo, usando uma variável do ``facter``:
 
 .. code-block:: ruby
@@ -202,30 +202,20 @@ Os blocos podem conter qualquer qualquer tipo de definição de configuração, 
   if $::osfamily == 'RedHat' {
     service {'sshd':
       ensure => 'running',
-      enable => 'true',
+      enable => true,
     }
   }
   elsif $::osfamily == 'Debian' {
     service {'ssh':
       ensure => 'running',
-      enable => 'true',
+      enable => true,
     }
   }
+  
+.. raw:: pdf
 
-.. aviso::
+ PageBreak
 
-  |aviso| **True e False para o Puppet.**
-  
-  No Puppet 3, as variáveis que vêm do Facter sempre são strings.
-  
-  Mesmo que seja retornado *false*, por exemplo no fato $::is_virtual, é diferente do tipo booleano ``false``.
-  
-  Portanto, um código como o abaixo sempre cairá no primeiro bloco mesmo `$::is_virtual` sendo "false".
-  
-  ``if $::is_virtual { ... } else { ... }``
-  
-  No Puppet 4 os tipos dos fatos retornados pelo Facter são respeitados.
-  
 Expressões
 ``````````
 
@@ -254,6 +244,7 @@ Exemplo do operador ``in``:
 
 Operadores booleanos
 ********************
+
 * ``and``
 * ``or``
 * ``!`` (negação)
@@ -298,6 +289,10 @@ O exemplo anterior pode ser reescrito assim:
     debian, ubuntu: { $apache = "apache2" }
     default: { fail("sistema operacional desconhecido") }
   }
+  package {'apache':
+    name   => $apache,
+    ensure => 'latest',
+  }
 
 Exemplo usando uma expressão regular:
 
@@ -334,7 +329,7 @@ Pode parecer um pouco estranho, mas há muitas situações em que é a forma mai
 Prática: melhor uso de variáveis
 --------------------------------
 
-Reescreva o código do exemplo usando uma variável para armazenar o nome do serviço e usando somente um resource ``service`` no seu código.
+Reescreva o código do exemplo a seguir usando uma variável para armazenar o nome do serviço e usando somente um resource ``service`` no seu código.
 
 .. code-block:: ruby
 
