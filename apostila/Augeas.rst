@@ -1,6 +1,7 @@
 Augeas
 ======
-Muitas vezes precisamos manipular arquivos de configuração e, geralmente, recorremos para soluções simples usando grep, sed, awk ou alguma linguagem de script.
+
+Muitas vezes precisamos manipular arquivos de configuração e, geralmente, recorremos a soluções simples usando grep, sed, awk ou alguma linguagem de script.
 
 Com isso, tem-se muito trabalho para manipular esses arquivos e o resultado final nunca é flexível ou muito confiável.
 
@@ -20,8 +21,8 @@ Vejamos como o arquivo ``/etc/resolv.conf`` está configurado:
 ::
 
   # cat /etc/resolv.conf
-  domain puppet
-  search puppet
+  domain domain.com.br
+  search domain.com.br
   nameserver 8.8.8.8
   nameserver 8.8.4.4
 
@@ -30,11 +31,11 @@ Como o Augeas o representa:
 
 ::
 
-  # augtool print /files/etc/resolv.conf
+  # /opt/puppetlabs/puppet/bin/augtool print /files/etc/resolv.conf
   /files/etc/resolv.conf
-  /files/etc/resolv.conf/domain = "puppet"
+  /files/etc/resolv.conf/domain = "domain.com.br"
   /files/etc/resolv.conf/search
-  /files/etc/resolv.conf/search/domain = "puppet"
+  /files/etc/resolv.conf/search/domain = "domain.com.br"
   /files/etc/resolv.conf/nameserver[1] = "8.8.8.8"
   /files/etc/resolv.conf/nameserver[2] = "8.8.4.4"
 
@@ -45,74 +46,82 @@ Usando um caminho completo da configuração, podemos manipular os arquivos sem 
 
 Vamos trocar o valor da opção ``domain`` do ``resolv.conf`` (a opção ``-s`` diz ao ``augtool`` para salvar a alteração):
 
+.. raw:: pdf
+ 
+ PageBreak
+
 ::
 
-  # augtool -s set /files/etc/resolv.conf/domain outrodominio
+  # /opt/puppetlabs/puppet/bin/augtool -s set /files/etc/resolv.conf/domain outrodominio
   Saved 1 file(s)
   
   # cat /etc/resolv.conf 
   domain outrodominio
-  search puppet
+  search domain.com.br
   nameserver 8.8.8.8
   nameserver 8.8.4.4
 
 
-Em um arquivo resolv.conf a opção ``nameserver`` pode aparecer mais de uma vez, pois podemos configurar vários servidores de nomes em nosso sistema. Devido a isso, o Augeas trata a opção ``nameserver`` como um vetor, então *nameserver[1]* é 8.8.8.8 e *nameserver[2]* é 8.8.4.4.
+Em um arquivo ``resolv.conf`` a opção ``nameserver`` pode aparecer mais de uma vez, pois podemos configurar vários servidores de nomes em nosso sistema. Devido a isso, o Augeas trata a opção ``nameserver`` como um vetor, então *nameserver[1]* é ``8.8.8.8`` e *nameserver[2]* é ``8.8.4.4``.
 
 Podemos incluir e remover valores no vetor. Por exemplo, adicionar um terceiro nameserver e depois removê-lo:
 
 ::
 
-  # augtool -s set /files/etc/resolv.conf/nameserver[3] 1.1.1.1
+  # /opt/puppetlabs/puppet/bin/augtool -s set /files/etc/resolv.conf/nameserver[3] 1.1.1.1
   Saved 1 file(s)
   
   # cat /etc/resolv.conf
   domain outrodominio
-  search puppet
+  search domain.com.br
   nameserver 8.8.8.8
   nameserver 8.8.4.4
   nameserver 1.1.1.1
   
-  # augtool -s rm /files/etc/resolv.conf/nameserver[3]
+  # /opt/puppetlabs/puppet/bin/augtool -s rm /files/etc/resolv.conf/nameserver[3]
   rm : /files/etc/resolv.conf/nameserver[3] 1
   Saved 1 file(s)
   
   # cat /etc/resolv.conf 
   domain outrodominio
-  search puppet
+  search domain.com.br
   nameserver 8.8.8.8
   nameserver 8.8.4.4
 
 
 Prática: manipulando o arquivo /etc/hosts
 `````````````````````````````````````````
-Os comandos abaixo podem ser executados na máquina **node1.puppet**.
+Os comandos abaixo podem ser executados na máquina **node1.domain.com.br**.
 
 1. Agora vamos utilizar o interpretador de comandos do Augeas, simplesmente executando o ``augtool``:
 
 ::
 
-  # augtool
+  # /opt/puppetlabs/puppet/bin/augtool
   augtool>
 
 2. Dentro do interpretador, os comandos ``print``, ``set``, ``rm`` funcionam como na linha de comando. Podemos associar o caminho no sistema de arquivos com uma opção de configuração:
 
+.. raw:: pdf
+ 
+ PageBreak
+
 ::
 
-  augtool> ls /files/etc/resolv.conf/
+  augtool> ls /files/etc/resolv.conf
   domain = outrodominio
   search/ = (none)
   nameserver[1] = 8.8.8.8
   nameserver[2] = 8.8.4.4
 
-3. Use o comando ``print`` no arquivo ``/etc/hosts``. Identifique qual é o número do registro do host **node1.puppet**.
+3. Use o comando ``print`` no arquivo ``/etc/hosts``. Identifique qual é o número do registro do host **node1.domain.com.br**.
 
 ::
 
   augtool> print /files/etc/hosts
 
 
-4. De posse do número do registro do host **node1.puppet**, crie um novo alias para o host:
+4. De posse do número do registro do host **node1.domain.com.br**, crie um novo alias para o host:
 
 ::
 
@@ -125,6 +134,7 @@ Os comandos abaixo podem ser executados na máquina **node1.puppet**.
 
 Augeas e Puppet
 ---------------
+
 O Puppet fornece um *resource* para que os poderosos recursos de edição do Augeas possam ser usados nos manifests.
 
 Manipulando o ``/etc/resolv.conf``, porém agora com um manifest:

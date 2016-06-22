@@ -4,14 +4,14 @@ Outras Fontes de estudo
 Abaixo são listados vários links para você acessar e se aprimorar nos estudos.
 
 
-Slides:
+**Slides:**
 
 * https://speakerdeck.com/gutocarvalho/meetup-puppet-br-20160217-origens-devops
 * https://speakerdeck.com/gutocarvalho/meetup-puppet-br-20160518-intro-puppet
 * https://speakerdeck.com/gutocarvalho/meetup-puppet-br-20160217-introducao-ao-puppet-4
 * http://www.slideshare.net/PuppetLabs
 
-Documentação para começar a usar o Puppet:
+**Documentação para começar a usar o Puppet:**
 
 * http://blog.aeciopires.com/configurando-um-ambiente-puppet/
 * http://blog.aeciopires.com/configurando-um-ambiente-puppet-2/
@@ -21,7 +21,7 @@ Documentação para começar a usar o Puppet:
 * http://gutocarvalho.net/dokuwiki/doku.php?id=puppet_serverless
 * https://docs.puppetlabs.com/puppet_core_types_cheatsheet.pdf
 
-Documentação para desenvolver manifests, classes e módulos no Puppet:
+**Documentação para desenvolver manifests, classes e módulos no Puppet:**
 
 * https://docs.puppetlabs.com/pe/latest/quick_start.html
 * https://docs.puppetlabs.com/guides/style_guide.html
@@ -35,22 +35,22 @@ Documentação para desenvolver manifests, classes e módulos no Puppet:
 * https://docs.puppetlabs.com/pe/latest/puppet_modules_manifests.html
 * https://docs.puppetlabs.com/puppet/latest/reference/lang_classes.html
 
-Documentação geral sobre Puppet:
+**Documentação geral sobre Puppet:**
 
 * http://docs.puppetlabs.com/
 * http://docs.puppetlabs.com/puppet/latest/reference/
 * http://www.example42.com/tutorials/PuppetTutorial/
 * http://puppet-br.org/documentacao/
 
-Cursos online e grátis sobre Puppet:
+**Cursos online e grátis sobre Puppet:**
 
 * https://learn.puppetlabs.com/category/self-paced-training
 
-Puppet no Windows:
+**Puppet no Windows:**
 
 * http://docs.puppetlabs.com/windows/
 
-Livros sobre Puppet:
+**Livros sobre Puppet:**
 
 * http://www.puppetcookbook.com/
 * http://shop.oreilly.com/product/0636920034131.do
@@ -64,7 +64,7 @@ Livros sobre Puppet:
 * http://search.oreilly.com/?q=puppet&x=0&y=0
 * https://puppetlabs.com/resources/books
 
-PuppetExplorer:
+**PuppetExplorer:**
 
 * https://github.com/spotify/puppetexplorer
 * http://demo.puppetexplorer.io
@@ -72,7 +72,7 @@ PuppetExplorer:
 * https://speakerdeck.com/gutocarvalho/meetup-puppet-br-20160518-projeto-pcp
 * https://github.com/puppet-br/pcp
 
-Puppetboard:
+**Puppetboard:**
 
 * https://github.com/puppet-community/puppetboard
 * http://blog.aeciopires.com/instalando-configurando-puppetdb-puppetexplorer-puppetboard/
@@ -81,9 +81,9 @@ Puppetboard:
 * https://ask.puppetlabs.com/question/3557/how-to-refresh-puppet-master-cached-catalog/
 * https://github.com/puppet-br/pcp
 
-Ferramentas sugeridas para desenvolver no Puppet:
+**Ferramentas sugeridas para desenvolver no Puppet:**
 
-Geppeto:
+**Geppeto:**
 
 * http://puppetlabs.github.io/geppetto/download.html
 * https://github.com/puppetlabs/geppetto/commit/30468cbb41d83678b898865cba72f19cf4249a73
@@ -94,13 +94,13 @@ Geppeto:
 * Kate:
 * http://kate-editor.org/
 
-Vim:
+**Vim:**
 
 * http://www.openvim.com/tutorial.html
 * http://i.imgur.com/1tiqn.png
 * https://github.com/rodjek/vim-puppet
 
-Git e Github:
+**Git e Github:**
 
 * https://github.com/
 * http://rogerdudler.github.io/git-guide/index.pt_BR.html
@@ -112,7 +112,7 @@ Git e Github:
 * http://stackoverflow.com/questions/6157730/why-cant-i-push-to-this-bare-repository
 * https://git-scm.com/book/pt-br/v1/Git-Essencial-Tagging
 
-Vagrant:
+**Vagrant:**
 
 * http://blog.rivendel.com.br/2015/09/18/devops-conhecendo-vagrant/
 * http://blog.rivendel.com.br/2014/08/20/vagrant-as-vantagens-da-virtualizacao-em-ambiente-local/
