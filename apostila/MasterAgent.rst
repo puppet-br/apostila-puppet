@@ -230,6 +230,10 @@ No arquivo ``/etc/puppetlabs/puppet/puppet.conf``, adicione as linhas abaixo:
 
  * O comando abaixo deve ser executado em **master.domain.com.br**.
 
+.. raw:: pdf
+ 
+ PageBreak
+ 
 ::
 
   # puppet cert list
@@ -281,6 +285,10 @@ Os logs do puppet-agent ficam em:
 * ``/var/log/syslog`` (no CentOS/Red Hat).
 * ``/var/log/puppetlabs/puppet``
 
+.. raw:: pdf
+ 
+ PageBreak
+ 
 .. dica::
 
   |dica| **Possíveis problemas com certificados SSL**

@@ -35,6 +35,10 @@ Poderíamos criar um módulo para que essas configurações fossem gerenciadas v
 
   # puppet apply -e "sysctl { 'net.ipv4.ip_forward': value => '1', enable=>true }"
 
+.. raw:: pdf
+ 
+ PageBreak
+ 
 4. Ou declarando um valor para um dos nossos nodes, no ``/etc/puppetlabs/code/environments/production/manifests/site.pp``:
 
 .. code-block:: ruby
@@ -91,6 +95,10 @@ Prática: módulo para autofsck do Puppet Forge
     include autofsck
   }
 
+.. raw:: pdf
+ 
+ PageBreak
+ 
 3. Execute o agente em **node1**:
 
 ::

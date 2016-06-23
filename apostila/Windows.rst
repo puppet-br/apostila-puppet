@@ -21,12 +21,20 @@ Para a realização dessa prática é necessário você instalar uma terceira m�
 
 .. image:: images/puppet-windows1.png
   :scale: 80%
+  
+  
 .. image:: images/puppet-windows2.png
   :scale: 80%
+  
+  
 .. image:: images/puppet-windows3.png
   :scale: 80%
+  
+  
 .. image:: images/puppet-windows4.png
   :scale: 80%
+  
+  
 .. image:: images/puppet-windows5.png
   :scale: 80%
   
@@ -103,13 +111,13 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
   
   O título do resource package precisa ser igual a propriedade *DisplayName* utilizada no registro do Windows para instalação de um pacote MSI. Caso o título seja diferente, o Puppet executará a instalação em todas as execuções.
 
+.. raw:: pdf
+ 
+ PageBreak
+ 
 3. Veja que o 7-Zip foi instalado:
 
 .. image:: images/windows-7zip.png
-
-.. raw:: pdf
-
-  PageBreak
 
 4. Agora vamos configurar um serviço. Declare o seguinte no ``site.pp`` para o node **win7.domain.com.br**:
 
@@ -142,6 +150,9 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
   puppet agent -t
 
+.. raw:: pdf
+ 
+ PageBreak
 
 7. Veja que o serviço Windows Audio foi parado e desativado.
 
@@ -159,11 +170,6 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
 
 Para mais detalhes sobre as diferenças na declaração dos resources no Windows: http://docs.puppetlabs.com/windows/writing.html
-
-.. raw:: pdf
-
-  PageBreak
-
 
 Prática: manipulando o registro
 -------------------------------

@@ -42,6 +42,10 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 * http://www.example42.com/tutorials/PuppetTutorial/
 * http://puppet-br.org/documentacao/
 
+.. raw:: pdf
+ 
+ PageBreak
+ 
 **Cursos online e grátis sobre Puppet:**
 
 * https://learn.puppetlabs.com/category/self-paced-training
@@ -81,6 +85,10 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 * https://ask.puppetlabs.com/question/3557/how-to-refresh-puppet-master-cached-catalog/
 * https://github.com/puppet-br/pcp
 
+.. raw:: pdf
+ 
+ PageBreak
+ 
 **Ferramentas sugeridas para desenvolver no Puppet:**
 
 **Geppeto:**
