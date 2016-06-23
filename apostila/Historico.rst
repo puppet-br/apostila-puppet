@@ -1,7 +1,7 @@
 Histórico de mudanças
 =====================
 
-* Versão 2.0 lançada dia 04/07/2016
+* Versão 2.0 lançada dia 23/06/2016
 * Versão 1.0 lançada dia 20/03/2014
 
 Colaboradores
