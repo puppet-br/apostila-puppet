@@ -23,7 +23,8 @@ Poderíamos criar um módulo para que essas configurações fossem gerenciadas v
 ::
 
   # puppet module install trlinkin/sysctl
-  Notice: Preparing to install into /etc/puppetlabs/code/environments/production/modules ...
+  Notice: Preparing to install into \
+    /etc/puppetlabs/code/environments/production/modules ...
   Notice: Downloading from https://forgeapi.puppetlabs.com ...
   Notice: Installing -- do not interrupt ...
   /etc/puppetlabs/code/environments/production/modules
@@ -66,7 +67,8 @@ Poderíamos criar um módulo para que essas configurações fossem gerenciadas v
             '{md5}cb94b98fb045257517de45c9616f2844'
   Info: Caching catalog for node1.puppet
   Info: Applying configuration version '1353001737'
-  /Stage[main]//Node[node1.puppet]/Sysctl[net.ipv4.ip_forward]/value: value changed '0' to '1'
+  /Stage[main]//Node[node1.puppet]/Sysctl[net.ipv4.ip_forward]/value: \
+  value changed '0' to '1'
   /Stage[main]//Node[node1.puppet]/Sysctl[net.ipv4.ip_forward]/enable: modified \
             running value of 'net.ipv4.ip_forward' from '0' to '1'
   Info: FileBucket adding {md5}228c966fd2676164a120f5230fe0b0e1
@@ -80,7 +82,8 @@ Prática: módulo para autofsck do Puppet Forge
 ::
 
   # puppet module install jhoblitt/autofsck
-  Notice: Preparing to install into /etc/puppetlabs/code/environments/production/modules ...
+  Notice: Preparing to install into \
+   /etc/puppetlabs/code/environments/production/modules ...
   Notice: Downloading from https://forgeapi.puppetlabs.com ...
   Notice: Installing -- do not interrupt ...
   /etc/puppetlabs/code/environments/production/modules
@@ -95,10 +98,6 @@ Prática: módulo para autofsck do Puppet Forge
     include autofsck
   }
 
-.. raw:: pdf
- 
- PageBreak
- 
 3. Execute o agente em **node1**:
 
 ::

@@ -94,7 +94,10 @@ Mais exemplos:
   
   notify {"Outra notificação":}
   
+.. raw:: pdf
 
+ PageBreak
+ 
 E, finalmente, vamos aplicar:
 
 ::
@@ -142,6 +145,10 @@ Em certas ocasiões é melhor dar um título curto que simbolize e identifique o
 
 Não é possível declarar o mesmo *resource* mais de uma vez. O Puppet não permite que *resources* com o mesmo título sejam criados e, em vários casos, também não vai permitir que recursos diferentes tenham o mesmo valor de ``namevar``.
 
+.. raw:: pdf
+
+ PageBreak
+ 
 ::
 
   # vim /root/manifests/conflito.pp 
@@ -196,6 +203,9 @@ Salve o conteúdo de cada exercício em um arquivo ``.pp`` e aplique-o usando o 
     managehome => true,
   }
 
+.. raw:: pdf
+
+ PageBreak
 
 3. Crie um grupo chamado ``super``:
 
@@ -204,10 +214,6 @@ Salve o conteúdo de cada exercício em um arquivo ``.pp`` e aplique-o usando o 
   group {'super':
     gid => 777,
   }
-
-.. raw:: pdf
- 
- PageBreak
 
 4. Desfaça as alterações anteriores:
 
