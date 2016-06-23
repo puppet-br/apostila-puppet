@@ -80,6 +80,7 @@
 .. include:: Forge.rst
 .. include:: Templates.rst
 .. include:: Environments.rst
+.. include:: Hiera.rst
 .. .. include:: Lab2.rst
 .. .. include:: ENCs.rst
 .. include:: Augeas.rst

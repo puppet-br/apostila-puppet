@@ -111,3 +111,9 @@ Você também pode acessar a página http://yum.puppetlabs.com e localizar o pac
   # echo "PATH=/opt/puppetlabs/bin:$PATH" >> /etc/bashrc
   # echo "export PATH" >> /etc/bashrc
   # export PATH=/opt/puppetlabs/bin:$PATH
+  
+4. Obtenha a versão do puppet-agent
+
+::
+
+  # puppet --version  
