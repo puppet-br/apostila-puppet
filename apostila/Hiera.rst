@@ -100,7 +100,6 @@ Exemplo do conteúdo do arquivo ``host/node2.yaml``:
 
   #Postfix
   smtp_port: '587'
-  smtp_server: '127.0.0.1'
 
 .. raw:: pdf
 
@@ -110,8 +109,6 @@ Exemplo do conteúdo do arquivo ``domain/domain.com.br.yaml``:
 
 .. code-block:: ruby
  
-  config_package: 'config.tar.bz2'
-  deploy_scripts: true
   scripts_version: 2.0
 
 Exemplo do conteúdo do arquivo ``os/ubuntu.yaml``:
@@ -119,21 +116,21 @@ Exemplo do conteúdo do arquivo ``os/ubuntu.yaml``:
 .. code-block:: ruby
 
   #Apache	
-  apache-service: apache2
+  apache_service: apache2
   
 Exemplo do conteúdo do arquivo ``os/redhat.yaml``:
 
 .. code-block:: ruby
 
   #Apache	
-  apache-service: httpd
+  apache_service: httpd
   
 Exemplo do conteúdo do arquivo ``common.yaml``:
 
 .. code-block:: ruby
 
   #Apache	
-  apache-service: apache2
+  apache_service: apache2
   
   #SSH
   ssh_port: '22'
@@ -155,7 +152,7 @@ Exemplo do conteúdo do arquivo ``common.yaml``:
 
  PageBreak
 
-Usando o exemplo dado anteriormente, se queremos obter um valor definido para a variável ``apache-service``, o Hiera tentará obter este valor lendo a seguinte sequencia de arquivos e retornará o primeiro valor que encontrar para essa variável.
+Usando o exemplo dado anteriormente, se queremos obter um valor definido para a variável ``apache_service``, o Hiera tentará obter este valor lendo a seguinte sequencia de arquivos e retornará o primeiro valor que encontrar para essa variável.
 
 * host/node1.domain.com.br.yaml
 * host/node2.yaml
@@ -177,13 +174,13 @@ Execute o hiera para uma pesquisa seguindo a hierarquia definida.
 
 ::
   
-  # hiera apache-service
+  # hiera apache_service
 
 Execute o hiera especificando parâmetros de busca:
 
 ::
   
-  # hiera apache-service -yaml ubuntu.yaml 
+  # hiera apache_service -yaml ubuntu.yaml 
 
 É bem simples fazer a pesquisa e testar se vai retornar o que você está esperando. O Hiera retornará o valor ``nil`` quando não encontrar um valor para a variável especificada na busca.
 
@@ -196,4 +193,121 @@ Execute o hiera especificando parâmetros de busca:
 Criando um módulo para usar dados vindos do Hiera
 -------------------------------------------------
 
-Com o Hiera os dados ficam fora do arquivo deixando o código mais limpo, coeso, evitando repetição e erros de edição.
+Agora que já configuramos o Hiera para localizar dados da estrutura do ``meucliente``, vamos criar um módulo que usará esses dados e que também definirá valores padrão para as variáveis, caso não seja possível obter via Hiera.
+
+1. Primeiramente, crie a estrutura básica de um módulo ``doc``:
+
+::
+
+  # cd /etc/puppetlabs/code/environments/production/modules
+  # mkdir -p doc/manifests
+  # mkdir -p doc/templates
+
+2. O nosso módulo ``doc`` terá dois manifests: o ``init.pp`` (código principal) e o ``params.pp`` (apenas para declaração de variáveis).
+
+.. code-block:: ruby
+
+  # vim doc/manifests/init.pp
+
+  class doc(
+
+    #Usando as variaveis definidas no manifest params.pp
+    $apache_service  = $doc::params::apache_service,
+    $ssh_port        = $doc::params::ssh_port,
+    $ssh_allow_users = $doc::params::ssh_allow_users,
+    $smtp_port       = $doc::params::smtp_port,
+    $smtp_server     = $doc::params::smtp_server,
+    $content_dir     = $doc::params::content_dir,
+    $config_package  = $doc::params::config_package,
+    $deploy_scripts  = $doc::params::deploy_scripts,
+    $scripts_version = $doc::params::scripts_version,
+    ) inherits doc::params {
+
+      file { '/tmp/doc.txt':
+        ensure  => 'file',
+        content => template("doc/documentation.txt.erb"),
+        mode    => '0644',
+        owner   => 'root',
+        group   => 'root',
+      }
+  }
+
+.. code-block:: ruby
+
+  # vim doc/manifests/params.pp
+
+  class doc::params {
+
+    #Variaveis gerais
+    $content_dir     = hiera('content_dir', ['/home/puppetbr', 
+    					     '/home/puppetbr/content/'])   
+    $config_package  = hiera('config_package', 'config.tar.bz2')
+    $deploy_scripts  = hiera('deploy_scripts', true)
+    $scripts_version = hiera('scripts_version', '1.0')
+
+    #Apache
+    $apache_service = hiera('apache_service', 'apache2')
+
+    #SSH
+    $ssh_port        = hiera('ssh_port', '22')
+    $ssh_allow_users = hiera('ssh_allow_users', 'puppetbr teste')
+
+    #SMTP
+    $smtp_server = hiera('smtp_server', '127.0.0.1')
+    $smtp_port   = hiera('smtp_port', '25')
+  }
+
+
+.. code-block:: ruby
+
+  # vim doc/templates/documentation.txt.erb
+  
+  #Informacoes sobre SSH
+  SSH_PORT=<%= @ssh_port %>
+  Usuario que podem acessar o SSH=<%= @ssh_allow_users %>
+  Distribuição GNU/Linux=<%= @osfamily %>
+  Hostname=<%= @hostname %>
+  Qual é o nome do processo do Apache nesta distro? <%= @apache_service %>
+  #Informacoes sobre o servico de envio de email
+  SMTP_PORT=<%= @smtp_port %>
+  SMTP_SERVER=<%= @smtp_server %>
+  Diretorio de conteudos=<%= @content_dir %>
+  #Informacoes sobre a atualizacao do Script
+  PACKAGE=<%= @config_package %>
+  ENABLE_DEPLOY=<%= @deploy_scripts %>
+  PACKAGE_VERSION=<%= @scripts_version %>
+
+
+3. Deixe o código de ``site.pp`` dessa maneira:
+
+.. code-block:: ruby
+
+  # vim /etc/puppetlabs/code/environments/production/modules/doc/manifests/params.pp
+  node 'node1.domain.com.br' {
+    include doc
+  }
+
+4. Em **node1** aplique a configuração:
+
+::
+
+  # puppet agent -t
+
+Agora veja o conteúdo do arquivo ``/tmp/doc.txt`` e observe se o conteúdo está como o esperado.
+
+.. code-block:: ruby
+
+  #Informacoes sobre SSH
+  SSH_PORT=22
+  Usuario que podem acessar o SSH=puppetbr teste
+  Distribuição GNU/Linux=Debian
+  Hostname=node1
+  Qual é o nome do processo do Apache nesta distro? apache2
+  #Informacoes sobre o servico de envio de email
+  SMTP_PORT=25
+  SMTP_SERVER=127.0.0.1
+  Diretorio de conteudos=["/home/puppetbr", "/home/puppetbr/content2/"]
+  #Informacoes sobre a atualizacao do Script
+  PACKAGE=config.tar.bz2
+  ENABLE_DEPLOY=true
+  PACKAGE_VERSION=1.0
