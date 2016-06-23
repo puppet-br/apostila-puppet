@@ -312,8 +312,17 @@ Agora veja o conteúdo do arquivo ``/tmp/doc.txt`` e observe se o conteúdo est�
   ENABLE_DEPLOY=true
   PACKAGE_VERSION=1.0
   
-5. Em **master.domain.com.br** mova o arquivo ``/etc/puppetlabs/code/environments/production/hieradata/meucliente/host/node1.domain.com.br.yaml`` para ``/root/manifests``.
+.. raw:: pdf
 
+ PageBreak
+  
+5. Em **master.domain.com.br** mova o arquivo ``node1.domain.com.br.yaml`` para ``/root/manifests``.
+
+::
+
+  # cd /etc/puppetlabs/code/environments/production/hieradata/meucliente/host/
+  # mv node1.domain.com.br.yaml /root/manifests.
+  
 6. Em **node1** aplique a configuração:
 
 ::
