@@ -311,3 +311,13 @@ Agora veja o conteúdo do arquivo ``/tmp/doc.txt`` e observe se o conteúdo est�
   PACKAGE=config.tar.bz2
   ENABLE_DEPLOY=true
   PACKAGE_VERSION=1.0
+  
+5. Em **master.domain.com.br** mova o arquivo ``/etc/puppetlabs/code/environments/production/hieradata/meucliente/host/node1.domain.com.br.yaml`` para ``/root/manifests``.
+
+6. Em **node1** aplique a configuração:
+
+::
+
+  # puppet agent -t
+  
+Agora observe o que mudou no conteúdo do arquivo ``/tmp/doc.txt``.  
