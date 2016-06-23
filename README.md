@@ -1,5 +1,7 @@
 # Apostila Puppet #
 
+As versões estáveis da apostila, podem ser obtidas em: https://github.com/puppet-br/apostila-puppet/releases
+
 Para contribuir basta fazer um fork e submeter seu pull request para nós.
 
 Seguem alguns links que explicam como fazer um fork e o pull request.
