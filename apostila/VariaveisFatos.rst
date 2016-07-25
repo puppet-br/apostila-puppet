@@ -230,14 +230,14 @@ Comparação
 * ``>=`` (maior ou igual)
 * ``=~`` (casamento de regex)
 * ``!~`` (não casamento de regex)
-* ``in`` (contém, sendo que comparação de strings é **case-sensitive**)
+* ``in`` (contém, sendo que comparação de strings é **case-insensitive**)
 
 Exemplo do operador ``in``:
 
 .. code-block:: ruby
 
       'bat' in 'batata' # TRUE
-      'Bat' in 'batata' # FALSE
+      'Bat' in 'batata' # TRUE
       'bat' in ['bat', 'ate', 'logo'] # TRUE
       'bat' in { 'bat' => 'feira', 'ate' => 'fruta'} # TRUE
       'bat' in { 'feira' => 'bat', 'fruta' => 'ate' } # FALSE
