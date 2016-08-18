@@ -103,15 +103,16 @@ Teremos a seguinte estrutura em ``/etc/puppetlabs``:
   |   |-- auth.conf
   |   |-- puppet.conf
   |-- puppetserver/
-      |-- conf.d/
-      |   |-- ca.conf
-      |   |-- global.conf
-      |   |-- puppetserver.conf
-      |   |-- web-routes.conf
-      |   |-- webserver.conf
-      |-- bootstrap.cfg
-      |-- logback.xml
-      |-- request-logging.xml
+  |-- |-- conf.d/  
+  |   |   |-- auth.conf
+  |   |   |-- global.conf
+  |   |   |-- puppetserver.conf
+  |   |   |-- web-routes.conf
+  |   |   |-- webserver.conf
+  |   |-- services.d/
+  |   |   |-- ca.cfg
+  |   |-- logback.xml
+  |   |-- request-logging.xml
 
 * Os arquivos e diretórios de configuração mais importantes são:
 
@@ -154,7 +155,7 @@ No CentOS/Red Hat edite o arquivo ``/etc/sysconfig/puppetserver`` e no Debian/Ub
 
 ::
   
-  JAVA_ARGS="-Xms512m -Xmx512m -XX:MaxPermSize=256m"
+  JAVA_ARGS="-Xms256m -Xmx512m"
 
 
 Com esta configuração será alocado 512 MB para uso da JVM usada pelo Puppet Server. Por padrão, são alocados 2 GB de memória para uso da JVM.
@@ -178,6 +179,8 @@ Com esta configuração será alocado 512 MB para uso da JVM usada pelo Puppet S
 As solicitações de assinatura de certificados no Puppet-Server ficam em: **/etc/puppetlabs/puppet/ssl/ca/requests/**
 
 Se precisar revogar os certificados assinados de um host cliente (node1, por exemplo) no Puppet-Server é só usar o comando: ``puppet cert clean node1.domain.com.br``.
+
+Se precisar remover requisições de assinaturas de certificados de hosts desconhecidos é só usar o comando: ``puppet ca destroy node-unknown.domain.com.br``.
 
 Os logs do PuppetServer ficam em:
 

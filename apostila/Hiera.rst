@@ -25,6 +25,7 @@ A primeira coisa a se fazer é criar o arquivo ``/etc/puppetlabs/code/hiera.yaml
 
   ---
   :hierarchy:
+     - "host/%{::trusted.certname}"
      - "host/%{::fqdn}"
      - "host/%{::hostname}"
      - "os/%{::osfamily}"
@@ -37,6 +38,7 @@ A primeira coisa a se fazer é criar o arquivo ``/etc/puppetlabs/code/hiera.yaml
     
 Observe que na configuração do arquivo, estamos definindo a seguinte sequencia de pesquisa:
 
+* host/certname
 * host/fqdn
 * host/hostname
 * os/osfamily
@@ -101,10 +103,6 @@ Exemplo do conteúdo do arquivo ``host/node2.yaml``:
   #Postfix
   smtp_port: '587'
 
-.. raw:: pdf
-
- PageBreak
-
 Exemplo do conteúdo do arquivo ``domain/domain.com.br.yaml``:
 
 .. code-block:: ruby
@@ -160,6 +158,12 @@ Usando o exemplo dado anteriormente, se queremos obter um valor definido para a 
 * os/redhat.yaml
 * domain/domain.com.br.yaml
 * common.yaml
+
+.. nota::
+
+  |nota| **Obtendo o certname de um node**
+
+  Como já foi visto antes, o certname é definido no arquivo ``/etc/puppetlabs/puppet/puppet.conf``. Para ver qual é o certname configurado use o comando: ``puppet config print certname``. O certname pode ser diferente do FQDN (Fully Qualified Domain Name).
 
 Depois que o Hiera é configurado, o serviço ``puppetserver`` precisa ser reiniciado.
 
@@ -311,10 +315,6 @@ Agora veja o conteúdo do arquivo ``/tmp/doc.txt`` e observe se o conteúdo est�
   PACKAGE=config.tar.bz2
   ENABLE_DEPLOY=true
   PACKAGE_VERSION=1.0
-  
-.. raw:: pdf
-
- PageBreak
   
 5. Em **master.domain.com.br** mova o arquivo ``node1.domain.com.br.yaml`` para ``/root/manifests``.
 
