@@ -18,13 +18,13 @@
 
         .. class:: center
         
-        Apostila Puppet versão 2.0
+        Apostila Puppet versão 2.1.x
 
     .. container::
         
         .. class:: center
         
-        Apostila Puppet versão 2.0
+        Apostila Puppet versão 2.1.x
 
 .. footer::
 
@@ -34,7 +34,7 @@
 
         .. class:: center
 
-        Licença CC BY-SA 3.0 BR - Apostila cedida pela Instruct e mantida pela Puppet-BR
+        Licença CC BY-SA 3.0 BR - Apostila mantida pela comunidade Puppet-BR
 
         .. class:: right
         

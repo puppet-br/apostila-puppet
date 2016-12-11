@@ -2,6 +2,10 @@
 
 As versões estáveis da apostila, podem ser obtidas em: https://github.com/puppet-br/apostila-puppet/releases
 
+A equipe da Instruct havia produzido uma apostila sobre o básico do Puppet (usando a versão 3.x). A versão 1.0 desta apostila está aqui: http://instruct.com.br/lancamento-apostila-puppet-basico/
+
+Em Junho de 2016, os responsáveis pela Instruct cederam os direitos autorais da apostila para a comunidade Puppet-BR gerenciar o conteúdo.
+
 Para contribuir basta fazer um fork e submeter seu pull request para nós.
 
 Seguem alguns links que explicam como fazer um fork e o pull request.

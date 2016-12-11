@@ -298,7 +298,8 @@ Vamos colocar o usuário **joe** aos grupos **adm** e **bin**. Normalmente farí
 ::
 
   Info: Applying configuration version '1447253347'
-  Notice: /Stage[main]/Main/User[joe]/groups: groups changed '' to ['adm', 'bin']
+  Notice: /Stage[main]/Main/User[joe]/groups: groups changed '' to 
+  ['adm', 'bin']
   Notice: Applied catalog in 0.07 seconds
 
 5. Remova o usuário joe com o comando a seguir.
@@ -341,4 +342,5 @@ Vamos colocar o usuário **joe** aos grupos **adm** e **bin**. Normalmente farí
 
 ::
 
-  # puppet resource exec 'ping -c3 google.com > /tmp/ping.txt' path='/bin:/usr/bin'  
+  # puppet resource exec 'ping -c3 google.com > /tmp/ping.txt' \
+    path='/bin:/usr/bin'  

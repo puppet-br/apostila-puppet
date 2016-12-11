@@ -166,7 +166,8 @@ Não é possível declarar o mesmo *resource* mais de uma vez. O Puppet não per
   Error: Evaluation Error: Error while evaluating a Resource Statement, \
      Cannot alias File[outroarquivo] to ["/tmp/arquivo.txt"] at \
      /root/manifests/conflito.pp:6; resource ["File", "/tmp/arquivo.txt"] \
-     already declared at /root/manifests/conflito.pp:1 at /root/manifests/conflito.pp:6:3
+     already declared at /root/manifests/conflito.pp:1 at
+     /root/manifests/conflito.pp:6:3
 
 Observações sobre o resource file
 `````````````````````````````````
@@ -175,7 +176,8 @@ Nós declaramos que ``/tmp/teste2/`` teria permissões 0644, porém, o ``ls -lah
 
 O tipo ``file`` tem diversos valores para o atributo ``ensure``: ``present``, ``absent``, ``file``, ``directory`` e ``link``. Para saber mais, leia a referência do tipo ``file``.
 
-:
+::
+
   # puppet describe file
 
 Prática: conhecendo os resources

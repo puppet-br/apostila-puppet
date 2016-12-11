@@ -52,7 +52,8 @@ Vamos trocar o valor da opção ``domain`` do ``resolv.conf`` (a opção ``-s`` 
 
 ::
 
-  # /opt/puppetlabs/puppet/bin/augtool -s set /files/etc/resolv.conf/domain outrodominio
+  # /opt/puppetlabs/puppet/bin/augtool -s set \
+     /files/etc/resolv.conf/domain outrodominio
   Saved 1 file(s)
   
   # cat /etc/resolv.conf 
@@ -68,7 +69,8 @@ Podemos incluir e remover valores no vetor. Por exemplo, adicionar um terceiro n
 
 ::
 
-  # /opt/puppetlabs/puppet/bin/augtool -s set /files/etc/resolv.conf/nameserver[3] 1.1.1.1
+  # /opt/puppetlabs/puppet/bin/augtool -s set \
+      /files/etc/resolv.conf/nameserver[3] 1.1.1.1
   Saved 1 file(s)
   
   # cat /etc/resolv.conf
@@ -78,7 +80,8 @@ Podemos incluir e remover valores no vetor. Por exemplo, adicionar um terceiro n
   nameserver 8.8.4.4
   nameserver 1.1.1.1
   
-  # /opt/puppetlabs/puppet/bin/augtool -s rm /files/etc/resolv.conf/nameserver[3]
+  # /opt/puppetlabs/puppet/bin/augtool -s rm \
+     /files/etc/resolv.conf/nameserver[3]
   rm : /files/etc/resolv.conf/nameserver[3] 1
   Saved 1 file(s)
   

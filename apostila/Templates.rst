@@ -126,6 +126,33 @@ Um arquivo de template no Puppet usa a sintaxe ERB, que é a linguagem padrão d
   Nome: <%= val %> 
   <% end %>
 
+
+* Iteração em um array com varias chaves:
+
+Exemplo de como o array é formado:
+
+::
+
+  $rotas = [
+        {id => '100', name => 'link1',},
+        {id => '200', name => 'link2',},
+         ]
+
+Indexando o conteúdo do array num template:
+
+::
+
+  <% rotas.each do |rota| -%>
+  <%= rota['id'] %> <%= rota['name'] %>
+  <% end -%>
+
+Resultado:
+
+::
+
+  100 link1
+  200 link2
+
 .. dica::
 
   |dica| **Evitando linhas em branco**

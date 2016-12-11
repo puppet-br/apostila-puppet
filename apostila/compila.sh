@@ -23,8 +23,7 @@ if [ $? -ne 0 ]; then
 fi
 
 #Convertendo a capa de ODT para PDF
-#libreoffice --headless --invisible --convert-to pdf capa.odt
-libreoffice swriter --convert-to pdf capa.odt --headless --invisible
+#libreoffice swriter --convert-to pdf capa.odt --headless --invisible
 
 #Gerando a apostila no formato PDF a partir dos arquivos fontes
 rst2pdf --custom-cover cover.tmpl -b 1 -s manual.style -l pt_br index.rst -o apostila-puppet.pdf

@@ -1,8 +1,8 @@
 Instalação
 ==========
-Diversas distribuições empacotam o Puppet, mas as versões empacotadas e a qualidade desses pacotes variam muito, portanto a melhor maneira de instalá-lo é utilizando os pacotes oficiais da PuppetLabs. Os pacotes oficiais são extensivamente testatos e extremamente confiáveis.
+Diversas distribuições empacotam o Puppet, mas as versões empacotadas e a qualidade desses pacotes variam muito, portanto a melhor maneira de instalá-lo é utilizando os pacotes oficiais da Companhia Puppet (antiga Puppet Labs, empresa que mantém o software). Os pacotes oficiais são extensivamente testatos e extremamente confiáveis.
 
-Existem duas versões do Puppet distribuídas pela PuppetLabs: *Puppet Open Source* e o *Puppet Enterprise*. O Puppet Enterprise é distribuído gratuitamente para o gerenciamento de até 10 nodes, possui suporte oficial e vem acompanhado de uma versátil interface web para administração.
+Existem duas versões do Puppet distribuídas pela Puppet: *Puppet Open Source* e o *Puppet Enterprise*. O Puppet Enterprise é distribuído gratuitamente para o gerenciamento de até 10 nodes, possui suporte oficial e vem acompanhado de uma versátil interface web para administração.
 
 Para uma comparação mais detalhada sobre as diferenças entre a versão Open Source e a Enterprise, visite as páginas abaixo:
 
@@ -13,7 +13,7 @@ Para uma comparação mais detalhada sobre as diferenças entre a versão Open S
 
   |aviso| **Instalação a partir do código fonte**
   
-  O Puppet é um projeto grande e complexo que possui muitas dependências, e instalá-lo a partir do código fonte não é recomendado. A própria Puppet Labs não recomenda a instalação a partir do código
+  O Puppet é um projeto grande e complexo que possui muitas dependências, e instalá-lo a partir do código fonte não é recomendado. A própria Puppet não recomenda a instalação a partir do código
   fonte. É muito mais confiável e conveniente utilizar pacotes já homologados e testados.
 
 .. dica::
@@ -25,7 +25,7 @@ Para uma comparação mais detalhada sobre as diferenças entre a versão Open S
 Debian e Ubuntu
 ---------------
 
-1. Adicione o repositório da Puppet Labs:
+1. Adicione o repositório da Puppet:
 
 * Debian 8 (Jessie)
 
@@ -77,7 +77,7 @@ Você também pode acessar a página http://apt.puppetlabs.com e localizar o pac
 CentOS e Red Hat
 ----------------
 
-1. Adicione o repositório da Puppet Labs:
+1. Adicione o repositório da Puppet:
 
 * CentOS/Red Hat 6
 

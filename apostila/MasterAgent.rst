@@ -240,7 +240,7 @@ No arquivo ``/etc/puppetlabs/puppet/puppet.conf``, adicione as linhas abaixo:
 ::
 
   # puppet cert list
-  "node1.domain.com.br" (SHA256) 6C:7E:E6:3E:EC:A4:15:56:49:C3:1E:A5:E4:7F:58:B8: ...
+  "node1.domain.com.br" (SHA256) 6C:7E:E6:15:56:49:C3:1E:A5:E4:7F:58:B8: ...
   
   # puppet cert sign node1.domain.com.br
   Signed certificate request for node1.domain.com.br
@@ -303,3 +303,55 @@ Os logs do puppet-agent ficam em:
   Procure manter os relógios corretamente configurados utilizando NTP.
   
   Você também pode consultar esta página https://docs.puppet.com/puppet/4.4/reference/ssl_regenerate_certificates.html para saber como reconfigurar os certificados no Agente e Master.
+
+  http://www.linuxnix.com/puppet-how-to-remove-puppet-client-from-master/
+
+.. nota::
+
+  |nota| **Recriando certificados para o node**
+
+  Se por algum motivo importante, for necessário recriar o certificado do Puppet Agent no node, execute o seguintes passos:
+
+1) Removendo o certificado do node no Puppet Server.
+
+::
+
+  # puppet cert destroy <name_certificate_hostname>
+
+Exemplo:
+
+::
+
+  # puppet cert destroy node1.domain.com.br
+
+2) Removendo o certificado do Puppet Agent no node.
+
+::
+
+  # sudo puppet resource service puppet ensure=stopped
+  # sudo rm -r /etc/puppetlabs/puppet/ssl
+  # sudo puppet cert list -a
+
+Feito isso é só assinar a solicitação do novo certificado no Puppet Server, conforme mostrado neste capítulo. 
+Veja mais detalhes em: https://docs.puppet.com/puppet/4.8/ssl_regenerate_certificates.html
+
+.. raw:: pdf
+ 
+ PageBreak
+
+.. nota::
+
+  |nota| **Removendo solicitações indesejadas de assinaturas de certificado**
+
+  Se houver solicitações de assinatura de certificados para hosts desconhecidos, basta remover executando o comando abaixo no Puppet Server:
+
+::
+
+  # puppet cert clean <name_certificate_hostname>
+
+Exemplo:
+
+::
+
+  # puppet cert clean node4.domain.com.br
+

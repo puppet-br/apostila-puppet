@@ -1,21 +1,21 @@
 Sobre a Instruct
 ================
 
-A `Instruct <http://instruct.com.br>`_ é a autoridade em automação e Puppet no Brasil e somos
-parceiros e representantes oficiais da Puppet Labs no Brasil para suporte, licenciamento, treinamento e
+A `Instruct <http://instruct.com.br>`_ é a autoridade em automação e Puppet no Brasil e é
+parceira e representante oficial da Companhia Puppet (antiga Puppet Labs) no Brasil para suporte, licenciamento, treinamento e
 consultoria. A empresa tem como especialidade soluções na área de automação de infraestrutura e
 gerenciamento de configuração e possui equipe capacitada e certificada.
 
-Possuímos os profissionais mais experientes do mercado, como Miguel Di Ciurcio Filho e José Augusto (Guto) Carvalho, primeiros
-certificados *Puppet Certified Professional* (PCP) pela Puppet Labs na América Latina e também os únicos *Puppet Certified Instructor*.
+Possui os profissionais mais experientes do mercado, como Miguel Di Ciurcio Filho e José Augusto (Guto) Carvalho, primeiros
+certificados *Puppet Certified Professional* (PCP) pela Puppet na América Latina e também os únicos *Puppet Certified Instructor*.
 
-Saiba mais sobre Puppet e a Instruct com o conteúdo do nosso canal no YouTube e nas redes socias:
+Saiba mais sobre Puppet e a Instruct com o conteúdo do canal no YouTube e nas redes socias:
 
 * https://youtube.com/instructbr
 * https://twitter.com/InstructBR
 * https://facebook.com/InstructBR
 
-Caso esteja procurando serviços profissionais relacionados a automação e Puppet, entre em contato conosco:
+Caso esteja procurando serviços profissionais relacionados a automação e Puppet, entre em contato:
 
 * Email: contato@instruct.com.br
 * Escritório em **Campinas/SP**: Rua Joaquim Pinto de Moraes, 247, Sala 11. Telefone: **19 2511-6506**

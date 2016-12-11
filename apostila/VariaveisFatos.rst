@@ -112,7 +112,8 @@ O manifest ``facter.pp`` a seguir usa algumas das variáveis geradas pelo ``fact
   }
   
   notify {'distro':
-    message => "A distribuição GNU/Linux é ${::operatingsystem} versão ${::operatingsystemrelease}."
+    message => "A distribuição GNU/Linux é ${::operatingsystem} 
+      versão ${::operatingsystemrelease}."
   }
 
 E teremos a seguinte saída:
