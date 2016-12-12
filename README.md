@@ -68,6 +68,8 @@ Devem existir os arquivos e diretórios abaixo:
     Vagrantfile
 ```
 
+Copie o arquivo `apostila-puppet/environments/production/modules/rst2pdf/files/pt_br.py` para `/usr/lib/python2.*/dist-packages/docutils/parsers/rst/languages/pt_br.py`.
+
 O ambiente de compilação da apostila está pronto.
 
 * Acesse os arquivos do diretório `apostila-puppet/apostila` e comece a editá-los.
@@ -124,9 +126,12 @@ vagrant up
 
 O ambiente de compilação da apostila estará pronto em alguns minutos.
 
+Copie o arquivo `apostila-puppet/environments/production/modules/rst2pdf/files/pt_br.py` para `/usr/lib/python2.*/dist-packages/docutils/parsers/rst/languages/pt_br.py`.
+
 * Acesse os arquivos do diretório `apostila-puppet/apostila` e comece a editá-los.
 
 * Para gerar a apostila no formato PDF é necessário estar dentro da VM. 
+
 Execute a sequência de comandos abaixo para gerar o PDF:
 
 ```
