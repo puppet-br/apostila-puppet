@@ -49,6 +49,8 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 **Cursos online e grátis sobre Puppet:**
 
 * https://learn.puppetlabs.com/category/self-paced-training
+* https://networkfaculty.com/es/courses/coursedetail/41-curso-introduccion-a-puppet
+* https://networkfaculty.com/es/courses/coursedetail/42-curso-introduccion-a-la-gestion-de-servicios-con-puppet
 
 **Puppet no Windows:**
 
@@ -74,7 +76,8 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 * http://demo.puppetexplorer.io
 * http://blog.aeciopires.com/instalando-configurando-puppetdb-puppetexplorer-puppetboard/
 * https://speakerdeck.com/gutocarvalho/meetup-puppet-br-20160518-projeto-pcp
-* https://github.com/puppet-br/pcp
+* https://gitlab.com/puppet-br/pcp
+* https://gitlab.com/puppet-br/pcp-controlrepo
 
 **Puppetboard:**
 
@@ -88,6 +91,13 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 .. raw:: pdf
  
  PageBreak
+
+**Foreman:**
+
+* http://theforeman.org/
+* http://theforeman.org/manuals/1.9/quickstart_guide.html#QuickstartGuide
+* http://theforeman.org/manuals/1.9/index.html
+* http://theforeman.org/media.html
  
 **Ferramentas sugeridas para desenvolver no Puppet:**
 
@@ -99,7 +109,9 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 * http://serverfault.com/questions/570892/how-to-add-a-puppet-module-to-gepetto-when-using-git
 * http://puppetlabs.github.io/geppetto/faq.html
 * https://github.com/puppetlabs/geppetto/wiki/Puppet-Code-Formatter
-* Kate:
+
+**Kate:**
+
 * http://kate-editor.org/
 
 **Vim:**
