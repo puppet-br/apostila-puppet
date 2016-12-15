@@ -101,7 +101,7 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
  
 **Ferramentas sugeridas para desenvolver no Puppet:**
 
-**Geppeto:**
+**Geppetto:**
 
 * http://puppetlabs.github.io/geppetto/download.html
 * https://github.com/puppetlabs/geppetto/commit/30468cbb41d83678b898865cba72f19cf4249a73
