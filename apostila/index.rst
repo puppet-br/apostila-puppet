@@ -18,13 +18,13 @@
 
         .. class:: center
         
-        Apostila Puppet versão 2.1.x
+        Apostila Puppet versão 2.2.x
 
     .. container::
         
         .. class:: center
         
-        Apostila Puppet versão 2.1.x
+        Apostila Puppet versão 2.2.x
 
 .. footer::
 
@@ -76,6 +76,7 @@
 .. include:: MasterAgent.rst
 .. include:: Nodes.rst
 .. include:: Dashboards.rst
+.. include:: Tagmail.rst
 .. include:: Modulos.rst
 .. include:: Forge.rst
 .. include:: Templates.rst

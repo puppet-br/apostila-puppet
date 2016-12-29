@@ -330,7 +330,7 @@ Pode parecer um pouco estranho, mas há muitas situações em que é a forma mai
 Prática: melhor uso de variáveis
 --------------------------------
 
-Reescreva o código do exemplo a seguir usando uma variável para armazenar o nome do serviço e usando somente um resource ``service`` no seu código.
+1) Reescreva o código do exemplo a seguir usando uma variável para armazenar o nome do serviço e usando somente um resource ``service`` no seu código.
 
 .. code-block:: ruby
 
@@ -350,3 +350,62 @@ Reescreva o código do exemplo a seguir usando uma variável para armazenar o no
       enable => 'true',
     }
   }
+
+2) Escreva um manifest para montar diversos diretórios remotos compartilhados via NFS em diversos diretórios locais.  
+
+.. code-block:: ruby
+  
+  $storage_base   = "/home/storage/"
+  $storage_dir    = ["${storage_base}/01", "${storage_base}/02",]
+  $storage_device_fs  = ["192.168.100.13:/home/m2", "192.168.100.13:/home/m3",]
+
+
+  case $::operatingsystem {
+    centos|redhat: { $nfsclient = ["nfs-utils',"nfs-utils-lib"] }
+    debian|ubuntu: { $nfsclient = ["nfs-common'] }
+    # fail é uma função
+    default: {
+      fail("sistema operacional desconhecido")
+    }
+  }
+
+  package { 'nfsclient':
+    name => $nfsclient,
+    ensure => 'latest',
+  }
+
+  file { $storage_base:
+    ensure  => 'directory',
+    mode    => '755',
+    owner   => root,
+    group   => root,
+    recurse => true,
+  }
+
+  file { $storage_dir:
+    ensure  => 'directory',
+    mode    => '755',
+    owner   => root,
+    group   => root,
+    recurse => true,
+    require => File[$storage_base],
+  }
+
+  each( $storage_device_fs) | Integer $index, String $value| {
+    mount { $storage_dir[$index]:
+      device  => $value,
+      fstype  => 'nfs',
+      ensure  => 'mounted',
+      options => 'rw',
+      atboot  => true,
+      require => File[$storage_dir],
+    }
+    notice( "Device ${value} mounted in ${storage_dir[$index]}" )
+  }  
+  
+.. aviso::
+
+  |aviso| **Configurar pontos de montagem via NFS**
+
+  Para realizar este exercício, será necessário que você configure o NFSv3 numa máquina remota e compartilhe dois diretórios, com permissão de leitura e escrita para a montagem de diretório remoto.
+  Na Internet você encontra vários tutoriais explicando como fazer isso. Um deles é este aqui: http://blog.aeciopires.com/instalando-o-nfs-no-ubuntu-12-04/  
