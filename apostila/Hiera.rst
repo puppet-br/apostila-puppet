@@ -192,7 +192,7 @@ Execute o hiera especificando parâmetros de busca:
 
   |nota| **Mais documentação sobre o Hiera**
 
-  Mais informações sobre o Hiera podem ser encontradas nesta página: https://docs.puppet.com/hiera/3.1/
+  Mais informações sobre o Hiera podem ser encontradas nestas páginas: https://docs.puppet.com/hiera/latest/ e https://docs.puppet.com/puppet/latest/lookup_quick.html
   
 Criando um módulo para usar dados vindos do Hiera
 -------------------------------------------------

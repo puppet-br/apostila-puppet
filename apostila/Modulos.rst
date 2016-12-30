@@ -104,11 +104,7 @@ O resultado será o mesmo.
   |nota| **Declaração de classes sem usar include**
 
   A sintaxe ``class {'ntp': }`` é utilizada quando usamos classes que recebem parâmetros.
-
-.. raw:: pdf
-
- PageBreak
-
+  Mais informações sobre as classes podem ser obtidas nesta página https://docs.puppet.com/puppet/latest/lang_classes.html
 
 Módulos
 -------
@@ -276,3 +272,5 @@ Além de conter manifests, módulos também podem servir arquivos. Para isso, fa
   |dica| **Servidor de arquivos do Puppet**
 
   O Puppet pode servir os arquivos dos módulos, e funciona da mesma maneira se você está operando de maneira serverless ou master/agente. Todos os arquivos no diretório ``files`` do módulo ``ntp`` estão disponíveis na URL ``puppet:///modules/ntp/``.
+  
+  Mais informações sobre os módulos podem ser obtidas nesta página: https://docs.puppet.com/puppet/latest/modules_fundamentals.html
