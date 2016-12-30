@@ -361,16 +361,15 @@ Prática: melhor uso de variáveis
 
 
   case $::operatingsystem {
-    centos|redhat: { $nfsclient = ["nfs-utils',"nfs-utils-lib"] }
-    debian|ubuntu: { $nfsclient = ["nfs-common'] }
+    centos,redhat: { $nfsclient = ["nfs-utils","nfs-utils-lib"] }
+    debian,ubuntu: { $nfsclient = ["nfs-common"] }
     # fail é uma função
     default: {
       fail("sistema operacional desconhecido")
     }
   }
 
-  package { 'nfsclient':
-    name => $nfsclient,
+  package { $nfsclient:
     ensure => 'latest',
   }
 
