@@ -193,6 +193,21 @@ Execute o hiera especificando parâmetros de busca:
   |nota| **Mais documentação sobre o Hiera**
 
   Mais informações sobre o Hiera podem ser encontradas nestas páginas: https://docs.puppet.com/hiera/latest/ e https://docs.puppet.com/puppet/latest/lookup_quick.html
+
+Você também pode usar o ``puppet lookup`` para testar. Veja o exemplo abaixo.
+
+::
+   
+  puppet lookup --debug --explain --node node1.domain.com.br \
+   --environment production nome_variavel_a_ser_testada
+
+O puppet lookup só servirá para os testes se alguma vez o node tiver estabelecido comunicação com o puppet server.
+
+.. nota::
+
+  |nota| **Mais documentação sobre o Puppet Lookup**
+
+  Mais informações sobre o ``puppet lookup`` podem ser encontradas nesta página: https://docs.puppet.com/puppet/latest/man/lookup.html
   
 Criando um módulo para usar dados vindos do Hiera
 -------------------------------------------------
@@ -227,6 +242,12 @@ Agora que já configuramos o Hiera para localizar dados da estrutura do ``meucli
     $scripts_version = $doc::params::scripts_version,
     ) inherits doc::params {
 
+.. raw:: pdf
+
+ PageBreak
+
+.. code-block:: ruby
+
       file { '/tmp/doc.txt':
         ensure  => 'file',
         content => template("doc/documentation.txt.erb"),
@@ -236,9 +257,11 @@ Agora que já configuramos o Hiera para localizar dados da estrutura do ``meucli
       }
   }
 
-.. code-block:: ruby
-
+::
+  
   # vim doc/manifests/params.pp
+
+.. code-block:: ruby
 
   class doc::params {
 
@@ -262,10 +285,12 @@ Agora que já configuramos o Hiera para localizar dados da estrutura do ``meucli
   }
 
 
-.. code-block:: ruby
+::
 
   # vim doc/templates/documentation.txt.erb
   
+.. code-block:: ruby
+
   #Informacoes sobre SSH
   SSH_PORT=<%= @ssh_port %>
   Usuario que podem acessar o SSH=<%= @ssh_allow_users %>
@@ -284,9 +309,12 @@ Agora que já configuramos o Hiera para localizar dados da estrutura do ``meucli
 
 3. Deixe o código de ``site.pp`` dessa maneira:
 
-.. code-block:: ruby
+::
 
   # vim /etc/puppetlabs/code/environments/production/modules/doc/manifests/params.pp
+
+.. code-block:: ruby
+
   node 'node1.domain.com.br' {
     include doc
   }
