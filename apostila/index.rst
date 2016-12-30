@@ -18,13 +18,13 @@
 
         .. class:: center
         
-        Apostila Puppet versão 2.2.x
+        Apostila Puppet versão 2.3.x
 
     .. container::
         
         .. class:: center
         
-        Apostila Puppet versão 2.2.x
+        Apostila Puppet versão 2.3.x
 
 .. footer::
 
@@ -72,6 +72,8 @@
 .. include:: Manifests.rst
 .. include:: Ordenacao.rst
 .. include:: VariaveisFatos.rst
+.. include:: Funcoes.rst
+.. include:: Loop.rst
 .. include:: Lab.rst
 .. include:: MasterAgent.rst
 .. include:: Nodes.rst
