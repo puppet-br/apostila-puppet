@@ -355,8 +355,8 @@ Prática: melhor uso de variáveis
 
 .. code-block:: ruby
   
-  $storage_base   = "/home/storage/"
-  $storage_dir    = ["${storage_base}/01", "${storage_base}/02",]
+  $storage_base       = "/home/storage/"
+  $storage_dir        = ["${storage_base}/01", "${storage_base}/02",]
   $storage_device_fs  = ["192.168.100.13:/home/m2", "192.168.100.13:/home/m3",]
 
 
@@ -380,6 +380,12 @@ Prática: melhor uso de variáveis
     group   => root,
     recurse => true,
   }
+
+.. raw:: pdf
+
+ PageBreak
+
+.. code-block:: ruby
 
   file { $storage_dir:
     ensure  => 'directory',
