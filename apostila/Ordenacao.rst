@@ -167,6 +167,13 @@ O exemplo abaixo demonstra o mesmo efeito de ordenação, mas de maneira diferen
 
   File['/tmp/teste1.txt'] -> Notify['depois']
 
+.. aviso::
+
+  |aviso| **Meta-parâmetros**
+  
+  Mais informações sobre outros meta-parâmetros podem ser encontradas em: https://docs.puppet.com/puppet/latest/metaparameter.html
+
+
 Prática: validando o arquivo ``/etc/sudoers``
 ---------------------------------------------
 
@@ -182,6 +189,10 @@ Para essa atividade, salve o conteúdo de cada exercício em um arquivo ``.pp`` 
 
 2. Agora vamos declarar o controle do arquivo ``/etc/sudoers`` e usar como origem ``/root/manifests/sudoers``. O arquivo depende do pacote ``sudo``, pois sem ele o arquivo não deve existir.
 
+.. raw:: pdf
+ 
+ PageBreak
+
 .. code-block:: ruby
 
   package { 'sudo':
@@ -196,10 +207,6 @@ Para essa atividade, salve o conteúdo de cada exercício em um arquivo ``.pp`` 
     source  => '/root/manifests/sudoers',
     require => Package['sudo']
   }
-
-.. raw:: pdf
- 
- PageBreak
 
 3. Temos uma limitação, pois, caso exista algum erro no arquivo de origem, o arquivo, sempre será copiado para ``/etc/sudoers``. Façamos uma verificação antes de o arquivo ser copiado.
 
@@ -227,6 +234,10 @@ Para essa atividade, salve o conteúdo de cada exercício em um arquivo ``.pp`` 
 
 
 4. Ainda temos uma limitação. Toda vez que o *manifest* é aplicado, o resource ``Exec['parse_sudoers']`` é executado. Precisamos de uma condição para que ele só seja executado se necessário.
+
+.. raw:: pdf
+ 
+ PageBreak
 
 .. code-block:: ruby
 

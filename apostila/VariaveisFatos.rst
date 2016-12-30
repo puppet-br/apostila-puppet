@@ -27,6 +27,14 @@ Mais alguns detalhes sobre variáveis:
 * Variáveis do topo do escopo (algo como global) podem ser acessadas assim: ``$::variavel_global``.
 * Uma variável só pode ter seu valor atribuído uma vez.
 
+.. nota::
+
+  |nota| **Tipos de dados**
+  
+  As variáveis podem suportas vários tipos de dados, que podem ser: strings, arrays, numeros, tipo nulo, boleanos e hashes. 
+  Para obter mais informações sobre cada tipo de dados, acesse a página abaixo.
+  https://docs.puppet.com/puppet/latest/lang_data.html
+
 Fatos
 -----
 
@@ -196,7 +204,11 @@ Outro exemplo, usando uma variável do ``facter``:
     notify {'Estamos em uma maquina real': }
   }
 
-Os blocos podem conter qualquer qualquer tipo de definição de configuração, mais alguns exemplos:
+Os blocos podem conter qualquer qualquer tipo de definição de configuração. Veja mais um exemplo:
+
+.. raw:: pdf
+
+ PageBreak
 
 .. code-block:: ruby
 
@@ -213,10 +225,6 @@ Os blocos podem conter qualquer qualquer tipo de definição de configuração, 
     }
   }
   
-.. raw:: pdf
-
- PageBreak
-
 Expressões
 ``````````
 
@@ -312,6 +320,9 @@ Selectors
 
 Ao invés de escolher a partir de um bloco, um ``selector`` escolhe seu valor a partir de um grupo de valores. ``Selectors`` são usados para atribuir valor a variáveis.
 
+.. raw:: pdf
+
+ PageBreak
 
 .. code-block:: ruby
 
@@ -354,11 +365,10 @@ Prática: melhor uso de variáveis
 2) Escreva um manifest para montar diversos diretórios remotos compartilhados via NFS em diversos diretórios locais.  
 
 .. code-block:: ruby
-  
+
   $storage_base       = "/home/storage/"
   $storage_dir        = ["${storage_base}/01", "${storage_base}/02",]
   $storage_device_fs  = ["192.168.100.13:/home/m2", "192.168.100.13:/home/m3",]
-
 
   case $::operatingsystem {
     centos,redhat: { $nfsclient = ["nfs-utils","nfs-utils-lib"] }
@@ -368,6 +378,12 @@ Prática: melhor uso de variáveis
       fail("sistema operacional desconhecido")
     }
   }
+
+.. raw:: pdf
+
+ PageBreak
+
+.. code-block:: ruby
 
   package { $nfsclient:
     ensure => 'latest',
@@ -380,12 +396,6 @@ Prática: melhor uso de variáveis
     group   => root,
     recurse => true,
   }
-
-.. raw:: pdf
-
- PageBreak
-
-.. code-block:: ruby
 
   file { $storage_dir:
     ensure  => 'directory',
@@ -413,4 +423,6 @@ Prática: melhor uso de variáveis
   |aviso| **Configurar pontos de montagem via NFS**
 
   Para realizar este exercício, será necessário que você configure o NFSv3 numa máquina remota e compartilhe dois diretórios, com permissão de leitura e escrita para a montagem de diretório remoto.
-  Na Internet você encontra vários tutoriais explicando como fazer isso. Um deles é este aqui: http://blog.aeciopires.com/instalando-o-nfs-no-ubuntu-12-04/  
+  Na Internet você encontra vários tutoriais explicando como fazer isso. Abaixo estão alguns deles.
+  Ubuntu 16.04: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-16-04
+  CentOS 7 / Red Hat 7 | Fedora 22: http://www.itzgeek.com/how-tos/linux/centos-how-tos/how-to-setup-nfs-server-on-centos-7-rhel-7-fedora-22.html

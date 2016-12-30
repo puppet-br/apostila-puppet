@@ -76,9 +76,9 @@
 .. include:: MasterAgent.rst
 .. include:: Nodes.rst
 .. include:: Dashboards.rst
-.. include:: Tagmail.rst
 .. include:: Modulos.rst
 .. include:: Forge.rst
+.. include:: Tagmail.rst
 .. include:: Templates.rst
 .. include:: Environments.rst
 .. include:: Hiera.rst

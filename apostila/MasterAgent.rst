@@ -11,6 +11,15 @@ O Puppet é deve ser utilizado com a arquitetura *Master / Agent*. O ciclo de op
 
 Outra maneira comum de implantação do Puppet é a ausência de um agente em execução nos nodes. A aquisição e aplicação do catálogo é agendada na crontab.
 
+.. aviso::
+
+  |aviso| **Catálogo e Relatórios**
+  
+  Mais detalhes sobre a compilação do catálogo e envio dos relatórios, podem ser encontradas, respectivamente, nas seguintes páginas: 
+  https://docs.puppet.com/puppet/latest/subsystem_catalog_compilation.html
+  https://docs.puppet.com/puppet/latest/reporting_about.html
+  https://docs.puppet.com/puppet/latest/report.html
+
 Resolução de nomes
 ------------------
 
@@ -232,10 +241,6 @@ No arquivo ``/etc/puppetlabs/puppet/puppet.conf``, adicione as linhas abaixo:
 4. No servidor Master aparecerá a solicitação de assinatura para a máquina ``node1.domain.com.br``. Assine-a.
 
  * O comando abaixo deve ser executado em **master.domain.com.br**.
-
-.. raw:: pdf
- 
- PageBreak
  
 ::
 
