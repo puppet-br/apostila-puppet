@@ -19,6 +19,7 @@ Outra maneira comum de implantação do Puppet é a ausência de um agente em ex
   https://docs.puppet.com/puppet/latest/subsystem_catalog_compilation.html
   https://docs.puppet.com/puppet/latest/reporting_about.html
   https://docs.puppet.com/puppet/latest/report.html
+  https://docs.puppet.com/puppet/latest/format_report.html
 
 Resolução de nomes
 ------------------
