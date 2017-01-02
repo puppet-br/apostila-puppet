@@ -266,4 +266,4 @@ Ao executar esse manifest, o arquivo ``/etc/sudoers`` não será atualizado porq
 
   |nota| **Atributos onlyif e unless do resource exec**
   
-  Quando o recurso ``exec`` possuir o atributo ``onlyif`` ou ``unless`` declarado, só será executado se o(s) comando(s) informado(s) nestes atributos for(em) executado(s) sem erros. Ou seja, se retornarem o código 0. Veja mais informações em: http://www.puppetcookbook.com/posts/exec-onlyif.html e https://docs.puppet.com/puppet/latest/reference/types/exec.html
+  Quando o recurso ``exec`` possuir o atributo ``onlyif`` ou ``unless`` declarado, só será executado se o(s) comando(s) informado(s) nestes atributos for(em) executado(s) sem erros. Ou seja, se retornarem o código 0. Veja mais informações em: http://www.puppetcookbook.com/posts/exec-onlyif.html e https://docs.puppet.com/puppet/latest/types/exec.html

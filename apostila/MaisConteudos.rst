@@ -31,14 +31,14 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 * http://pt.slideshare.net/GutoCarvalho/trabalhando-com-mdulos-no-puppet
 * https://speakerdeck.com/gutocarvalho/meetup-puppet-br-20160518-testes-de-codigo-puppet
 * https://docs.puppetlabs.com/guides/module_guides/bgtm.html
-* https://docs.puppetlabs.com/puppet/latest/reference/modules_fundamentals.html
+* https://docs.puppetlabs.com/puppet/latest/modules_fundamentals.html
 * https://docs.puppetlabs.com/pe/latest/puppet_modules_manifests.html
-* https://docs.puppetlabs.com/puppet/latest/reference/lang_classes.html
+* https://docs.puppetlabs.com/puppet/latest/lang_classes.html
 
 **Documentação geral sobre Puppet:**
 
 * http://docs.puppetlabs.com/
-* http://docs.puppetlabs.com/puppet/latest/reference/
+* http://docs.puppetlabs.com/puppet/latest/
 * http://www.example42.com/tutorials/PuppetTutorial/
 * http://puppet-br.org/documentacao/
 

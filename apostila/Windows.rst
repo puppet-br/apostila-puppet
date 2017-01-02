@@ -5,7 +5,7 @@ O suporte a Windows no Puppet vem melhorando a cada nova versão. Mas não é po
 
 Praticamente onde é possível criar compatibilidade, os resources do Puppet suportam Windows normalmente. Em alguns casos são necessários certos cuidados devido as diferenças semânticas entre sistemas Unix-like e Windows.
 
-Para obter detalhes sobre a instalação do Puppet Agent no Windows acesse: https://docs.puppet.com/puppet/latest/reference/install_windows.html
+Para obter detalhes sobre a instalação do Puppet Agent no Windows acesse: https://docs.puppet.com/puppet/latest/install_windows.html
 
 Prática: Instalação
 -------------------

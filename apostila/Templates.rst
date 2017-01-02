@@ -180,11 +180,11 @@ Resultado:
 
   Para saber mais detalhes sobre a sintaxe ERB, acesse a página abaixo.
   
-  https://docs.puppet.com/puppet/latest/reference/lang_template_erb.html
+  https://docs.puppet.com/puppet/latest/lang_template_erb.html
   
   Para saber mais detalhes sobre o uso de linguagens para manipulação de templates no Puppet, acesse a página abaixo.
   
-  https://docs.puppet.com/puppet/latest/reference/lang_template.html
+  https://docs.puppet.com/puppet/latest/lang_template.html
   
   
 Prática: usando templates

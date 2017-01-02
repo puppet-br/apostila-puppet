@@ -141,11 +141,11 @@ Teremos a seguinte estrutura em ``/etc/puppetlabs``:
   
   Nas páginas abaixo você encontra mais detalhes sobre os arquivos de configuração do Puppet:
   
-  https://docs.puppet.com/puppet/latest/reference/config_important_settings.html
-  https://docs.puppet.com/puppet/latest/reference/dirs_confdir.html
-  https://docs.puppet.com/puppet/latest/reference/config_about_settings.html
-  https://docs.puppet.com/puppet/latest/reference/config_file_main.html
-  https://docs.puppet.com/references/latest/configuration.html
+  https://docs.puppet.com/puppet/latest/config_important_settings.html
+  https://docs.puppet.com/puppet/latest/dirs_confdir.html
+  https://docs.puppet.com/puppet/latest/config_about_settings.html
+  https://docs.puppet.com/puppet/latest/config_file_main.html
+  https://docs.puppet.com/puppet/latest/configuration.html
 
 
 .. nota::
@@ -294,10 +294,6 @@ Os logs do puppet-agent ficam em:
 * ``/var/log/syslog`` (no CentOS/Red Hat).
 * ``/var/log/puppetlabs/puppet``
 
-.. raw:: pdf
- 
- PageBreak
- 
 .. dica::
 
   |dica| **Possíveis problemas com certificados SSL**
@@ -308,7 +304,7 @@ Os logs do puppet-agent ficam em:
   
   Procure manter os relógios corretamente configurados utilizando NTP.
   
-  Você também pode consultar esta página https://docs.puppet.com/puppet/4.4/reference/ssl_regenerate_certificates.html para saber como reconfigurar os certificados no Agente e Master.
+  Você também pode consultar esta página https://docs.puppet.com/puppet/latest/ssl_regenerate_certificates.html para saber como reconfigurar os certificados no Agente e Master.
 
   http://www.linuxnix.com/puppet-how-to-remove-puppet-client-from-master/
 
@@ -330,6 +326,10 @@ Exemplo:
 
   # puppet cert destroy node1.domain.com.br
 
+.. raw:: pdf
+ 
+ PageBreak
+
 2) Removendo o certificado do Puppet Agent no node.
 
 ::
@@ -339,11 +339,7 @@ Exemplo:
   # sudo puppet cert list -a
 
 Feito isso é só assinar a solicitação do novo certificado no Puppet Server, conforme mostrado neste capítulo. 
-Veja mais detalhes em: https://docs.puppet.com/puppet/4.8/ssl_regenerate_certificates.html
-
-.. raw:: pdf
- 
- PageBreak
+Veja mais detalhes em: https://docs.puppet.com/puppet/latest/ssl_regenerate_certificates.html
 
 .. nota::
 

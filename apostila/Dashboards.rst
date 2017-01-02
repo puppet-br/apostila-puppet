@@ -187,7 +187,7 @@ Edite o arquivo ``/etc/puppetlabs/puppet/puppet.conf`` e adicione o seguinte con
  
   storeconfigs = true
   storeconfigs_backend = puppetdb
-  reports = store,puppetdb
+  reports = puppetdb
   reportstore = /var/log/puppetlabs/puppet
 
 Crie o arquivo ``/etc/puppetlabs/puppet/routes.yaml`` com o seguinte conteúdo:

@@ -231,8 +231,10 @@ Prática: Usando as funções
 
   Para realizar este exercício, será necessário que você configure o NFSv3 numa máquina remota e compartilhe dois diretórios, com permissão de leitura e escrita para a montagem de diretório remoto.
   Na Internet você encontra vários tutoriais explicando como fazer isso. Abaixo estão alguns deles.
-  Ubuntu 16.04: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-16-04
-  CentOS 7 / Red Hat 7 | Fedora 22: http://www.itzgeek.com/how-tos/linux/centos-how-tos/how-to-setup-nfs-server-on-centos-7-rhel-7-fedora-22.html
+
+  Ubuntu: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-16-04
+
+  CentOS/Red Hat 7: https://goo.gl/3NqOs2 
 
 Lambas
 -------
