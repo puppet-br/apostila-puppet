@@ -18,13 +18,13 @@
 
         .. class:: center
         
-        Apostila Puppet versão 2.3.x
+        Apostila Puppet versão 2.4.x
 
     .. container::
         
         .. class:: center
         
-        Apostila Puppet versão 2.3.x
+        Apostila Puppet versão 2.4.x
 
 .. footer::
 
@@ -44,7 +44,7 @@
         
         .. class:: center
 
-        Licença CC BY-SA 3.0 BR - Apostila cedida pela Instruct e mantida pela Puppet-BR
+        Licença CC BY-SA 3.0 BR - Apostila mantida pela comunidade Puppet-BR
 
         .. class:: right
         
@@ -84,6 +84,9 @@
 .. include:: Templates.rst
 .. include:: Environments.rst
 .. include:: Hiera.rst
+.. include:: RecursoVirtual.rst
+.. include:: Tags.rst
+.. include:: ExportadoresColetores.rst
 .. .. include:: Lab2.rst
 .. .. include:: ENCs.rst
 .. include:: Augeas.rst

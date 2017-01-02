@@ -1,6 +1,7 @@
 Histórico de mudanças
 =====================
 
+* Versão 2.4.0 lançada dia 02/01/2017
 * Versão 2.3.0 lançada dia 30/12/2016
 * Versão 2.2.0 lançada dia 29/12/2016
 * Versão 2.1.0 lançada dia 11/12/2016

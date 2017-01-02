@@ -224,9 +224,11 @@ Agora que já configuramos o Hiera para localizar dados da estrutura do ``meucli
 
 2. O nosso módulo ``doc`` terá dois manifests: o ``init.pp`` (código principal) e o ``params.pp`` (apenas para declaração de variáveis).
 
-.. code-block:: ruby
+::
 
   # vim doc/manifests/init.pp
+
+.. code-block:: ruby
 
   class doc(
 
