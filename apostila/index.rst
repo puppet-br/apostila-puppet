@@ -86,7 +86,8 @@
 .. include:: Hiera.rst
 .. include:: RecursoVirtual.rst
 .. include:: Tags.rst
-.. include:: ExportadoresColetores.rst
+.. include:: RecursosExportados.rst
+.. include:: Coletores.rst
 .. .. include:: Lab2.rst
 .. .. include:: ENCs.rst
 .. include:: Augeas.rst
