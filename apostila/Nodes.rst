@@ -39,7 +39,7 @@ No exemplo acima, o agente que se identificar como ``node1.domain.com.br`` receb
 Nomes
 -----
 
-A diretiva *node* casa com agentes por nome. O nome de um node é um identificador único, que por padrão é valor de **certname**, ou seja o FQDN.
+A diretiva *node* casa com agentes por nome. O nome de um node é um identificador único, que por padrão é valor de **certname**.
 
 .. raw:: pdf
  

@@ -1,7 +1,7 @@
 Master / Agent
 ==============
 
-O Puppet é deve ser utilizado com a arquitetura *Master / Agent*. O ciclo de operação nesses casos é o seguinte:
+O Puppet pode ser utilizado com a arquitetura *Master / Agent*. O ciclo de operação nesses casos é o seguinte:
 
 1. Os clientes (chamados de *node*) possuem um agente instalado que permanece em execução e se conecta ao servidor central (chamado tipicamente de *Master*) periodicamente (a cada 30 minutos, por padrão).
 2. O node solicita a sua configuração, que é compilada e enviada pelo Master.
@@ -15,7 +15,7 @@ Outra maneira comum de implantação do Puppet é a ausência de um agente em ex
 
   |aviso| **Catálogo e Relatórios**
   
-  Mais detalhes sobre a compilação do catálogo e envio dos relatórios, podem ser encontradas, respectivamente, nas seguintes páginas: 
+  Mais detalhes sobre a compilação do catálogo e envio dos relatórios podem ser encontradas, respectivamente, nas seguintes páginas: 
   https://docs.puppet.com/puppet/latest/subsystem_catalog_compilation.html
   https://docs.puppet.com/puppet/latest/reporting_about.html
   https://docs.puppet.com/puppet/latest/report.html
@@ -23,7 +23,7 @@ Outra maneira comum de implantação do Puppet é a ausência de um agente em ex
 Resolução de nomes
 ------------------
 
-A configuração de nome e domínio do sistema operacional, além da resolução de nomes, é fundamental para o correto funcionamento do Puppet, devido ao uso de certificados SSL para a autenticação de agentes e o servidor Master.
+A configuração de nome e domínio do sistema operacional, além da resolução de nomes, é uma boa prática para o funcionamento do Puppet, devido ao uso de certificados ``SSL-Secure Socket Layer`` para a autenticação de agentes e o servidor Master.
 
 Para verificar a configuração de seu sistema, utilize o comando ``hostname``. A saída desse comando nos mostra se o sistema está configurado corretamente.
 
@@ -42,17 +42,18 @@ Para verificar a configuração de seu sistema, utilize o comando ``hostname``. 
 
   |dica| **Configuração de hostname no CentOS/Red Hat e Debian/Ubuntu**
   
-  Para resolução de nomes, configure corretamente o arquivo ``/etc/resolv.conf`` com os parâmetros ``domain`` e ``search`` com o domínio de sua rede.
+  Para resolução de nomes, configure corretamente o arquivo ``/etc/resolv.conf`` com os parâmetros: ``nameserver``, ``domain`` e ``search``. Esses parâmetros devem conter a informação do(s) servidor(es) DNS e do domínio de sua rede.
   
-  O arquivo ``/etc/hosts`` deve possuir pelo menos o nome da própria máquina, com seu IP, FQDN e depois o hostname. Exemplo: ``192.168.1.10 node1.domain.com.br node1``.
+  O arquivo ``/etc/hosts`` deve possuir pelo menos o nome da própria máquina em que o agente está instalado. Neste arquivo deve possuir um entrada que informe o seu IP, FQDN e depois o hostname. Exemplo: ``192.168.1.10 node1.domain.com.br node1``.
   
-  No Debian/Ubuntu, coloque apenas o hostname no arquivo ``/etc/hostname``.
+  No Debian/Ubuntu, o hostname é cadastrado no arquivo ``/etc/hostname``.
   
-  No CentOS/Red Hat, ajuste o valor da variável ``HOSTNAME`` no arquivo ``/etc/sysconfig/network``.
+  No CentOS/Red Hat, o hostname é cadastrado na variável ``HOSTNAME`` do arquivo ``/etc/sysconfig/network``.
 
+É uma boa prática que sua rede possua a resolução de nomes configurada via DNS. Neste caso, o hostname e domínio de cada sistema operacional devem resolver corretamente para o seu respectivo IP e o IP deve possuir o respectivo nome reverso. 
 
-Para um bom funcionamento do Puppet é fundamental que sua rede possua configurado a resolução de nomes via DNS.
-O hostname e domínio de cada sistema operacional devem resolver corretamente para seu respectivo IP, e o IP deve possuir o respectivo nome reverso.
+Porém tecnicamente, a resolução de nomes dos agentes via DNS, não é requisito para o funcionamento do Puppet. Em termos de DNS, o único requisito de fato é que o host consiga resolver o nome do servidor Puppet Master. Por padrão, o agente vai usar o FQDN do host como o ``CN-Common Name`` para indentificá-lo durante a criação do certificado SSL. Entretanto, é possível usar o Puppet em situações que seja necessário que o CN do certificado não possua nenhuma relação com o DNS.
+
 
 Segurança e autenticação
 ------------------------
