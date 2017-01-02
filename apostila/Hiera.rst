@@ -313,7 +313,7 @@ Agora que já configuramos o Hiera para localizar dados da estrutura do ``meucli
 
 ::
 
-  # vim /etc/puppetlabs/code/environments/production/modules/doc/manifests/params.pp
+  # vim /etc/puppetlabs/code/environments/production/manifests.site.pp
 
 .. code-block:: ruby
 

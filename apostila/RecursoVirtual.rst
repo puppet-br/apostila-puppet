@@ -1,7 +1,7 @@
 Recursos Virtuais
 ==================
 
-A declaração de recurso virtual especifica um estado desejado para um recurso sem necessariamente impor esse estado. Você pode dizer ao Puppet para gerenciar o recurso virtual através da função ``realize`` em qualquer lugar dos seus manifests que fazem parte do seu módulo.
+A declaração de recurso virtual especifica o estado desejado para um recurso sem necessariamente impor esse estado. Você pode dizer ao Puppet para gerenciar o recurso virtual através da função ``realize`` em qualquer lugar dos seus manifests que fazem parte do seu módulo.
 
 Embora os recursos virtuais só possam ser declarados uma vez, você pode usar a função ``realize`` quantas vezes for necessária, mesmo que seja numa mesma classe ou manifest. 
 
@@ -14,9 +14,9 @@ Os recursos virtuais são úteis para:
 * Sobreposição de conjuntos de recursos que podem ser necessários em várias classes.
 * Recursos que só devem ser geridos se forem cumpridas condições entre várias classes. 
 
-Os recursos que distinguem os recursos virtuais são:
+As características que distinguem os recursos virtuais dos demais são:
 
-* *Searchability* (pesquisa) via coletores de recursos, o que permite que você realize aglomerados de recursos virtuais sobrepostos.
+* *Searchability* (pesquisa) via coletores de recursos, o que permite que você realize a sobreposição de aglomerados de recursos virtuais.
 * *Flatness* (planicidade), de tal forma que você pode declarar um recurso virtual e realizá-lo algumas linhas mais tarde sem ter que encher seus módulos com muitas classes de recurso único. 
 
 Um exemplo de uso para recursos virtuais é o gerenciamento de pacotes. Imagine que você tem um módulo no Puppet Master que gerencia a configuração do Apache e que neste módulo existe um manifest que possui o recurso ``package`` para gerenciar a instalação do pacote ``php5.6``. Se houver a necessidade de gerenciar o PHP através de outro módulo e que nele também exista o recurso ``package`` para gerenciar a instalação do pacote ``php5.6``, ao compilar um catálogo, contendo o estado desejado através destes dois módulos, o Puppet irá mostrar um erro de compilação do catálogo e informará que o recurso ``package`` está duplicado, mesmo que o recurso tenha sido declarado em módulos diferentes.
@@ -42,7 +42,8 @@ Para resolver este problema você pode criar um módulo para gerenciar pacotes e
     include packages
     ...
 
-    #Realizando um recurso virtual, o pacote é instalado neste ponto, caso nao esteja instalado.
+    #Realizando um recurso virtual, o pacote é instalado neste ponto, \
+    # caso nao esteja instalado.
     realize(Package['php5.6'])
 
     ...
@@ -55,7 +56,8 @@ Para resolver este problema você pode criar um módulo para gerenciar pacotes e
     include packages
     ...
 
-    #Realizando um recurso virtual, o pacote é instalado neste ponto, caso nao esteja instalado.
+    #Realizando um recurso virtual, o pacote é instalado neste ponto, \
+    # caso nao esteja instalado.
     realize(Package['php5.6'])
 
     ...
@@ -70,6 +72,7 @@ Para declarar um recurso virtual, você usa o prefixo ( ``@`` ) antes do nome do
 
 .. code-block:: ruby
 
+  #Declarando um recurso virtual para um usuario
   @user {'deploy':
     uid     => 2004,
     comment => 'Deployment User',
@@ -78,6 +81,7 @@ Para declarar um recurso virtual, você usa o prefixo ( ``@`` ) antes do nome do
     tag     => [deploy, web],
   }
 
+  #Declarando um recurso virtual para um array de pacotes
   @package {[
     'build-essential',
     'gcc',
@@ -102,7 +106,7 @@ Para realizar um ou mais recursos virtuais, use a função ``realize``, que acei
 
 Mesmo que a função ``realize`` referencie várias vezes o mesmo recurso virtual no mesmo manifest, o recurso só será gerenciado apenas uma vez. 
 
-Se um recurso virtual estiver declarado em uma classe, ele não poderá ser realizado na mesma, a menos que a classe seja declarada referência por outra classe ou módulo. Os recursos virtuais que não realizados continuarão disponíveis no catálogo, mas eles estarão marcados como inativos. A função ``realize`` falhará na compilação do catálogo se você tentar realizar um recurso virtual que não foi declarado ou se foi declarado em uma classe ou módulo que em nenhum momento foi referenciado.
+Se um recurso virtual estiver declarado em uma classe, ele não poderá ser realizado na mesma, a menos que a classe seja declarada ou referênciada por outra classe ou módulo. Os recursos virtuais que não realizados continuarão disponíveis no catálogo, mas eles estarão marcados como inativos. A função ``realize`` falhará na compilação do catálogo se você tentar realizar um recurso virtual que não foi declarado ou se foi declarado em uma classe ou módulo que em nenhum momento foi referenciado.
 
 .. nota::
 
@@ -140,12 +144,20 @@ Prática: usando recurso virtuais
        ensure => installed,
      }
 
+    @file { '/media/storage':
+      ensure  => 'directory',
+      mode    => '755',
+      owner   => root,
+      group   => root,
+    }
+
      @file { '/media/storage/doc.txt':
          ensure  => 'file',
-         content => template("rvirtual/doc.txt.erb")
+         content => template("rvirtual/doc.txt.erb"),
          mode    => '0644',
          owner   => 'root',
          group   => 'root',
+         require => File['/media/storage'],
      }
   }
 
@@ -162,7 +174,7 @@ Prática: usando recurso virtuais
 ::
 
   # cd /etc/puppetlabs/code/environments/production/modules
-  # mkdir -p rvirtual/manifests
+  # mkdir -p mount/manifests
  
 5. O nosso módulo ``mount`` terá um manifest: o ``init.pp`` (código principal). Nele informe o seguinte conteúdo.
 
@@ -172,7 +184,9 @@ Prática: usando recurso virtuais
 
 .. code-block:: ruby
 
-    class mount{
+  class mount{
+
+    include rvirtual
 
     case $::operatingsystem {
       'ubuntu': {
@@ -186,7 +200,8 @@ Prática: usando recurso virtuais
       }
     }
 
-     realize(File['/media/storage/doc.txt'])
+     realize(File['/media/storage/doc.txt'],
+	     File['/media/storage'], )
 
      mount { '/media/storage':
       device  => "192.168.100.13:/home/m2",
@@ -194,7 +209,7 @@ Prática: usando recurso virtuais
       ensure  => 'mounted',
       options => 'rw',
       atboot  => true,
-      before => File['/media/storage/doc.txt'],
+      before  => File['/media/storage/doc.txt'],
     }
   }
 
@@ -211,7 +226,7 @@ Prática: usando recurso virtuais
 
 ::
 
-  # vim /etc/puppetlabs/code/environments/production/modules/doc/manifests/params.pp
+  # vim /etc/puppetlabs/code/environments/production/manifests/site.pp
 
 .. code-block:: ruby
 
