@@ -1,5 +1,7 @@
 # Apostila Puppet #
 
+Acesse o site da apostila em: https://puppet-br.github.io/apostila-puppet
+
 As versões estáveis da apostila, podem ser obtidas em: https://github.com/puppet-br/apostila-puppet/releases
 
 A equipe da Instruct havia produzido uma apostila sobre o básico do Puppet (usando a versão 3.x). A versão 1.0 desta apostila está aqui: http://instruct.com.br/lancamento-apostila-puppet-basico/
