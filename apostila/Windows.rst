@@ -81,6 +81,15 @@ Para a realização dessa prática é necessário você instalar uma terceira m�
   Quando usar a linha de comando, é sempre necessário utilizar o Puppet com privilégios elevados.
 
 
+.. dica::
+
+  |dica| **Chocolatey**
+  
+  No Windows, você pode usar o chocolatey para facilitar a instalar pacotes de forma semelhante ao que é feito pelos gerenciadores de pacotes ``apt`` e ``yum`` do Linux. Saiba mais informações nos sites abaixo.
+  https://chocolatey.org
+  https://puppet.com/blog/chocolatey-using-chocolatey-puppet
+  https://forge.puppet.com/chocolatey/chocolatey
+
 Prática: resources para Windows
 -------------------------------
 
