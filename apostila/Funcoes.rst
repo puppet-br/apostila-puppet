@@ -236,7 +236,7 @@ Prática: Usando as funções
 
   CentOS/Red Hat 7: https://goo.gl/3NqOs2 
 
-Lambas
+Lambdas
 -------
 
 São blocos de código Puppet que podem ser passados para funções. Quando uma função recebe um lambda, ela pode fornecer valores para os parâmetros do lambda e avaliar seu código.
