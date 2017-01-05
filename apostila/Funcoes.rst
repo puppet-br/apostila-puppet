@@ -13,7 +13,7 @@ As funções também podem:
 * causar efeitos colaterais que modificam o catálogo;
 * avaliar um bloco de código Puppet, possivelmente usando os argumentos da função para modificar esse código ou controlar como ele é executado. 
 
-A linguagem Puppet inclui várias funções internas, e muitas estão disponíveis em módulos no Puppet Forge, que será mostrado mais adiante. Um destes módulos é o ``puppetlabs-stdlib`` (https://forge.puppet.com/puppetlabs/stdlib) . Você também pode escrever funções personalizadas e colocá-las em seus próprios módulos.
+A linguagem Puppet inclui várias funções internas, e muitas estão disponíveis em módulos no Puppet Forge, que será mostrado no capítulo sobre `Puppet Forge`_. Um destes módulos é o ``puppetlabs-stdlib`` (https://forge.puppet.com/puppetlabs/stdlib). Você também pode escrever funções personalizadas e colocá-las em seus próprios módulos.
 
 Localização
 ````````````
@@ -37,13 +37,13 @@ Há duas maneiras de chamar funções na linguagem Puppet:
   
   template("ntp/ntp.conf.erb")
 
-* chamada encadeada. Exemplo:
+* a outra forma é a chamada encadeada. Exemplo:
 
 .. code-block:: ruby
 
   "ntp/ntp.conf.erb".template
 
-Essas duas maneiras de chamada têm as mesmas capacidades, portanto você pode escolher o que for mais legível. Em geral, os critérios de escolha são:
+Essas duas maneiras de chamada têm as mesmas capacidades, portanto você pode escolher a que for mais legível. Em geral, os critérios de escolha são:
 
 * Para funções que usam muitos argumentos, as chamadas de prefixo são mais fáceis de ler.
 * Para funções que tomam um argumento normal e um ``lambda`` (será visto mais adiante), as chamadas encadeadas são mais fáceis de ler.
@@ -95,7 +95,7 @@ Assim temos:
 * Um parêntese de abertura para a passagem de argumentos ( ``(`` ). Parênteses são opcionais ao chamar uma função interna como no caso do ``include``. Eles são obrigatórios em todos os outros casos. 
 * Zero ou mais argumentos, todos separados por vírgula. Os argumentos podem ser qualquer expressão que resolve um valor. Veja a documentação de cada função para obter o número de argumentos e seus tipos de dados: https://docs.puppet.com/puppet/latest/function.html.
 * Um parêntese de fechamento ( ``)`` ), caso tenha sido utilizado um parêntese de abertura.
-* Opcionalmente, um lambda (bloco de código), se a função aceitar.
+* Opcionalmente, um lambda e um bloco de código, se a função aceitar.
 
 Chamadas de função encadeadas
 ```````````````````````````````
@@ -139,7 +139,7 @@ A forma geral de uma chamada de função encadeada é:
 * Um ponto ( ``.`` ).
 * O nome completo da função, sem aspas.
 * Opcionalmente, os parênteses que contém uma lista de argumentos separados por vírgula, começando com o segundo argumento da função, pois o primeiro argumento já foi citado no começo da chamada.
-* Opcionalmente, um lambda (bloco de código), se a função aceitar. 
+* Opcionalmente, um lambda e um bloco de código, se a função aceitar. 
 
 Comportamento
 ``````````````
@@ -155,9 +155,9 @@ Funções de instrução embutidas
 
 São um grupo de funções internas que são usadas apenas para causar efeitos colaterais. O Puppet 4 só reconhece as declarações embutidas da própria liguagem; Ele não permite adicionar novas funções de instruções como plug-ins.
 
-A única diferença real entre as funções de instrução e as outras funções é que você pode omitir os parênteses ao chamar uma função declaração com pelo menos um argumento (por exemplo, ``include apache``).
+A única diferença real entre as funções de instrução e as outras funções é que você pode omitir os parênteses ao chamar uma função de declaração com pelo menos um argumento (por exemplo, ``include apache``).
 
-Funções como a include retornam um valor como qualquer outra função, mas sempre retornará um valor indefinido ``undef``.
+Funções como a ``include`` retornam um valor como qualquer outra função, mas sempre retornarão um valor indefinido ``undef``.
 
 .. aviso::
 
@@ -229,7 +229,7 @@ Prática: Usando as funções
 
   |aviso| **Configurar pontos de montagem via NFS**
 
-  Para realizar este exercício, será necessário que você configure o NFSv3 numa máquina remota e compartilhe dois diretórios, com permissão de leitura e escrita para a montagem de diretório remoto.
+  Para realizar este exercício, será necessário que você configure o NFSv3 num host remoto e compartilhe dois diretórios, com permissão de leitura e escrita para a montagem de diretório remoto.
   Na Internet você encontra vários tutoriais explicando como fazer isso. Abaixo estão alguns deles.
 
   Ubuntu: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-16-04
@@ -246,14 +246,14 @@ Se você usou outras linguagens de programação, você pode pensar em lambdas c
 Localização
 ````````````
 
-Lambdas só podem ser usados em chamadas de função. Enquanto qualquer função pode aceitar um lambda, apenas algumas funções farão qualquer coisa com eles. Veja na página de interação e loops da linguagem Puppet, a lista de funções são mais úteis no uso de lambda (https://docs.puppet.com/puppet/latest/lang_iteration.html).
+Lambdas só podem ser usados em chamadas de função. Enquanto qualquer função pode aceitar um lambda, apenas algumas funções farão qualquer coisa com eles. Veja na página de interação e loops da linguagem Puppet, a lista de funções que são mais úteis no uso de lambda (https://docs.puppet.com/puppet/latest/lang_iteration.html).
 
 Lambdas não são válidos em nenhum outro lugar na linguagem Puppet, e não podem ser atribuídos a variáveis.
 
 Sintaxe
 ````````
 
-Lambdas são escritos como uma lista de parâmetros cercadas por pipe ( ``|`` ) caracteres, seguido por um bloco de código arbitrário em Puppet. Eles devem ser utilizados como parte de uma chamada de função. Exemplo:
+Lambdas são escritos como uma lista de parâmetros cercados por pipe ( ``|`` ), seguido por um bloco de código arbitrário em Puppet. Eles devem ser utilizados como parte de uma chamada de função. Exemplo:
 
 .. code-block:: ruby
 
@@ -273,12 +273,12 @@ A forma geral de um lambda é:
 
   |Type data optional $variable|
 
-* A lista de parâmetros é obrigatória, mas pode estar vazio. 
+* A lista de parâmetros é obrigatória, mas pode estar vazia. 
 * Isso consiste em: uma barra vertical de abertura ( | ) e uma lista separada por vírgulas de zero ou mais parâmetros (por exemplo: String $myparam = "default value" ). 
 * Cada parâmetro é composto por um tipo de dados opcional, o que restringe os valores que ela permite. O padrão é ``any`` (qualquer). Também faz parte do parâmetro o nome da variável que o representa, incluindo o prefixo ( $ ). Opcionalmente pode passar o sinal de igual ( = ). 
 * Opcionalmente, pode passar outra vírgula e argumentos extras (por exemplo: String $others = ["default one", "default two"] ), que consiste em:
    * Um tipo de dados opcional, o que restringe os valores permitidos para argumentos extra (padrão ``any``).
-   * Um asterisco (AKA "splat") caractere ( * ).
+   * Um asterisco ( * ).
    * O nome da variável para representar o parâmetro, incluindo o prefixo ( $ ).
    * Um sinal de igual opcional ( = ) e o valor padrão, que pode ser: o valor que corresponde ao tipo de dados especificado ou uma matriz de valores que coincidem com o tipo de dados. 
    * Uma vírgula opcional após o último parâmetro.
@@ -292,7 +292,7 @@ Parâmetros e variáveis
 
 Um lambda pode incluir uma lista de parâmetros e as funções podem definir valores para si quando chamam o lambda. Dentro do bloco de código do lambda você pode usar cada parâmetro como uma variável.
 
-Funções passam parâmetros lambda por posição, da mesma forma que passa argumentos em uma chamada de função. Isto significa que a ordem dos parâmetros é importante, mas os seus nomes podem ser qualquer coisa. (Ao contrário dos parâmetros de classe ou de tipo definido, onde os nomes são a interface principal para os usuários.
+Funções passam parâmetros lambda por posição, da mesma forma que passa argumentos em uma chamada de função. Isto significa que a ordem dos parâmetros é importante, mas os seus nomes podem ser qualquer coisa (ao contrário dos parâmetros de classe ou de tipo definido, onde os nomes são a interface principal para os usuários).
 
 Cada função decide quantos parâmetros passaram para um lambda e em que ordem. Consulte a documentação da função para obter os detalhes https://docs.puppet.com/puppet/latest/function.html.
 
@@ -302,13 +302,13 @@ Na lista de parâmetros, cada parâmetro pode ser precedido por um tipo de dados
 
   |aviso| **Saiba mais sobre os lambdas**
 
-  Para obter mais informações sobre os lambdas e os nas funções acesse a página: https://docs.puppet.com/puppet/latest/lang_lambdas.html
+  Para obter mais informações sobre os lambdas e uso nas funções acesse a página: https://docs.puppet.com/puppet/latest/lang_lambdas.html
 
 
 Prática: Usando funções com lambdas
 ------------------------------------
 
-1) Escreva um manifest para criar varios links para varios alvos diferentes, sendo um link para cada alvo.
+1) Escreva um manifest para criar vários links que apontarão para vários alvos diferentes, sendo um link para cada alvo.
 
 .. raw:: pdf
 
@@ -318,7 +318,7 @@ Prática: Usando funções com lambdas
 
   $binaries = ['facter', 'hiera', 'mco', 'puppet']
 
-  # function call with lambda:
+  #Função com lambda:
   $binaries.each | Integer $index, String $binary| {
     file {"/tmp/${binary}":
       ensure => link,

@@ -1,13 +1,13 @@
 Environments
 ============
 
-O Puppet permite você dividir os seus sistemas em diferentes conjuntos de máquinas, chamados *environments*.
+O Puppet permite você dividir os seus sistemas em diferentes conjuntos de hosts, chamados *environments*.
 
 Cada environment pode servir um conjunto diferente de módulos. Isso é usado geralmente para gerenciar versões de módulos, usando-os em sistemas destinados a testes.
 
 O uso de environments introduz uma série de outras possibilidades, como separar um ambiente em DMZ, dividir tarefas entre administradores de sistemas ou dividir o seu parque por tipo de hardware.
 
-O environment de um node é especificado no arquivo ``puppet.conf``. Sempre que um node faz um pedido de configuração ao Puppet Master, o environment do node é utilizado para determinar a qual configuração e quais módulos serão forneceidos.
+O environment de um node é especificado no arquivo ``puppet.conf``. Sempre que um node faz um pedido de configuração ao Puppet Master, o environment do node é utilizado para determinar a qual configuração e quais módulos serão fornecidos.
 
 Por padrão, o agente envia ao Puppet Master um environment chamado *production*.
 

@@ -1,9 +1,9 @@
 Templates
 =========
 
-Muitas vezes temos um mesmo serviço ativado em diversas máquinas, mas em um conjunto de máquinas esse serviço precisa ser configurado de uma maneira e, no restante das máquinas, de outra. Assim, cada conjunto de máquinas precisaria de um arquivo de configuração específico, mesmo que esse arquivo tivesse uma ou duas linhas de diferença.
+Muitas vezes temos um mesmo serviço ativado em diversos hosts, mas em um conjunto de hosts esse serviço precisa ser configurado de uma maneira e, no restante dos hosts, de outra. Assim, cada conjunto de host precisaria de um arquivo de configuração específico, mesmo que esse arquivo tivesse uma ou duas linhas de diferença.
 
-Então, quando fosse necessário atualizar uma opção de configuração que é comum aos dois conjuntos de máquinas, seria necessário atualizar dois arquivos de configuração. Além do cuidado extra de garantir que ambos estivessem corretos.
+Então, quando fosse necessário atualizar uma opção de configuração que é comum aos dois conjuntos de hosts, seria necessário atualizar dois arquivos de configuração. Além do cuidado extra de garantir que ambos estivessem corretos.
 
 O Puppet tem um recurso de templates, em que podemos usar somente um arquivo de dentro dele. Colocamos uma lógica e valores de variáveis que venham do seu código, tornando a nossa configuração mais robusta.
 
@@ -56,7 +56,7 @@ Repare que as variáveis do manifest estão disponíveis dentro da template, inc
   Portanto, ``template('foo/foo.conf.erb')`` significa abrir o arquivo ``/etc/puppetlabs/code/environments/production/modules/foo/templates/foo.conf.erb``.
 
 
-Usando o módulo ``foo`` em uma máquina CentOS/Red Hat:
+Usando o módulo ``foo`` em um host CentOS/Red Hat:
 
 ::
 
@@ -76,7 +76,7 @@ Usando o módulo ``foo`` em uma máquina CentOS/Red Hat:
 
   |dica| **Concatenando templates**
   
-  A função ``template()`` pode concatenar várias templates de uma vez só, possibilitando configurações sofisticadas.
+  A função ``template()`` pode concatenar vários templates de uma vez só, possibilitando configurações sofisticadas.
   
   ``template("foo/foo.conf-1.erb", "foo/foo.conf-2.erb")``
 
@@ -127,7 +127,7 @@ Um arquivo de template no Puppet usa a sintaxe ERB, que é a linguagem padrão d
   <% end %>
 
 
-* Iteração em um array com varias chaves:
+* Iteração em um array com várias chaves:
 
 Exemplo de como o array é formado:
 

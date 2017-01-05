@@ -63,7 +63,7 @@ Para resolver este problema você pode criar um módulo para gerenciar pacotes e
     ...
   }
 
-Quando o catálogo for compilado, o Puppet não exibirá erros de compilação porque o recurso ``package``, que gerencia o pacote ``php5.6``, só foi declarado uma vez como sendo um recurso virtual no módulo ``packages``. Os módulos ``apache`` e ``php`` não estão reclarando o recurso, estão apenas referenciando o recurso virtual para realizar o estado desejado.
+Quando o catálogo for compilado, o Puppet não exibirá erros de compilação porque o recurso ``package``, que gerencia o pacote ``php5.6``, só foi declarado uma vez como sendo um recurso virtual no módulo ``packages``. Os módulos ``apache`` e ``php`` não estão declarando o recurso, estão apenas referenciando o recurso virtual para realizar o estado desejado.
 
 Sintaxe
 --------
@@ -106,7 +106,7 @@ Para realizar um ou mais recursos virtuais, use a função ``realize``, que acei
 
 Mesmo que a função ``realize`` referencie várias vezes o mesmo recurso virtual no mesmo manifest, o recurso só será gerenciado apenas uma vez. 
 
-Se um recurso virtual estiver declarado em uma classe, ele não poderá ser realizado na mesma, a menos que a classe seja declarada ou referênciada por outra classe ou módulo. Os recursos virtuais que não realizados continuarão disponíveis no catálogo, mas eles estarão marcados como inativos. A função ``realize`` falhará na compilação do catálogo se você tentar realizar um recurso virtual que não foi declarado ou se foi declarado em uma classe ou módulo que em nenhum momento foi referenciado.
+Se um recurso virtual estiver declarado em uma classe, ele não poderá ser realizado na mesma, a menos que a classe seja declarada ou referênciada por outra classe ou módulo. Os recursos virtuais que não forem realizados continuarão disponíveis no catálogo, mas eles estarão marcados como inativos. A função ``realize`` falhará na compilação do catálogo se você tentar realizar um recurso virtual que não foi declarado ou se foi declarado em uma classe ou módulo que em nenhum momento foi referenciado.
 
 .. nota::
 
@@ -115,7 +115,7 @@ Se um recurso virtual estiver declarado em uma classe, ele não poderá ser real
   Para obter mais informações sobre os recursos virtuais, acesse a página abaixo.
   https://docs.puppet.com/puppet/latest/lang_virtual.html
 
-Prática: usando recurso virtuais
+Prática: usando recursos virtuais
 ----------------------------------
 
 1. Acesse o servidor Puppet Master. Crie a estrutura básica de um módulo ``rvirtual``:
@@ -126,7 +126,7 @@ Prática: usando recurso virtuais
   # mkdir -p rvirtual/manifests
   # mkdir -p rvirtual/templates
 
-2. O nosso módulo ``rvirtual`` terá um manifest: o ``init.pp`` (código principal). Nele declare os recursos virtuais abaixo.
+2. O módulo ``rvirtual`` terá um manifest: o ``init.pp`` (código principal). Nele declare os recursos virtuais abaixo.
 
 ::
 
@@ -176,7 +176,7 @@ Prática: usando recurso virtuais
   # cd /etc/puppetlabs/code/environments/production/modules
   # mkdir -p mount/manifests
  
-5. O nosso módulo ``mount`` terá um manifest: o ``init.pp`` (código principal). Nele informe o seguinte conteúdo.
+5. O módulo ``mount`` terá um manifest: o ``init.pp`` (código principal). Nele informe o seguinte conteúdo.
 
 ::
 
@@ -217,14 +217,14 @@ Prática: usando recurso virtuais
 
   |aviso| **Configurar pontos de montagem via NFS**
 
-  Para realizar este exercício, será necessário que você configure o NFSv3 numa máquina remota e compartilhe dois diretórios, com permissão de leitura e escrita para a montagem de diretório remoto.
+  Para realizar este exercício, será necessário que você configure o NFSv3 num host remoto e compartilhe dois diretórios, com permissão de leitura e escrita para a montagem de diretório remoto.
   Na Internet você encontra vários tutoriais explicando como fazer isso. Abaixo estão alguns deles.
 
   Ubuntu: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-16-04
 
   CentOS/Red Hat 7: https://goo.gl/3NqOs2
 
-6. Deixe o código de ``site.pp`` dessa maneira:
+6. Deixe o conteúdo do arquivo ``site.pp`` dessa maneira:
 
 ::
 

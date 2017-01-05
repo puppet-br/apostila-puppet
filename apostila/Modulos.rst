@@ -85,7 +85,7 @@ Portanto, primeiro definimos uma classe e depois a declaramos.
 
 Diretiva include
 ````````````````
-Existe um outro método de usar uma classe, nesse caso usando a diretiva ``include``.
+Existe um outro método de usar uma classe, nesse caso usando a função ``include``.
 
 .. code-block:: ruby
 
@@ -136,13 +136,13 @@ Vamos olhar mais de perto o que há em cada diretório.
 
   * ``init.pp``: contém definição de uma classe que deve ter o mesmo nome do módulo
 
-  * ``outra_classe.pp``: contém uma classe chamada meu_modulo::outra_classe
+  * ``outra_classe.pp``: contém uma classe chamada ``meu_modulo::outra_classe``
 
   * ``um_diretorio/``: o nome do diretório afeta o nome das classes abaixo
 
-   * ``minha_outra_classe1pp``: contém uma classe chamada meu_modulo::um_diretorio::minha_outra_classe1
+   * ``minha_outra_classe1.pp``: contém uma classe chamada ``meu_modulo::um_diretorio::minha_outra_classe1``
 
-   * ``minha_outra_classe2.pp``: contém uma classe chamada meu_modulo::um_diretorio::minha_outra_classe2
+   * ``minha_outra_classe2.pp``: contém uma classe chamada ``meu_modulo::um_diretorio::minha_outra_classe2``
 
  * ``files/``: arquivos estáticos que podem ser baixados pelos agentes
 

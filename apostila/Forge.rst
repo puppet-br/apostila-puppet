@@ -30,7 +30,7 @@ Poderíamos criar um módulo para que essas configurações fossem gerenciadas v
   /etc/puppetlabs/code/environments/production/modules
   |--- trlinkin-sysctl (v0.0.2)
 
-3. Usando o módulo, via linha de comando:
+3. Use o módulo, via linha de comando.
 
 ::
 
@@ -40,7 +40,7 @@ Poderíamos criar um módulo para que essas configurações fossem gerenciadas v
  
  PageBreak
  
-4. Ou declarando um valor para um dos nossos nodes, no ``/etc/puppetlabs/code/environments/production/manifests/site.pp``:
+4. Declare um valor para um dos nossos nodes no Puppet Master editando o arquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp``.
 
 .. code-block:: ruby
 
@@ -51,20 +51,13 @@ Poderíamos criar um módulo para que essas configurações fossem gerenciadas v
     }
   } 
 
-5. Aplique essa regra no node1, por exemplo:
+5. Aplique essa regra no **node1**.
 
 ::
 
   # puppet agent -t
   Info: Retrieving plugin
-  /File[/var/lib/puppet/lib/puppet]/ensure: created
-  /File[/var/lib/puppet/lib/puppet/provider]/ensure: created
-  /File[/var/lib/puppet/lib/puppet/provider/sysctl]/ensure: created
-  /File[/var/lib/puppet/lib/puppet/provider/sysctl/parsed.rb]/ensure: defined \
-            content as '{md5}46bedf16cafa5af507d0aef0d9e126b2'
-  /File[/var/lib/puppet/lib/puppet/type]/ensure: created
-  /File[/var/lib/puppet/lib/puppet/type/sysctl.rb]/ensure: defined content as \
-            '{md5}cb94b98fb045257517de45c9616f2844'
+  ...
   Info: Caching catalog for node1.puppet
   Info: Applying configuration version '1353001737'
   /Stage[main]//Node[node1.puppet]/Sysctl[net.ipv4.ip_forward]/value: \
@@ -77,7 +70,7 @@ Poderíamos criar um módulo para que essas configurações fossem gerenciadas v
 Prática: módulo para autofsck do Puppet Forge
 ---------------------------------------------
 
-1. Instale o módulo ``jhoblitt/autofsck``:
+1. Instale o módulo ``jhoblitt/autofsck``.
 
 ::
 

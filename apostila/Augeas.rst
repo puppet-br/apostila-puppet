@@ -94,7 +94,7 @@ Podemos incluir e remover valores no vetor. Por exemplo, adicionar um terceiro n
 
 Prática: manipulando o arquivo /etc/hosts
 `````````````````````````````````````````
-Os comandos abaixo podem ser executados na máquina **node1.domain.com.br**.
+Os comandos abaixo podem ser executados no host **node1.domain.com.br**.
 
 1. Agora vamos utilizar o interpretador de comandos do Augeas, simplesmente executando o ``augtool``:
 

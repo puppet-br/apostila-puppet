@@ -45,11 +45,11 @@ Para verificar a configuração de seu sistema, utilize o comando ``hostname``. 
   
   Para resolução de nomes, configure corretamente o arquivo ``/etc/resolv.conf`` com os parâmetros: ``nameserver``, ``domain`` e ``search``. Esses parâmetros devem conter a informação do(s) servidor(es) DNS e do domínio de sua rede.
   
-  O arquivo ``/etc/hosts`` deve possuir pelo menos o nome da própria máquina em que o agente está instalado. Neste arquivo deve possuir um entrada que informe o seu IP, FQDN e depois o hostname. Exemplo: ``192.168.1.10 node1.domain.com.br node1``.
+  O arquivo ``/etc/hosts`` deve possuir pelo menos o nome do próprio host em que o agente está instalado. Neste arquivo deve possuir um entrada que informe o seu IP, FQDN e depois o hostname. Exemplo: ``192.168.1.10 node1.domain.com.br node1``.
   
-  No Debian/Ubuntu, o hostname é cadastrado no arquivo ``/etc/hostname``.
+  No Debian/Ubuntu, o ``hostname`` é cadastrado no arquivo ``/etc/hostname``.
   
-  No CentOS/Red Hat, o hostname é cadastrado na variável ``HOSTNAME`` do arquivo ``/etc/sysconfig/network``.
+  No CentOS/Red Hat, o ``hostname`` é cadastrado na variável ``HOSTNAME`` do arquivo ``/etc/sysconfig/network``.
 
 É uma boa prática que sua rede possua a resolução de nomes configurada via DNS. Neste caso, o hostname e domínio de cada sistema operacional devem resolver corretamente para o seu respectivo IP e o IP deve possuir o respectivo nome reverso. 
 
@@ -73,7 +73,7 @@ Prática Master / Agent
 
 Instalação do Master
 ````````````````````
-1. O pacote ``puppetserver`` deverá ser instalado na máquina que atuará como Master. Certifique-se de que o hostname está correto:
+1. O pacote ``puppetserver`` deverá ser instalado no host que atuará como Master. Certifique-se de que o hostname está correto:
 
 ::
 
@@ -171,7 +171,7 @@ No CentOS/Red Hat edite o arquivo ``/etc/sysconfig/puppetserver`` e no Debian/Ub
 
 Com esta configuração será alocado 512 MB para uso da JVM usada pelo Puppet Server. Por padrão, são alocados 2 GB de memória para uso da JVM.
 
-3. Na máquina PuppetServer, gere um certificado e inicie os serviço com os comandos abaixo.
+3. No host PuppetServer, gere um certificado e inicie os serviço com os comandos abaixo.
 
 ::
 
@@ -185,7 +185,7 @@ Com esta configuração será alocado 512 MB para uso da JVM usada pelo Puppet S
 
   Mantenha a hora corretamente configurada utilizando NTP para evitar problemas na assinatura de certificados.
 
-  A porta ``8140/TCP`` do servidor Puppet Server precisa estar acessível para as demais máquinas que possuem o Puppet Agent instalado.
+  A porta ``8140/TCP`` do servidor Puppet Server precisa estar acessível para os demais hosts que possuem o Puppet Agent instalado.
 
 As solicitações de assinatura de certificados no Puppet-Server ficam em: **/etc/puppetlabs/puppet/ssl/ca/requests/**
 
@@ -201,7 +201,7 @@ Os logs do PuppetServer ficam em:
 Instalação do agente em node1
 `````````````````````````````
 
-Assumindo que os passos do capítulo `Instalação`_ foram executados anteriormente na máquina ``node1``. O Puppet Agent já está instalado. Configure o Puppet Agent com os passos a seguir.
+Assumindo que os passos do capítulo `Instalação`_ foram executados anteriormente no host ``node1``. O Puppet Agent já está instalado. Configure o Puppet Agent com os passos a seguir.
 
 1. Certifique-se de que o nome e domínio do sistema estejam corretos:
 
@@ -210,7 +210,7 @@ Assumindo que os passos do capítulo `Instalação`_ foram executados anteriorme
   # hostname --fqdn
   node1.domain.com.br
 
-2. Em uma máquina em que o agente está instalado, precisamos configurá-la para que ela saiba quem é o Master.
+2. Em um host em que o agente está instalado, precisamos configurá-lo para que ela saiba quem é o Master.
 
 No arquivo ``/etc/puppetlabs/puppet/puppet.conf``, adicione as linhas abaixo:
 
@@ -240,14 +240,16 @@ No arquivo ``/etc/puppetlabs/puppet/puppet.conf``, adicione as linhas abaixo:
   Info: Creating a new SSL certificate request for node1.domain.com.br
   Info: Certificate Request fingerprint (SHA256): 6C:7E:E6:3E:EC:A4:15:56: ...
 
-4. No servidor Master aparecerá a solicitação de assinatura para a máquina ``node1.domain.com.br``. Assine-a.
+4. No servidor Master aparecerá a solicitação de assinatura para o host ``node1.domain.com.br``. Assine-a.
 
- * O comando abaixo deve ser executado em **master.domain.com.br**.
+ * Os comandos abaixo devem ser executados em **master.domain.com.br**.
  
 ::
 
   # puppet cert list
   "node1.domain.com.br" (SHA256) 6C:7E:E6:15:56:49:C3:1E:A5:E4:7F:58:B8: ...
+
+::
   
   # puppet cert sign node1.domain.com.br
   Signed certificate request for node1.domain.com.br
@@ -283,7 +285,7 @@ Agora execute os comandos abaixo para iniciar o agente do Puppet como serviço e
 
 No Puppet-Agent, os certificados assinados ficam em: **/etc/puppetlabs/puppet/ssl/**
 
-Se precisar refazer a assinatura de certificados do host puppet-agent é só para o servico puppet-agent com o comando abaixo e depois apagar os arquivos e sub-diretórios que ficam em: **/etc/puppetlabs/puppet/ssl/**.
+Se precisar refazer a assinatura de certificados do host puppet-agent é só parar o servico ``puppet-agent`` com o comando abaixo e depois apagar os arquivos e sub-diretórios que ficam em: **/etc/puppetlabs/puppet/ssl/**.
 
 ::
 
@@ -313,25 +315,25 @@ Os logs do puppet-agent ficam em:
 
   |nota| **Recriando certificados para o node**
 
-  Se por algum motivo importante, for necessário recriar o certificado do Puppet Agent no node, execute o seguintes passos:
+  Se por algum motivo importante, for necessário recriar o certificado do Puppet Agent de um node, execute o seguintes passos:
 
 1) Removendo o certificado do node no Puppet Server.
 
 ::
 
-  # puppet cert destroy <name_certificate_hostname>
+  # puppet cert clean <name_certificate_hostname>
 
 Exemplo:
 
 ::
 
-  # puppet cert destroy node1.domain.com.br
+  # puppet cert clean node1.domain.com.br
 
 .. raw:: pdf
  
  PageBreak
 
-2) Removendo o certificado do Puppet Agent no node.
+2) Removendo o certificado do node nele mesmo.
 
 ::
 
@@ -346,15 +348,15 @@ Veja mais detalhes em: https://docs.puppet.com/puppet/latest/ssl_regenerate_cert
 
   |nota| **Removendo solicitações indesejadas de assinaturas de certificado**
 
-  Se houver solicitações de assinatura de certificados para hosts desconhecidos, basta remover executando o comando abaixo no Puppet Server:
+  Se no Puppet Master houver solicitações de assinatura de certificados para nodes desconhecidos, basta removê-las executando o comando abaixo no Puppet Server:
 
 ::
 
-  # puppet cert clean <name_certificate_hostname>
+  # puppet ca destroy <name_certificate_hostname>
 
 Exemplo:
 
 ::
 
-  # puppet cert clean node4.domain.com.br
+  # puppet ca destroy node4.domain.com.br
 

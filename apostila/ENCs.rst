@@ -40,7 +40,7 @@ Exemplo de um YAML válido para o Puppet:
 Prática: Shell Script como ENC
 ------------------------------
 
-Os comandos abaixo serão executados na máquina **master.domain.com.br** e aplicaremos a configuração no **node1**.
+Os comandos abaixo serão executados no host **master.domain.com.br** e aplicaremos a configuração no **node1**.
 
 1. Crie um shell script com o seguinte conteúdo em ``/etc/puppet/enc.sh``:
 

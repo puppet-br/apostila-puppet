@@ -34,7 +34,7 @@ A primeira coisa a se fazer é criar o arquivo ``/etc/puppetlabs/code/hiera.yaml
   :backends:
      - yaml
   :yaml:
-     :datadir: '/etc/puppetlabs/code/environments/production/hieradata/meucliente'
+     :datadir: '/etc/puppetlabs/code/environments/production/hieradata/'
     
 Observe que na configuração do arquivo, estamos definindo a seguinte sequencia de pesquisa:
 
@@ -45,11 +45,11 @@ Observe que na configuração do arquivo, estamos definindo a seguinte sequencia
 * domain/domain
 * common
 
-E definimos também que o backend é o YAML e que os arquivos ficarão no diretório ``/etc/puppetlabs/code/environments/production/hieradata/meucliente``. Se esse diretório não existir, crie-o. 
+E definimos também que o backend é o YAML e que os arquivos ficarão no diretório ``/etc/puppetlabs/code/environments/production/hieradata/``. Se esse diretório não existir, crie-o. 
 
 ::
 
-  # mkdir -p /etc/puppetlabs/code/environments/production/hieradata/meucliente
+  # mkdir -p /etc/puppetlabs/code/environments/production/hieradata/
 
 Dentro desse diretório ficarão os diretórios e arquivos a seguir, por exemplo:
 
@@ -62,10 +62,10 @@ Dentro desse diretório ficarão os diretórios e arquivos a seguir, por exemplo
 
 ::
 
-  # mkdir -p /etc/puppetlabs/code/environments/production/hieradata/meucliente/os
-  # mkdir -p /etc/puppetlabs/code/environments/production/hieradata/meucliente/host
-  # mkdir -p /etc/puppetlabs/code/environments/production/hieradata/meucliente/domain
-  # cd /etc/puppetlabs/code/environments/production/hieradata/meucliente/
+  # mkdir -p /etc/puppetlabs/code/environments/production/hieradata/os
+  # mkdir -p /etc/puppetlabs/code/environments/production/hieradata/host
+  # mkdir -p /etc/puppetlabs/code/environments/production/hieradata/domain
+  # cd /etc/puppetlabs/code/environments/production/hieradata/
   # touch os/ubuntu.yaml
   # touch os/redhat.yaml
   # touch domain/domain.com.br.yaml
@@ -73,7 +73,7 @@ Dentro desse diretório ficarão os diretórios e arquivos a seguir, por exemplo
   # touch host/node1.domain.com.br.yaml
   # touch common.yaml
   
-Dentro de cada arquivo YAML, são definidos os valores para as variàveis a serem usadas nos manifests. Essas variáveis podem ter valores diferentes para cada arquivo especificado no exemplo acima. Se houverem variàveis com o mesmo nome e valores diferentes em vários arquivos, o Hiera seguirá a ordem de prioridade da hierarquia dos dados que definimos no arquivo ``/etc/puppetlabs/puppet/hiera.yaml``. A seguir está o exemplo do conteúdo de cada arquivo.
+Dentro de cada arquivo YAML, são definidos os valores para as variáveis a serem usadas nos manifests. Essas variáveis podem ter valores diferentes para cada arquivo especificado no exemplo acima. Se houverem variáveis com o mesmo nome e valores diferentes em vários arquivos, o Hiera seguirá a ordem de prioridade da hierarquia dos dados que definimos no arquivo ``/etc/puppetlabs/puppet/hiera.yaml``. A seguir está o exemplo do conteúdo de cada arquivo.
 
 Exemplo do conteúdo do arquivo ``host/node1.domain.com.br.yaml``:
 
@@ -212,7 +212,7 @@ O puppet lookup só servirá para os testes se alguma vez o node tiver estabelec
 Criando um módulo para usar dados vindos do Hiera
 -------------------------------------------------
 
-Agora que já configuramos o Hiera para localizar dados da estrutura do ``meucliente``, vamos criar um módulo que usará esses dados e que também definirá valores padrão para as variáveis, caso não seja possível obter via Hiera.
+Agora que já configuramos o Hiera para localizar os dados, vamos criar um módulo que irá utilizá-los e também definirá os valores padrão para as variáveis, caso não seja possível obtê-los via Hiera.
 
 1. Primeiramente, crie a estrutura básica de um módulo ``doc``:
 
@@ -350,7 +350,7 @@ Agora veja o conteúdo do arquivo ``/tmp/doc.txt`` e observe se o conteúdo est�
 
 ::
 
-  # cd /etc/puppetlabs/code/environments/production/hieradata/meucliente/host/
+  # cd /etc/puppetlabs/code/environments/production/hieradata/host/
   # mv node1.domain.com.br.yaml /root/manifests.
   
 6. Em **node1** aplique a configuração:

@@ -22,7 +22,7 @@ Sintaxe
 A forma geral de um coletor de recursos é:
 
 * O tipo de recurso, começando com a letra maiúscula. Não pode ser uma classe e não há maneira de coletar classes. 
-* <\|  Um sinal de "menor que" ( ``<`` ) e um caractere de pipe ( ``|`` ) .
+* <\| - Um sinal de "menor que" ( ``<`` ) e um caractere de pipe ( ``|`` ) .
 *  Opcionalmente, uma expressão de pesquisa.
 * \|> - Um caractere de pipe e um sinal de "maior que" ( ``>`` ). 
 

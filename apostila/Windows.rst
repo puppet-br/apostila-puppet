@@ -10,9 +10,9 @@ Para obter detalhes sobre a instalação do Puppet Agent no Windows acesse: http
 Prática: Instalação
 -------------------
 
-Para a realização dessa prática é necessário você instalar uma terceira máquina com o Windows 7 e aqui chamaremos de **win7.domain.com.br**. Também precisaremos usar a máquina **master.domain.com.br**.
+Para a realização dessa prática é necessário você instalar um terceiro host com o Windows 7 ou superior e aqui chamaremos de **win7.domain.com.br**. Também precisaremos usar o host **master.domain.com.br**.
 
-1. Faça login na máquina **win7.domain.com.br**. Baixe o instalado mais novo do Puppet-Agent para Windows em: 
+1. Faça login no host **win7.domain.com.br**. Baixe o instalado mais novo do Puppet-Agent para Windows em: 
 
 * https://downloads.puppetlabs.com/windows/puppet-agent-x64-latest.msi (Windows 64 bits)
 * https://downloads.puppetlabs.com/windows/puppet-agent-x86-latest.msi (Windows 32 bits)
@@ -54,7 +54,9 @@ Para a realização dessa prática é necessário você instalar uma terceira m�
 
   # puppet cert list
     "win7.domain.com.br" (SHA256) E3:6F:64:15:DF:68:A4:21:DA:A3:E2:81:43:3F: ...
-  
+
+::  
+
   # puppet cert sign win7.domain.com.br
   Signed certificate request for win7.domain.com.br
   Removing file Puppet::SSL::CertificateRequest win7.domain.com.br at \
@@ -85,7 +87,7 @@ Para a realização dessa prática é necessário você instalar uma terceira m�
 
   |dica| **Chocolatey**
   
-  No Windows, você pode usar o chocolatey para facilitar a instalar pacotes de forma semelhante ao que é feito pelos gerenciadores de pacotes ``apt`` e ``yum`` do Linux. Saiba mais informações nos sites abaixo.
+  No Windows, você pode usar o chocolatey para facilitar a instalação de pacotes de forma semelhante ao que é feito pelos gerenciadores de pacotes ``apt`` e ``yum`` do Linux. Saiba mais informações nos sites abaixo.
   https://chocolatey.org
   https://puppet.com/blog/chocolatey-using-chocolatey-puppet
   https://forge.puppet.com/chocolatey/chocolatey
@@ -95,7 +97,7 @@ Prática: resources para Windows
 
 Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
-1. Na máquina win7.domain.com.br, baixe o pacote http://www.7-zip.org/a/7z1602.exe e copie para c:\. Declare o seguinte no arquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp``:
+1. No host win7.domain.com.br, baixe o pacote http://www.7-zip.org/a/7z1602.exe e copie para c:\. Declare o seguinte no arquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp``:
 
 ::
 
@@ -120,15 +122,12 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
   
   O título do resource package precisa ser igual a propriedade *DisplayName* utilizada no registro do Windows para instalação de um pacote MSI. Caso o título seja diferente, o Puppet executará a instalação em todas as execuções.
 
-.. raw:: pdf
- 
- PageBreak
  
 3. Veja que o 7-Zip foi instalado:
 
 .. image:: images/windows-7zip.png
 
-4. Agora vamos configurar um serviço. Declare o seguinte no ``site.pp`` para o node **win7.domain.com.br**:
+4. Agora vamos configurar um serviço. Acesse o node **master** e adicione o seguinte conteúdo no arquivo ``site.pp`` para o node **win7.domain.com.br**:
 
 ::
 
@@ -159,9 +158,6 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
   puppet agent -t
 
-.. raw:: pdf
- 
- PageBreak
 
 7. Veja que o serviço Windows Audio foi parado e desativado.
 
@@ -178,14 +174,14 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
           WAIT_HINT          : 0x0
 
 
-Para mais detalhes sobre as diferenças na declaração dos resources no Windows: http://docs.puppetlabs.com/windows/writing.html
+Para mais detalhes sobre as diferenças na declaração dos resources no Windows, acesse a página: http://docs.puppetlabs.com/windows/writing.html
 
 Prática: manipulando o registro
 -------------------------------
 
 Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
 
-1. Instalando o módulo **puppetlabs-registry** em **master.domain.com.br**:
+1. Instale o módulo **puppetlabs-registry** em **master.domain.com.br**:
 
 ::
 
@@ -206,6 +202,10 @@ Essa prática é realizada em **win7.domain.com.br** e **master.domain.com.br**.
   # puppet agent -t
 
 3. Declare uma chave de registro no nosso manifest:
+
+.. raw:: pdf
+ 
+ PageBreak
 
 ::
 

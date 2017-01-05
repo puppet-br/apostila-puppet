@@ -1,9 +1,9 @@
 PuppetDB e Dashboards Web
 =========================
 
-Nos capítulos `Instalação`_ e `Master / Agent`_, vimos como instalar o puppet-agent e puppetserver. Agora vamos aprender a instalar o PuppetDB, o PuppetExplorer e o PuppetBoard, que oferecem uma interface web que permite acompanhar o que acontece em cada ciclo de operação execultado nas máquinas que possuem o agente instalado.
+Nos capítulos `Instalação`_ e `Master / Agent`_, vimos como instalar o puppet-agent e puppetserver. Agora vamos aprender a instalar o PuppetDB, o PuppetExplorer e o PuppetBoard, que oferecem uma interface web que permite acompanhar o que acontece em cada ciclo de operação execultado nos hosts que possuem o agente instalado.
 
-Os passos de instalação a seguir são executados apenas na máquina **master.domain.com.br** e é assumido que o ``puppet-agent`` e ``puppetserver`` estão instalados.
+Os passos de instalação a seguir são executados apenas no host **master.domain.com.br** e é assumido que o ``puppet-agent`` e ``puppetserver`` estão instalados.
  
 1. Antes de iniciar a instalação do PuppetDB, instale o PostgreSQL 9.5 com os comandos abaixo.
 
@@ -280,7 +280,7 @@ Ao final da instalação, o PuppetExplorer ficará acessível em: https://master
 
   |aviso| **Problema no PupppetExplorer**
   
-  O módulo de instalação do PuppetExplorer foi declarado passando o recurso ``vhost_options``, afim de corrigir um bug no PuppetExplorer devido a uma atualização realizada no PuppetDB. Veja o report em: https://github.com/spotify/puppetexplorer/issues/49 normalmente, o PuppetExplorer deveria ser instalado apenas usando a declaração abaixo no arquivo site.pp.
+  O módulo de instalação do PuppetExplorer foi declarado passando o recurso ``vhost_options``, afim de corrigir um bug no PuppetExplorer devido a uma atualização realizada no PuppetDB. Veja o report em: https://github.com/spotify/puppetexplorer/issues/49 normalmente, o PuppetExplorer deveria ser instalado apenas usando a declaração abaixo no arquivo ``site.pp``.
 
 ::
 
@@ -390,7 +390,7 @@ Mais informações sobre o PuppetBoard podem ser encontradas em: https://forge.p
 Configurando os Agentes Puppet
 ------------------------------
 
-Em cada máquina que executa o Puppet-Agent, adicione no arquivo ``/etc/puppetlabs/puppet/puppet.conf`` o seguinte conteúdo:
+Em cada host que executa o Puppet-Agent, adicione no arquivo ``/etc/puppetlabs/puppet/puppet.conf`` o seguinte conteúdo:
 
 .. code-block:: ruby
 

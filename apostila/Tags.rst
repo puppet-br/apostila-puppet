@@ -1,7 +1,7 @@
 Tags
 =====
 
-Os recursos, as classes e instâncias de tipo definidos podem ter várias tags associadas, mas eles recebem algumas tags automaticamente. As tags são úteis para:
+Os recursos, as classes e instâncias de tipos definidos podem ter várias tags associadas, mas eles recebem algumas tags automaticamente. As tags são úteis para:
 
 * coletar recursos;
 * filtrar e analisar relatórios;
@@ -19,7 +19,7 @@ As tags devem começar com uma letra minúscula, número ou sublinhado, e podem 
 * ponto ( . );
 * Hifens ( - );
 
-Os nomes de tag devem corresponder à seguinte expressão regular:
+Os nomes das tags devem corresponder à seguinte expressão regular:
 
 ::
   
@@ -56,7 +56,7 @@ Você pode usar o meta-parâmetro ``tag`` em uma declaração de recurso para ad
   }
 
 
-O meta-parâmetro ``tag`` pode aceitar uma única tag ou um array de tags. Estas tagas serão adicionados às tags associadas automaticamente. Além disso, esse meta-parâmetro pode ser utilizado com recursos normais, recursos definidos e classes. 
+O meta-parâmetro ``tag`` pode aceitar uma única tag ou um array de tags. Estas tags serão adicionados às tags associadas automaticamente. Além disso, esse meta-parâmetro pode ser utilizado com recursos normais, recursos definidos e classes. 
 
 O exemplo acima atribui as tags ``us_mirror1`` e ``us_mirror2`` para cada recurso contido na classe ``Apache::Vhost['docs.puppetlabs.com']``.
 
@@ -86,7 +86,7 @@ As tags podem ser usadas como um atributo na expressão de busca de um colector 
 
 Você também pode fazer com que o agente do Puppet aplique o estado desejado em um host usando no catálogo apenas a configuração associada a determinadas tags. Isso é útil ao refatorar módulos e permite que você aplique somente uma única classe em um nó de teste.
 
-As tags de configuração podem ser definida no arquivo ``puppet.conf`` (para restringir permanentemente o catálogo) ou na linha de comando (para restringir temporariamente):
+As tags de configuração podem ser definidas no arquivo ``puppet.conf`` (para restringir permanentemente o catálogo) ou na linha de comando (para restringir temporariamente):
 
 ::
 
@@ -94,7 +94,7 @@ As tags de configuração podem ser definida no arquivo ``puppet.conf`` (para re
 
 As tags configuração devem ser separadas por vírgulas (sem espaços entre as tags).
 
-O módulo `Puppet Tagmail`_ pode enviar e-mails para uma lista de pessoas sempre que recursos com determinadas tags forem alterados.
+O módulo `Puppet Tagmail`_ pode enviar e-mails para uma lista de pessoas sempre que recursos com determinadas tags forem alteradas.
 
 As tags de recurso também estão disponíveis para serem usadas em manipuladores de relatórios personalizados. Veja mais detalhes nos links abaixo.
 

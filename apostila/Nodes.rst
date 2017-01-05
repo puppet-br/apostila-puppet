@@ -32,7 +32,7 @@ No exemplo acima, o agente que se identificar como ``node1.domain.com.br`` receb
 
   |nota| **Classificação de nodes**
   
-  O Puppet fornece um recurso chamado *External Node Classifier* (ENC), que tem a finalidade de delegar o registro de nodes para uma entidade externa, evitando a configuração de longos manifests. Esse recurso será visto mais adiante.
+  O Puppet fornece um recurso chamado *External Node Classifier* (ENC), que tem a finalidade de delegar o registro de nodes para uma entidade externa, evitando a configuração de longos manifests.
 
   A documentação oficial está em: https://docs.puppet.com/guides/external_nodes.html
 
@@ -81,7 +81,7 @@ Caso o Puppet Master não encontre nenhuma declaração de ``node`` explícita p
 Prática
 -------
 
-1. Declare a máquina **node1.domain.com.br** no arquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp`` do master.
+1. Declare o host **node1.domain.com.br** no arquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp`` do master.
 
 2. Declare o pacote ``tcpdump`` como instalado para **node1.domain.com.br**.
 

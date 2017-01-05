@@ -27,8 +27,7 @@ As seguintes funções podem aceitar um bloco de código e executá-lo de alguma
 Sintaxe
 ```````
 
-    Veja o capítulo sobre `Funções`_ para conhecer a sintaxe de chamadas de função.
-    Veja o capítulo sobre `Funções`_ para conhecer a sintaxe de blocos de código que pode ser passado para as funções. 
+Veja o capítulo sobre `Funções`_ para conhecer a sintaxe de chamadas de função e para conhecer a sintaxe de blocos de código que pode ser passado às funções. 
 
 Em geral, as funções de iteração recebem uma matriz ou um hash como seu principal argumento para, em seguida, iterar sobre seus valores.
 
@@ -116,7 +115,7 @@ Exemplo 3:
   }
   # retorna {"key1"=>"first value", "key2"=>"second value", "key3"=>"third value"}
 
-Prática: Usando funcoes de loop e iteração
+Prática: Usando funções de loop e iteração
 -------------------------------------------
 
 1) Escreva um manifest, no qual dado um hash retorne todos os valores que contém o trecho "berry"
@@ -147,14 +146,14 @@ Prática: Usando funcoes de loop e iteração
   }
   notice( "Resultado: $combine" )
 
-4) Escreva outro manifest, no qual dado um array de numeros retorne os números organizados em pares.
+4) Escreva outro manifest, no qual dado um array de números retorne-os organizados em pares.
 
 .. code-block:: ruby
 
   $result = slice([1,2,3,4,5,6], 2) 
   notice( "Resultado: $result" )
 
-5) Escreva outro manifest, no qual dado uma array de caracteres retorne os mesmos caracteres organizados em pares.
+5) Escreva outro manifest, no qual dado uma array de caracteres retorne-os organizados em pares.
 
 .. code-block:: ruby
 
