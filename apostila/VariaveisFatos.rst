@@ -31,7 +31,7 @@ Mais alguns detalhes sobre variáveis:
 
   |nota| **Tipos de dados**
   
-  As variáveis podem suportas vários tipos de dados, que podem ser: strings, arrays, numeros, tipo nulo, boleanos e hashes. 
+  As variáveis podem suportar vários tipos de dados, que podem ser: strings, arrays, numeros, tipo nulo, boleanos e hashes. 
   Para obter mais informações sobre cada tipo de dados, acesse a página abaixo.
   https://docs.puppet.com/puppet/latest/lang_data.html
 
@@ -204,7 +204,7 @@ Outro exemplo, usando uma variável do ``facter``:
     notify {'Estamos em uma maquina real': }
   }
 
-Os blocos podem conter qualquer qualquer tipo de definição de configuração. Veja mais um exemplo:
+Os blocos podem conter qualquer tipo de definição de configuração. Veja mais um exemplo:
 
 .. raw:: pdf
 
@@ -334,7 +334,7 @@ Ao invés de escolher a partir de um bloco, um ``selector`` escolhe seu valor a 
   }
 
 
-O ponto de interrogação assinala ``$operatingsystem`` como o pivô do ``selector``, e o valor final que é atribuído a ``$apache`` é determinado pelo valor corresponde de ``$::operatingsystem``.
+O ponto de interrogação assinala ``$operatingsystem`` como o pivô do ``selector``, e o valor final que é atribuído a ``$apache`` é determinado pelo valor correspondente de ``$::operatingsystem``.
 
 Pode parecer um pouco estranho, mas há muitas situações em que é a forma mais concisa de se obter um valor.
 

@@ -113,7 +113,7 @@ Vamos continuar explorando mais *resources*. Outro *resource type* muito útil �
   }
   ...
 
-O comando acima listou todos os serviços da máquina e seus estados. Podemos manipular os serviços via Puppet, ao invés de utilizarmos os tradicionais comandos ``update-rc.d`` no Debian/Ubuntu ou ``chkconfig`` no CentOS\Red Hat. Além disso, também podemos parar e iniciar serviços.
+O comando acima listou todos os serviços da máquina e seus estados. Podemos manipular os serviços via Puppet, ao invés de utilizarmos os tradicionais comandos ``update-rc.d`` no Debian/Ubuntu ou ``chkconfig`` no CentOS/Red Hat. Além disso, também podemos parar e iniciar serviços.
 
 Parando um serviço que está em execução:
 
@@ -253,7 +253,7 @@ Prática: Modificando recursos interativamente
 
 Além de podermos manipular recursos em nosso sistema pelo comando puppet resource, ele fornece um parâmetro interessante: ``--edit``. Com ele, podemos ter um contato direto com a linguagem do Puppet para manipular recursos, ao invés de usarmos apenas a linha de comando.
 
-Vamos colocar o usuário **joe** aos grupos **adm** e **bin**. Normalmente faríamos isso usando o comando ``usermod`` ou editando manualmente o arquivo ``/etc/group``. Vamos fazer isso no estilo Puppet!
+Vamos adicionar o usuário **joe** aos grupos **adm** e **bin**. Normalmente faríamos isso usando o comando ``usermod`` ou editando manualmente o arquivo ``/etc/group``. Vamos fazer isso no estilo Puppet!
 
 1. Execute o seguinte comando:
 
@@ -302,13 +302,17 @@ Vamos colocar o usuário **joe** aos grupos **adm** e **bin**. Normalmente farí
   ['adm', 'bin']
   Notice: Applied catalog in 0.07 seconds
 
-5. Remova o usuário joe com o comando a seguir.
+.. raw:: pdf
+
+ PageBreak
+
+5. Remova o usuário ``joe`` com o comando a seguir.
 
 ::
 
   # puppet resource user joe ensure=absent
  
-6. Remova o diretório /home/joe com o comando a seguir.
+6. Remova o diretório ``/home/joe`` com o comando a seguir.
 
 ::
 
@@ -326,19 +330,19 @@ Vamos colocar o usuário **joe** aos grupos **adm** e **bin**. Normalmente farí
   
   # puppet resource group teste ensure=present
   
-9. Verifique o status do serviço ssh.
+9. Verifique o status do serviço ``ssh``.
 
 ::
 
   # puppet resource service ssh  
   
-10. Crie o arquivo /tmp/teste com o conteúdo "isso é um teste".
+10. Crie o arquivo ``/tmp/teste`` com o conteúdo "isso é um teste".
 
 ::
   
   # puppet resource file /tmp/teste.txt ensure=file content='isso eh um teste'
   
-11. Execute um comando de ping para o Google.com e direcione a saída do comando para um arquivo /tmp/ping.txt.
+11. Execute um comando de ``ping`` para o Google.com e direcione a saída do comando para um arquivo ``/tmp/ping.txt``.
 
 ::
 

@@ -2,7 +2,7 @@ Sobre a Instruct
 ================
 
 A `Instruct <http://instruct.com.br>`_ é a autoridade em automação e Puppet no Brasil e é
-parceira e representante oficial da Companhia Puppet (antiga Puppet Labs) no Brasil para suporte, licenciamento, treinamento e
+parceira e representante oficial da Companhia Puppet (antiga Puppet Labs) para suporte, licenciamento, treinamento e
 consultoria. A empresa tem como especialidade soluções na área de automação de infraestrutura e
 gerenciamento de configuração e possui equipe capacitada e certificada.
 
@@ -28,6 +28,6 @@ Sobre a Apostila
 
 Versões mais novas e outras informações sobre essa apostila podem ser encontradas em: https://github.com/puppet-br/apostila-puppet
 
-O código fonte e instruções de como compilar contribuir para com esta apostila estão publicados no GitHub: https://github.com/puppet-br/apostila-puppet.
+O código fonte e instruções de como compilar contribuir para com esta apostila estão publicados no GitHub no link acima.
 
 
