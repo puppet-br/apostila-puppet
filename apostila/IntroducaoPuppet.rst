@@ -57,7 +57,7 @@ A camada de transação é o motor do Puppet. Nela é realizada a configuração
 
 O Puppet analisa a sua configuração e calcula como aplicá-la no agente. Para isso, é criado um grafo que contém todos os resources e suas relações uns com os outros. Isso permite ao Puppet decidir a melhor ordem para aplicação da configuração com base em relacionamentos criados pelo SysAdmin.
 
-Os resourses são compilados no que chamamos de catálogo, que é enviado aos nodes e aplicado pelos agentes, que devolvem ao master um relatório sobre o que foi feito. Isso não faz o Puppet ser totalmente transacional, como um tradicional banco de dados onde alterações podem ser revertidas. Porém, é possível modelar sua configuração com um modo "noop" (*no operation*, sem operação), onde é possível testar a execução de sua configuração sem realmente aplicá-la.
+Os resources são compilados no que chamamos de catálogo, que é enviado aos nodes e aplicado pelos agentes, que devolvem ao master um relatório sobre o que foi feito. Isso não faz o Puppet ser totalmente transacional, como um tradicional banco de dados onde alterações podem ser revertidas. Porém, é possível modelar sua configuração com um modo "noop" (*no operation*, sem operação), onde é possível testar a execução de sua configuração sem realmente aplicá-la.
 
 Uma das consequências do modo de operação do Puppet é a idempotência, ou seja, as configurações podem ser aplicadas repetidas vezes de maneira segura. O Puppet vai alterar somente o que está em divergência com o declarado.
 
