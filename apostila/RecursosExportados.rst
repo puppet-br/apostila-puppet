@@ -1,7 +1,7 @@
 Recursos Exportados
 =====================
 
-Uma declaração de recursos exportados especifica um estado desejado para um recurso, mas não gerencia o recurso no sistema destino. Ela apenas publica o recurso para ser utilizado por outros nós. Qualquer nó (incluindo o nó no qual o recurso é exportado) pode então coleta o recurso exportado e gerenciar uma cópia do mesmo.
+Uma declaração de recursos exportados especifica um estado desejado para um recurso, mas não gerencia o recurso no sistema destino. Ela apenas publica o recurso para ser utilizado por outros nós. Qualquer nó (incluindo o nó no qual o recurso é exportado) pode então coletar o recurso exportado e gerenciar uma cópia do mesmo.
 
 Objetivo
 ---------
