@@ -1,6 +1,6 @@
 # Apostila Puppet #
 
-Acesse o site da apostila em: https://puppet-br.github.io/apostila-puppet
+Acesse o site da apostila em: http://apostila.puppet-br.org
 
 As versões estáveis da apostila, podem ser obtidas em: https://github.com/puppet-br/apostila-puppet/releases
 
