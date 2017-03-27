@@ -17,9 +17,9 @@ Saiba mais sobre Puppet e a Instruct com o conteúdo do canal no YouTube e nas r
 
 Caso esteja procurando serviços profissionais relacionados a automação e Puppet, entre em contato:
 
-* Email: contato@instruct.com.br
-* Escritório em **Campinas/SP**: Rua Joaquim Pinto de Moraes, 247, Sala 11. Telefone: **19 2511-6506**
-* Estritório em **Brasília/DF**: SRCS 502, Bl. C, Lj. 27, Asa Sul. Telefone: **61 3246-9299**
+* Email: http://instruct.com.br/contato/
+* Escritório em **São Paulo/SP**: Av. Paulista 37 - 4º Andar. Telefone: **11 3230-6506**
+* Estritório em **Brasília/DF**: Edifício Parque Cidade Corporate - 10º Andar, Torre C, SCS Setor Comercial. Telefone: **61 4042-2250**
 
 Sobre a Apostila
 ----------------

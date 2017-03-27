@@ -5,7 +5,7 @@ Nos capítulos `Instalação`_ e `Master / Agent`_, vimos como instalar o puppet
 
 Os passos de instalação a seguir são executados apenas no host **master.domain.com.br** e é assumido que o ``puppet-agent`` e ``puppetserver`` estão instalados.
  
-1. Antes de iniciar a instalação do PuppetDB, instale o PostgreSQL 9.5 com os comandos abaixo.
+1. Antes de iniciar a instalação do PuppetDB, instale o PostgreSQL com os comandos abaixo.
 
 * No CentOS/RedHat 6 64 bits:
 
@@ -312,20 +312,50 @@ Agora edite o aquivo ``/etc/puppetlabs/code/environments/production/manifests/si
 .. code-block:: ruby
 
   node puppetserver.domain.com.br {
-     class {'apache': }
-     # Configure Apache on this server
-     class { 'apache::mod::wsgi': }
-     # Configure Puppetboard
-     class { 'puppetboard':
-       manage_git        => 'latest',
-       manage_virtualenv => 'latest',
-       reports_count      => 50
+    class {'apache':
+       default_vhost    => false,
+       server_signature => 'Off',
+       server_tokens    => 'Prod',
+       trace_enable     => 'Off',
      }
-     # Configure Access Puppetboard
+
+     #Definindo a porta padrao do HTTP
+     apache::listen { '80': }
+
+     class { 'apache::mod::ssl':
+       ssl_cipher   => 'HIGH:MEDIUM:!aNULL:!MD5:!SSLv3:!SSLv2:!TLSv1:!TLSv1.1',
+       ssl_protocol => [ 'all', '-SSLv2', '-SSLv3', '-TLSv1', '-TLSv1.1' ],
+     }
+
+     #Configurando o modulo wsgi
+     class { 'apache::mod::wsgi':
+       wsgi_socket_prefix => '/var/run/wsgi',
+     }
+
+     #Configurando o Puppetboard
+     class { 'puppetboard':
+       manage_git          => 'latest',
+       manage_virtualenv   => 'latest',
+       reports_count       => 50
+     }->
+     python::pip { 'Flask':
+       virtualenv => '/srv/puppetboard/virtenv-puppetboard',
+     }->
+     python::pip { 'Flask-WTF':
+       virtualenv => '/srv/puppetboard/virtenv-puppetboard',
+     }->
+     python::pip { 'WTForms':
+       virtualenv => '/srv/puppetboard/virtenv-puppetboard',
+     }->
+     python::pip { 'pypuppetdb':
+       virtualenv => '/srv/puppetboard/virtenv-puppetboard',
+     }
+
+     #Configurando o Acesso ao Puppetboard via HTTPS
      class { 'puppetboard::apache::vhost':
-     vhost_name => 'master.domain.com.br',
-     port       => 443,
-     ssl        => true,
+       vhost_name => 'master.domain.com.br',
+       port       => 443,
+       ssl        => true,
      }
   }
 

@@ -111,17 +111,79 @@ Exemplo de saída da execução do comando ``facter``:
 
 Todas essas variáveis estão disponíveis para uso dentro de qualquer manifest e dizemos que estão no escopo do topo (*top scope*).
 
+Veja que é possível extrair fatos específicos:
+ 
+::
+
+   # facter ipaddress
+   # facter ipaddress_eth0
+   # facter mountpoints
+   # facter mountpoints./
+   # facter mountpoints./.available_byte
+   # facter os
+   # facter os.distro
+   # facter os.distro.release
+   # facter os.distro.release.full
+
+É possível extrair os fatos em formatos como YAML e JSON.
+ 
+::
+
+  # facter --json
+
+  # facter --yaml
+
+Prática: facter
+```````````````
+
 O manifest ``facter.pp`` a seguir usa algumas das variáveis geradas pelo ``facter``:
 
 .. code-block:: ruby
 
+  #Obtendo o nome do S.O e a versao do kernel
+  #Esses dados estao nos fatos: kernel e kernelversion
   notify {'kernel':
-    message => "O sistema operacional é ${::kernel} versão ${::kernelversion}."
+    message => "O sistema operacional eh ${::kernel} versao ${::kernelversion}."
   }
   
+  #Obtendo o nome da distro GNU/Linux
+  #Esse dados estao nos fatos: operatingsystem e operatingsystemrelease
   notify {'distro':
-    message => "A distribuição GNU/Linux é ${::operatingsystem} 
+    message => "A distribuicao GNU/Linux eh ${::operatingsystem} 
       versão ${::operatingsystemrelease}."
+  }
+
+  #Alguns sysadmins criam o '/home' em particao separada do '/'
+  #Vamos testar o fato: mountpoints['/home'], 
+  #Se existir essa particao, vamos obter o espaco livre, contido
+  #no fato mountpoints['/home']['available_bytes']
+  if $::mountpoints['/home'] {
+    $free_space = $::mountpoints['/home']['available_bytes']
+  }
+  
+  #Se entrar no elsif, eh porque o '/home' esta na mesma particao do '/'
+  #Vamos testar o fato: mountpoints['/'], 
+  #E vamos obter o espaco livre, contido
+  #no fato mountpoints['/']['available_bytes']
+  elsif $::mountpoints['/'] {
+    $free_space = $::mountpoints['/']['available_bytes']
+  }
+
+  #O espaco requerido eh de 2GB ou 2000000 bytes
+  $space_required = 2000000
+
+  #Testando se ha o espaco requerido em '/home'
+  if $free_space > $space_required {
+    notify{ 'info_free_space':
+     message => "[OK] Ha espaco livre suficiente em /home. Espaco requerido: \
+       ${space_required} bytes, espaco livre: ${free_space} bytes",
+    }
+  }
+  else {
+    notify{ 'info_free_space':
+      message => "[ERRO] Espaco insuficiente em /home. Espaco requerido: \
+       ${space_required} bytes, espaco livre: ${free_space} bytes"
+    }
   }
 
 E teremos a seguinte saída:
@@ -129,44 +191,31 @@ E teremos a seguinte saída:
 ::
 
   # puppet apply facter.pp
-  Notice: O sistema operacional é Linux versão 3.16.0
+  Notice: Compiled catalog for node1 in environment production in 0.09 seconds \
+  Notice: O sistema operacional eh Linux versao 4.4.0.
   Notice: /Stage[main]/Main/Notify[kernel]/message: defined 'message' as \
-     'O sistema operacional é Linux versão 3.16.0'
-  Notice: A distribuição é Debian e versão 8.2
+    'O sistema operacional eh Linux versao 4.4.0.'
+  Notice: A distribuicao GNU/Linux eh Ubuntu versão 16.04.
   Notice: /Stage[main]/Main/Notify[distro]/message: defined 'message' as \
-     'A distribuição é Debian versão 8.2'
-  Notice: Applied catalog in 0.03 second
+    'A distribuicao GNU/Linux eh Ubuntu versão 16.04.'
+  Notice: [ERRO] Espaco insuficiente em /home. Espaco requerido: 200000 bytes, \
+    espaco livre: -211103744 bytes
+  Notice: /Stage[main]/Main/Notify[info_free_space]/message: defined 'message' as \
+    '[ERRO] Espaco insuficiente em /home. Espaco requerido: 200000 bytes, espaco \
+    livre: -211103744 bytes'
+  Notice: Applied catalog in 0.04 seconds
 
 .. nota::
 
   |nota| **Sistemas operacionais diferentes**
   
-  Alguns fatos podem variar de um sistema operacional para outro. Além disso, é possível estender as variáveis do ``facter``.
+  Alguns fatos podem variar de um sistema operacional para outro. Além disso, é possível estender as variáveis do ``facter``. Saiba mais nas páginas abaixo.
 
-Prática: facter
-```````````````
-
-1. Execute o facter:
- 
-::
- 
-   # facter
- 
-2. Veja que é possível extrair fatos específicos:
- 
-::
- 
-   # facter ipaddress
-   
-   # facter ipaddress_eth0
- 
-3. É possível extrair os fatos em formatos como YAML e JSON.
- 
-::
- 
-  # facter --json
-   
-  # facter --yaml
+  https://docs.puppet.com/facter/latest/core_facts.html
+  https://docs.puppet.com/puppet/latest/lang_facts_and_builtin_vars.html
+  https://docs.puppet.com/facter/latest/fact_overview.html
+  https://docs.puppet.com/facter/latest/custom_facts.html
+  
 
 Condicionais
 ------------

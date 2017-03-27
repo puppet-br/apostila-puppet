@@ -168,6 +168,11 @@ No CentOS/Red Hat edite o arquivo ``/etc/sysconfig/puppetserver`` e no Debian/Ub
   
   JAVA_ARGS="-Xms256m -Xmx512m"
 
+Reinicie o serviço com o comando abaixo.
+
+::
+  
+  # service puppetserver restart
 
 Com esta configuração será alocado 512 MB para uso da JVM usada pelo Puppet Server. Por padrão, são alocados 2 GB de memória para uso da JVM.
 
@@ -188,10 +193,6 @@ Com esta configuração será alocado 512 MB para uso da JVM usada pelo Puppet S
   A porta ``8140/TCP`` do servidor Puppet Server precisa estar acessível para os demais hosts que possuem o Puppet Agent instalado.
 
 As solicitações de assinatura de certificados no Puppet-Server ficam em: **/etc/puppetlabs/puppet/ssl/ca/requests/**
-
-Se precisar revogar os certificados assinados de um host cliente (node1, por exemplo) no Puppet-Server é só usar o comando: ``puppet cert clean node1.domain.com.br``.
-
-Se precisar remover requisições de assinaturas de certificados de hosts desconhecidos é só usar o comando: ``puppet ca destroy node-unknown.domain.com.br``.
 
 Os logs do PuppetServer ficam em:
 
@@ -285,7 +286,7 @@ Agora execute os comandos abaixo para iniciar o agente do Puppet como serviço e
 
 No Puppet-Agent, os certificados assinados ficam em: **/etc/puppetlabs/puppet/ssl/**
 
-Se precisar refazer a assinatura de certificados do host puppet-agent é só parar o servico ``puppet-agent`` com o comando abaixo e depois apagar os arquivos e sub-diretórios que ficam em: **/etc/puppetlabs/puppet/ssl/**.
+Se precisar refazer a assinatura de certificados do host puppet-agent é só parar o serviço ``puppet-agent`` com o comando abaixo e depois apagar os arquivos e sub-diretórios que ficam em: **/etc/puppetlabs/puppet/ssl/**.
 
 ::
 
