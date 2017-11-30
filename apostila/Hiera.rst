@@ -358,7 +358,7 @@ Agora que já configuramos o Hiera para localizar os dados, vamos criar um módu
 
 ::
 
-  # vim /etc/puppetlabs/code/environments/production/manifests.site.pp
+  # vim /etc/puppetlabs/code/environments/production/manifests/site.pp
 
 .. code-block:: ruby
 

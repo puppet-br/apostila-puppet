@@ -88,6 +88,7 @@ Para declarar um recurso virtual, você usa o prefixo ( ``@`` ) antes do nome do
     'gcc-c++',
     'g++',
     'autoconf',
+    ]:
       ensure => installed,
   }
 
