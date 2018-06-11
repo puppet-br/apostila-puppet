@@ -85,13 +85,11 @@ argumentos entre parênteses.
 
   include apache #chamada de funcao; modifica o catálogo
 
-  $binaries = [
-    "facter",
+  $binaries = [ "facter",
     "hiera",
     "mco",
     "puppet",
-    "puppetserver",
-  ]
+    "puppetserver", ]
 
   #chamada de funcao com lambda; executa um bloco de código algumas vezes
   each($binaries) |$binary| {
@@ -140,13 +138,11 @@ e o nome da função. Exemplo:
 
   apache.include #chamada de funcao; modifica um catalogo
 
-  $binaries = [
-    "facter",
+  $binaries = [ "facter",
     "hiera",
     "mco",
     "puppet",
-    "puppetserver",
-  ]
+    "puppetserver", ]
 
   #chamada de funcao com lambda; executa um bloco de código algumas vezes.
   $binaries.each |$binary| {
@@ -339,18 +335,19 @@ A forma geral de um lambda é:
   Opcionalmente pode passar o sinal de igual ( = ).
 * Opcionalmente, pode passar outra vírgula e argumentos extras \
   (por exemplo: String $others = ["default one", "default two"] ), que consiste em:
-   * Um tipo de dados opcional, o que restringe os valores permitidos para argumentos \
-     extra (padrão ``any``).
-   * Um asterisco ( * ).
-   * O nome da variável para representar o parâmetro, incluindo o prefixo ( $ ).
-   * Um sinal de igual opcional ( = ) e o valor padrão, que pode ser: o valor \
-     que corresponde ao tipo de dados especificado ou uma matriz de valores que \
-     coincidem com o tipo de dados.
-   * Uma vírgula opcional após o último parâmetro.
-   * Uma barra vertical fechamento ( | ).
-   * Uma chave de abertura ( { ).
-   * Um bloco de código de Puppet arbitrário.
-   * Uma chave de fechamento ( } ).
+
+  * Um tipo de dados opcional, o que restringe os valores permitidos para argumentos \
+    extra (padrão ``any``).
+  * Um asterisco ( * ).
+  * O nome da variável para representar o parâmetro, incluindo o prefixo ( $ ).
+  * Um sinal de igual opcional ( = ) e o valor padrão, que pode ser: o valor \
+    que corresponde ao tipo de dados especificado ou uma matriz de valores que \
+    coincidem com o tipo de dados.
+  * Uma vírgula opcional após o último parâmetro.
+  * Uma barra vertical fechamento ( | ).
+  * Uma chave de abertura ( { ).
+  * Um bloco de código de Puppet arbitrário.
+  * Uma chave de fechamento ( } ).
 
 Parâmetros e variáveis
 ````````````````````````
@@ -401,5 +398,5 @@ diferentes, sendo um link para cada alvo.
       target => "/opt/puppetlabs/bin/${binary}",
     }
    notice( "Link $index: nome do link: /tmp/${binary} => \
-	   alvo: /opt/puppetlabs/bin/${binary}" )
+     alvo: /opt/puppetlabs/bin/${binary}" )
   }

@@ -1,7 +1,8 @@
 Laboratório 2
 =============
 
-1. Criar um módulo chamado ``ssh``, aproveitando o código do laboratório anterior. Sendo o resultado final usar o módulo dessa maneira em um node:
+1. Criar um módulo chamado ``ssh``, aproveitando o código do laboratório anterior. \
+Sendo o resultado final usar o módulo dessa maneira em um node:
 
 ::
 
@@ -10,7 +11,9 @@ Laboratório 2
   }
 
 
-2. Crie um módulo chamado ``masterssh``. Esse módulo deve distribuir uma chave pública ssh que fica no Puppet Master para os nodes. Assim, a partir do Puppet Master, podemos executar comandos nos nodes.
+2. Crie um módulo chamado ``masterssh``. Esse módulo deve distribuir uma chave \
+pública ssh que fica no Puppet Master para os nodes. Assim, a partir do Puppet Master, \
+podemos executar comandos nos nodes.
 
  * Dicas:
 
@@ -33,12 +36,13 @@ Laboratório 2
 
  * Dicas
 
-  * Crie uma template e nela verifique se o node é o Puppet Master para criar um arquivo com o conteúdo relevante.
-  * A identificação do Puppet Master pode ser feita usando alguma variável do ``facter`` ou definida por você.
+  * Crie uma template e nela verifique se o node é o Puppet Master para criar \
+    um arquivo com o conteúdo relevante.
+  * A identificação do Puppet Master pode ser feita usando alguma variável do
+    ``facter`` ou definida por você.
 
 ::
 
   node 'node1.domain.com.br' {
     include puppet
   }
-

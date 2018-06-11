@@ -43,9 +43,9 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 * http://puppet-br.org/documentacao/
 
 .. raw:: pdf
- 
+
  PageBreak
- 
+
 **Cursos online e grátis sobre Puppet:**
 
 * https://learn.puppetlabs.com/category/self-paced-training
@@ -58,6 +58,7 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 
 **Livros sobre Puppet:**
 
+* https://novatec.com.br/livros/puppet/
 * http://www.puppetcookbook.com/
 * http://shop.oreilly.com/product/0636920034131.do
 * http://shop.oreilly.com/product/0636920038528.do
@@ -70,15 +71,6 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 * http://search.oreilly.com/?q=puppet&x=0&y=0
 * https://puppetlabs.com/resources/books
 
-**PuppetExplorer:**
-
-* https://github.com/spotify/puppetexplorer
-* http://demo.puppetexplorer.io
-* http://blog.aeciopires.com/instalando-configurando-puppetdb-puppetexplorer-puppetboard/
-* https://speakerdeck.com/gutocarvalho/meetup-puppet-br-20160518-projeto-pcp
-* https://gitlab.com/puppet-br/pcp
-* https://gitlab.com/puppet-br/pcp-controlrepo
-
 **Puppetboard:**
 
 * https://github.com/puppet-community/puppetboard
@@ -89,7 +81,7 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 * https://github.com/puppet-br/pcp
 
 .. raw:: pdf
- 
+
  PageBreak
 
 **Foreman:**
@@ -98,21 +90,16 @@ Abaixo são listados vários links para você acessar e se aprimorar nos estudos
 * http://theforeman.org/manuals/1.9/quickstart_guide.html#QuickstartGuide
 * http://theforeman.org/manuals/1.9/index.html
 * http://theforeman.org/media.html
- 
+
 **Ferramentas sugeridas para desenvolver no Puppet:**
 
-**Geppetto:**
+**IntelliJ:**
 
-* http://puppetlabs.github.io/geppetto/download.html
-* https://github.com/puppetlabs/geppetto/commit/30468cbb41d83678b898865cba72f19cf4249a73
-* http://binford2k.com/sites/default/files/UsingGeppetto.pdf
-* http://serverfault.com/questions/570892/how-to-add-a-puppet-module-to-gepetto-when-using-git
-* http://puppetlabs.github.io/geppetto/faq.html
-* https://github.com/puppetlabs/geppetto/wiki/Puppet-Code-Formatter
+* https://www.jetbrains.com/idea
 
 **Kate:**
 
-* http://kate-editor.org/
+* http://kate-editor.org
 
 **Vim:**
 

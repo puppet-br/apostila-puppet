@@ -12,7 +12,7 @@ A linguagem declarativa do Puppet pode usar variáveis, como no exemplo abaixo:
   $dns2     = '8.8.4.4'
   $arquivo  = '/etc/resolv.conf'
   $conteudo = "nameserver ${dns1}\nnameserver ${dns2}"
-  
+
   file { $arquivo:
     ensure  => 'present',
     content => $conteudo,
@@ -23,15 +23,19 @@ Mais alguns detalhes sobre variáveis:
 
 * Variáveis começam com o símbolo de cifrão (``$``).
 * Variáveis podem ser usadas para dar nomes em resources e atributos.
-* Para interpolar variáveis, a string deve estar entre aspas duplas e a variável deve estar entre chaves: ``${var}``.
-* Variáveis do topo do escopo (algo como global) podem ser acessadas assim: ``$::variavel_global``.
+* Para interpolar variáveis, a string deve estar entre aspas duplas e a variável \
+  deve estar entre chaves: ``${var}``.
+* Variáveis do topo do escopo (algo como global) podem ser acessadas assim: \
+  ``$::variavel_global``.
 * Uma variável só pode ter seu valor atribuído uma vez.
 
 .. nota::
 
   |nota| **Tipos de dados**
-  
-  As variáveis podem suportar vários tipos de dados, que podem ser: strings, arrays, numeros, tipo nulo, boleanos e hashes. 
+
+  As variáveis podem suportar vários tipos de dados, que podem ser: strings, \
+  arrays, números, tipo nulo, boleanos e hashes.
+
   Para obter mais informações sobre cada tipo de dados, acesse a página abaixo.
   https://docs.puppet.com/puppet/latest/lang_data.html
 
@@ -40,13 +44,16 @@ Fatos
 
 Antes de gerar a configuração, o Puppet executa o ``facter``.
 
-O ``facter`` é uma ferramenta fundamental do ecossistema do Puppet, que gera uma lista de variáveis chamadas de fatos, que contém diversas informações sobre o sistema operacional.
+O ``facter`` é uma ferramenta fundamental do ecossistema do Puppet, que gera uma \
+lista de variáveis chamadas de fatos, que contém diversas informações sobre o \
+sistema operacional.
 
 Exemplo de saída da execução do comando ``facter``:
 
 ::
 
-  # facter
+  facter
+
   dmi => {
     bios => {
       release_date => "12/01/2006",
@@ -109,29 +116,30 @@ Exemplo de saída da execução do comando ``facter``:
   virtual => virtualbox
 
 
-Todas essas variáveis estão disponíveis para uso dentro de qualquer manifest e dizemos que estão no escopo do topo (*top scope*).
+Todas essas variáveis estão disponíveis para uso dentro de qualquer manifest e \
+dizemos que estão no escopo do topo (*top scope*).
 
 Veja que é possível extrair fatos específicos:
- 
+
 ::
 
-   # facter ipaddress
-   # facter ipaddress_eth0
-   # facter mountpoints
-   # facter mountpoints./
-   # facter mountpoints./.available_byte
-   # facter os
-   # facter os.distro
-   # facter os.distro.release
-   # facter os.distro.release.full
+   facter ipaddress
+   facter ipaddress_eth0
+   facter mountpoints
+   facter mountpoints./
+   facter mountpoints./.available_byte
+   facter os
+   facter os.distro
+   facter os.distro.release
+   facter os.distro.release.full
 
 É possível extrair os fatos em formatos como YAML e JSON.
- 
+
 ::
 
-  # facter --json
+  facter --json
 
-  # facter --yaml
+  facter --yaml
 
 Prática: facter
 ```````````````
@@ -145,24 +153,30 @@ O manifest ``facter.pp`` a seguir usa algumas das variáveis geradas pelo ``fact
   notify {'kernel':
     message => "O sistema operacional eh ${::kernel} versao ${::kernelversion}."
   }
-  
+
   #Obtendo o nome da distro GNU/Linux
   #Esse dados estao nos fatos: operatingsystem e operatingsystemrelease
   notify {'distro':
-    message => "A distribuicao GNU/Linux eh ${::operatingsystem} 
+    message => "A distribuicao GNU/Linux eh ${::operatingsystem}
       versão ${::operatingsystemrelease}."
   }
 
+.. raw:: pdf
+
+  PageBreak
+
+.. code-block:: ruby
+
   #Alguns sysadmins criam o '/home' em particao separada do '/'
-  #Vamos testar o fato: mountpoints['/home'], 
+  #Vamos testar o fato: mountpoints['/home'],
   #Se existir essa particao, vamos obter o espaco livre, contido
   #no fato mountpoints['/home']['available_bytes']
   if $::mountpoints['/home'] {
     $free_space = $::mountpoints['/home']['available_bytes']
   }
-  
+
   #Se entrar no elsif, eh porque o '/home' esta na mesma particao do '/'
-  #Vamos testar o fato: mountpoints['/'], 
+  #Vamos testar o fato: mountpoints['/'],
   #E vamos obter o espaco livre, contido
   #no fato mountpoints['/']['available_bytes']
   elsif $::mountpoints['/'] {
@@ -190,7 +204,8 @@ E teremos a seguinte saída:
 
 ::
 
-  # puppet apply facter.pp
+  puppet apply facter.pp
+
   Notice: Compiled catalog for node1 in environment production in 0.09 seconds \
   Notice: O sistema operacional eh Linux versao 4.4.0.
   Notice: /Stage[main]/Main/Notify[kernel]/message: defined 'message' as \
@@ -208,19 +223,22 @@ E teremos a seguinte saída:
 .. nota::
 
   |nota| **Sistemas operacionais diferentes**
-  
-  Alguns fatos podem variar de um sistema operacional para outro. Além disso, é possível estender as variáveis do ``facter``. Saiba mais nas páginas abaixo.
+
+  Alguns fatos podem variar de um sistema operacional para outro. Além disso, é \
+  possível estender as variáveis do ``facter``. Saiba mais nas páginas abaixo.
 
   https://docs.puppet.com/facter/latest/core_facts.html
   https://docs.puppet.com/puppet/latest/lang_facts_and_builtin_vars.html
   https://docs.puppet.com/facter/latest/fact_overview.html
   https://docs.puppet.com/facter/latest/custom_facts.html
-  
+
 
 Condicionais
 ------------
 
-A linguagem declarativa do Puppet possui mecanismos de condição que funcionam de maneira parecida em relação às linguagens de programação. Mas existem algumas diferenças.
+A linguagem declarativa do Puppet possui mecanismos de condição que funcionam de \
+maneira parecida em relação às linguagens de programação. Mas existem algumas \
+diferenças.
 
 if
 ``
@@ -253,7 +271,8 @@ Outro exemplo, usando uma variável do ``facter``:
     notify {'Estamos em uma maquina real': }
   }
 
-Os blocos podem conter qualquer tipo de definição de configuração. Veja mais um exemplo:
+Os blocos podem conter qualquer tipo de definição de configuração. Veja mais um \
+exemplo:
 
 .. raw:: pdf
 
@@ -273,7 +292,7 @@ Os blocos podem conter qualquer tipo de definição de configuração. Veja mais
       enable => true,
     }
   }
-  
+
 Expressões
 ``````````
 
@@ -320,8 +339,8 @@ Além do ``if``, o Puppet fornece a diretiva ``case``.
     debian: { $apache = "apache2" }
     ubuntu: { $apache = "apache2" }
     # fail é uma função
-    default: { 
-      fail("sistema operacional desconhecido") 
+    default: {
+      fail("sistema operacional desconhecido")
     }
   }
   package {'apache':
@@ -330,7 +349,8 @@ Além do ``if``, o Puppet fornece a diretiva ``case``.
   }
 
 
-Ao invés de testar uma única condição, o ``case`` testa a variável em diversos valores. O valor ``default`` é especial, e é auto-explicativo.
+Ao invés de testar uma única condição, o ``case`` testa a variável em diversos \
+valores. O valor ``default`` é especial, e é auto-explicativo.
 
 O ``case`` pode tentar casar com strings, expressões regulares ou uma lista de ambos.
 
@@ -357,17 +377,19 @@ Exemplo usando uma expressão regular:
 .. code-block:: ruby
 
   case $ipaddress_eth0 {
-    /^127[\d.]+$/: { 
-      notify {'erro': 
+    /^127[\d.]+$/: {
+      notify {'erro':
         message => "Configuração estranha!",
-      } 
+      }
     }
   }
 
 Selectors
 `````````
 
-Ao invés de escolher a partir de um bloco, um ``selector`` escolhe seu valor a partir de um grupo de valores. ``Selectors`` são usados para atribuir valor a variáveis.
+Ao invés de escolher a partir de um bloco, um ``selector`` escolhe seu valor a \
+partir de um grupo de valores. ``Selectors`` são usados para atribuir valor a \
+variáveis.
 
 .. raw:: pdf
 
@@ -383,14 +405,18 @@ Ao invés de escolher a partir de um bloco, um ``selector`` escolhe seu valor a 
   }
 
 
-O ponto de interrogação assinala ``$operatingsystem`` como o pivô do ``selector``, e o valor final que é atribuído a ``$apache`` é determinado pelo valor correspondente de ``$::operatingsystem``.
+O ponto de interrogação assinala ``$operatingsystem`` como o pivô do ``selector``, \
+e o valor final que é atribuído a ``$apache`` é determinado pelo valor \
+correspondente de ``$::operatingsystem``.
 
-Pode parecer um pouco estranho, mas há muitas situações em que é a forma mais concisa de se obter um valor.
+Pode parecer um pouco estranho, mas há muitas situações em que é a forma mais \
+concisa de se obter um valor.
 
 Prática: melhor uso de variáveis
 --------------------------------
 
-1) Reescreva o código do exemplo a seguir usando uma variável para armazenar o nome do serviço e usando somente um resource ``service`` no seu código.
+1) Reescreva o código do exemplo a seguir usando uma variável para armazenar o \
+nome do serviço e usando somente um resource ``service`` no seu código.
 
 .. code-block:: ruby
 
@@ -410,4 +436,3 @@ Prática: melhor uso de variáveis
       enable => 'true',
     }
   }
-

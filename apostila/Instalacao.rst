@@ -34,8 +34,6 @@ e a Enterprise, visite as páginas abaixo:
   Utilize os plugins disponíveis em https://github.com/rodjek/vim-puppet para \
   facilitar a edição de código no Vim.
 
-Instruções para instalar o Puppet 4x.
-
 Debian e Ubuntu
 ---------------
 
@@ -45,10 +43,10 @@ Debian e Ubuntu
 
 ::
 
-  # cd /tmp
-  # wget http://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb
-  # dpkg -i  puppetlabs-release-pc1-jessie.deb
-  # apt-get update
+  cd /tmp
+  wget http://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb
+  sudo dpkg -i  puppetlabs-release-pc1-jessie.deb
+  sudo apt-get update
 
 .. raw:: pdf
 
@@ -58,19 +56,19 @@ Debian e Ubuntu
 
 ::
 
-  # cd /tmp
-  # wget http://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb
-  # dpkg -i puppetlabs-release-pc1-trusty.deb
-  # apt-get update
+  cd /tmp
+  wget http://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb
+  sudo dpkg -i puppetlabs-release-pc1-trusty.deb
+  sudo apt-get update
 
 * Ubuntu 16.04 LTS (Xenial)
 
 ::
 
-  # cd /tmp
-  # wget http://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
-  # dpkg -i puppetlabs-release-pc1-xenial.deb
-  # apt-get update
+  cd /tmp
+  wget http://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+  sudo dpkg -i puppetlabs-release-pc1-xenial.deb
+  sudo apt-get update
 
 Você também pode acessar a página http://apt.puppetlabs.com e localizar o pacote \
 adequado para outras versões do Debian ou Ubuntu.
@@ -79,15 +77,15 @@ adequado para outras versões do Debian ou Ubuntu.
 
 ::
 
-  # apt-get -y install puppet-agent
+  sudo apt-get -y install puppet-agent
 
 3. Torne os comandos do pacote ``puppet-agent`` disponíveis no *path* do sistema:
 
 ::
 
-  # echo "PATH=/opt/puppetlabs/bin:$PATH" >> /etc/bash.bashrc
-  # echo "export PATH" >> /etc/bash.bashrc
-  # export PATH=/opt/puppetlabs/bin:$PATH
+  sudo export PATH=/opt/puppetlabs/bin:$PATH
+  sudo echo "PATH=/opt/puppetlabs/bin:$PATH" >> /etc/bash.bashrc
+  sudo echo "export PATH" >> /etc/bash.bashrc
 
 CentOS e Red Hat
 ----------------
@@ -98,14 +96,14 @@ CentOS e Red Hat
 
 ::
 
-  # yum install -y https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
+  sudo yum install -y https://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
 
 
 * CentOS/Red Hat 7
 
 ::
 
-  # yum install -y http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+  sudo yum install -y http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
 
 Você também pode acessar a página http://yum.puppetlabs.com e localizar o pacote \
 adequado de outras versões e distribuições da família Red Hat.
@@ -114,7 +112,7 @@ adequado de outras versões e distribuições da família Red Hat.
 
 ::
 
-  # yum -y install puppet-agent
+  sudo yum -y install puppet-agent
 
 .. raw:: pdf
 
@@ -124,12 +122,12 @@ adequado de outras versões e distribuições da família Red Hat.
 
 ::
 
-  # echo "PATH=/opt/puppetlabs/bin:$PATH" >> /etc/bashrc
-  # echo "export PATH" >> /etc/bashrc
-  # export PATH=/opt/puppetlabs/bin:$PATH
+  sudo export PATH=/opt/puppetlabs/bin:$PATH
+  sudo echo "PATH=/opt/puppetlabs/bin:$PATH" >> /etc/bashrc
+  sudo echo "export PATH" >> /etc/bashrc
 
 4. Obtenha a versão do puppet-agent
 
 ::
 
-  # puppet --version
+  puppet --version
