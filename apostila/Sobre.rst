@@ -18,16 +18,12 @@ Saiba mais sobre Puppet e a Instruct com o conteúdo do canal no YouTube e nas r
 Caso esteja procurando serviços profissionais relacionados a automação e Puppet, entre em contato:
 
 * Email: http://instruct.com.br/contato/
-* Escritório em **São Paulo/SP**: Av. Paulista 37 - 4º Andar. Telefone: **11 3230-6506**
-* Estritório em **Brasília/DF**: Edifício Parque Cidade Corporate - 10º Andar, Torre C, SCS Setor Comercial. Telefone: **61 4042-2250**
+* Escritório em **São Paulo/SP**: Av. Marquês de São Vicente, 1619 - 18º Andar, Barra Funda. Telefone: **11 3230-6506**
+* Escritório em **Brasília/DF**: QS 1, Rua 210, LT 34 E 36, Ed. LED, TORRE 2, SN, Sala 1209, Areal (Águas Claras). Telefone: **61 4042-2250**
 
 Sobre a Apostila
 ----------------
 
-**Esta apostila foi criada pela Instruct em 2014, mas foi cedida em Jun/2016 para a comunidade Puppet-BR.**
+**Esta apostila foi criada pela Instruct em 2014 e cedida para a comunidade Puppet-BR em Jun/2016.**
 
-Versões mais novas e outras informações sobre essa apostila podem ser encontradas em: https://github.com/puppet-br/apostila-puppet
-
-O código fonte e instruções de como compilar contribuir para com esta apostila estão publicados no GitHub no link acima.
-
-
+Versões mais recentes e instruções de como contribuir com esta apostila podem ser encontradas em: https://github.com/puppet-br/apostila-puppet
