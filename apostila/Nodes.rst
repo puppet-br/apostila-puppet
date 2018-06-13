@@ -3,7 +3,8 @@ Nodes
 
 O Puppet começa a compilação da configuração de um catálogo pelo arquivo \
 ``/etc/puppetlabs/code/environments/production/manifests/site.pp``. O ``site.pp`` \
-é o ponto de entrada do master para identificar a configuração que será enviada a um agente.
+é o ponto de entrada do master para identificar a configuração que será enviada \
+a um agente.
 
 Para saber qual configuração deve ser enviada a um agente, precisamos declarar o \
 hostname do agente, utilizando a diretiva ``node``. Diretivas ``node`` casam \
