@@ -5,7 +5,7 @@ A linguagem Puppet possui recursos de loop e iteração, que podem ajudá-lo a e
 
 Noções básicas
 ---------------
-       
+
 Em Puppet, características de iteração são implementadas como funções que aceitam blocos de código ( lambdas ), visto no capítulo sobre `Funções`_ .
 
 Ou seja, você escreve um bloco de código (lambda) que requer algum tipo de informação extra, então passa para uma função que pode fornecer essa informação para avaliar e executar o código, possivelmente várias vezes.
@@ -22,12 +22,12 @@ As seguintes funções podem aceitar um bloco de código e executá-lo de alguma
 * **filter** - Usa um bloco de código para transformar alguma estrutura de dados através da remoção de elementos não relacionados.
 * **map** - Usa um bloco de código para transformar todos os valores em alguma estrutura de dados.
 * **reduce** - Usa um bloco de código para criar um novo valor ou estrutura de dados através da combinação de valores a partir de uma estrutura de dados fornecida.
-* **with** - Avalia um bloco de código uma vez, isolando-o em seu próprio escopo local. Não itera, mas tem uma semelhança familiar com as funções de iteração. 
+* **with** - Avalia um bloco de código uma vez, isolando-o em seu próprio escopo local. Não itera, mas tem uma semelhança familiar com as funções de iteração.
 
 Sintaxe
 ```````
 
-Veja o capítulo sobre `Funções`_ para conhecer a sintaxe de chamadas de função e para conhecer a sintaxe de blocos de código que pode ser passado às funções. 
+Veja o capítulo sobre `Funções`_ para conhecer a sintaxe de chamadas de função e para conhecer a sintaxe de blocos de código que pode ser passado às funções.
 
 Em geral, as funções de iteração recebem uma matriz ou um hash como seu principal argumento para, em seguida, iterar sobre seus valores.
 
@@ -150,12 +150,12 @@ Prática: Usando funções de loop e iteração
 
 .. code-block:: ruby
 
-  $result = slice([1,2,3,4,5,6], 2) 
+  $result = slice([1,2,3,4,5,6], 2)
   notice( "Resultado: $result" )
 
 5) Escreva outro manifest, no qual dado uma array de caracteres retorne-os organizados em pares.
 
 .. code-block:: ruby
 
-  $result = slice('puppet',2) 
+  $result = slice('puppet',2)
   notice( "Resultado: $result" )

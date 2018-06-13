@@ -74,7 +74,7 @@ aplicaremos a configuração no **node1**.
 
 ::
 
-  chmod +x /etc/puppet/enc.sh
+  sudo chmod +x /etc/puppet/enc.sh
 
 
 3. Acrescente o conteúdo abaixo ao arquivo ``puppet.conf`` na seção ``[master]``:
@@ -90,7 +90,7 @@ aplicaremos a configuração no **node1**.
 
 ::
 
-  service puppetserver restart
+  sudo service puppetserver restart
 
 
 5. Certifique-se de que no arquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp`` \
@@ -100,7 +100,7 @@ o node1 **não** tenha as classes ``motd`` e ``autofsck`` declaradas.
 
 ::
 
-  puppet agent -t
+  sudo puppet agent -t
 
 
 Nesse caso, o ENC está fazendo o equivalente a esse código no arquivo ``site.pp``:

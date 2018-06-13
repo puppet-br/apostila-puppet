@@ -362,7 +362,8 @@ mas os seus nomes podem ser qualquer coisa (ao contrário dos parâmetros de cla
 ou de tipo definido, onde os nomes são a interface principal para os usuários).
 
 Cada função decide quantos parâmetros passaram para um lambda e em que ordem. \
-Consulte a documentação da função para obter os detalhes https://docs.puppet.com/puppet/latest/function.html.
+Consulte a documentação da função para obter os detalhes \
+https://docs.puppet.com/puppet/latest/function.html.
 
 Na lista de parâmetros, cada parâmetro pode ser precedido por um tipo de dados \
 opcional. Se você incluir um, o Puppet verificará o valor do parâmetro no tempo \
@@ -374,7 +375,8 @@ valores de qualquer tipo de dados.
 
   |aviso| **Saiba mais sobre os lambdas**
 
-  Para obter mais informações sobre os lambdas e uso nas funções acesse a página: https://docs.puppet.com/puppet/latest/lang_lambdas.html
+  Para obter mais informações sobre os lambdas e uso nas funções acesse a página: \
+  https://docs.puppet.com/puppet/latest/lang_lambdas.html
 
 
 Prática: Usando funções com lambdas

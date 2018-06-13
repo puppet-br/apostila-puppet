@@ -27,8 +27,8 @@ Os comandos abaixo são executados no **master.domain.com.br** e no **node1.doma
 
 ::
 
-  cd /etc/puppetlabs/code/environments/
-  cp -a production desenv
+  sudo cd /etc/puppetlabs/code/environments/
+  sudo cp -a production desenv
 
 2. No arquivo ``/etc/puppetlabs/puppet/puppet.conf`` do ``node1.domain.com.br`` \
 acrescente o environment:
@@ -51,8 +51,8 @@ acrescente o environment:
 
 ::
 
-  cd /etc/puppetlabs/code/environments/desenv/modules/motd/templates
-  echo "Puppet versão <%= @puppetversion -%>" >> motd.erb
+  sudo cd /etc/puppetlabs/code/environments/desenv/modules/motd/templates
+  sudo echo "Puppet versão <%= @puppetversion -%>" >> motd.erb
 
 
 4. Execute o agente Puppet no ``node1.domain.com.br`` (certifique-se de que o \
@@ -61,7 +61,7 @@ e possui a classe **motd** declarada):
 
 ::
 
-  puppet agent -t
+  sudo puppet agent -t
 
 
 5. Agora temos dois módulos ``motd``, um para cada environment. Uma vez que o \
@@ -70,7 +70,7 @@ environment **production** com o comando a seguir.
 
 ::
 
-  rsync -a /etc/puppetlabs/code/environments/desenv/modules/motd/ \
+  sudo rsync -a /etc/puppetlabs/code/environments/desenv/modules/motd/ \
    /etc/puppetlabs/code/environments/production/modules/motd/
 
 

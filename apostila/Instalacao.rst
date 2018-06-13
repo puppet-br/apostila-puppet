@@ -43,8 +43,8 @@ Debian e Ubuntu
 
 ::
 
-  cd /tmp
-  wget http://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb
+  sudo cd /tmp
+  sudo wget http://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb
   sudo dpkg -i  puppetlabs-release-pc1-jessie.deb
   sudo apt-get update
 
@@ -56,8 +56,8 @@ Debian e Ubuntu
 
 ::
 
-  cd /tmp
-  wget http://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb
+  sudo cd /tmp
+  sudo wget http://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb
   sudo dpkg -i puppetlabs-release-pc1-trusty.deb
   sudo apt-get update
 
@@ -65,8 +65,8 @@ Debian e Ubuntu
 
 ::
 
-  cd /tmp
-  wget http://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+  sudo cd /tmp
+  sudo wget http://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
   sudo dpkg -i puppetlabs-release-pc1-xenial.deb
   sudo apt-get update
 

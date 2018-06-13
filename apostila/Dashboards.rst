@@ -65,6 +65,7 @@ comandos abaixo.
 
 ::
 
+  sudo su
   echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" > \
   /etc/apt/sources.list.d/pgdg.list
   wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
@@ -118,13 +119,13 @@ No Debian/Ubuntu:
 
 ::
 
-  service postgresql restart
+  sudo service postgresql restart
 
 No CentOS/Red Hat:
 
 ::
 
-  service postgresql-9.5 restart
+  sudo service postgresql-9.5 restart
 
 .. raw:: pdf
 
@@ -145,7 +146,7 @@ comandos abaixo.
 
 ::
 
-  puppet resource package puppetdb ensure=latest
+  sudo puppet resource package puppetdb ensure=latest
 
 3. No servidor PuppetServer, edite o arquivo ``/etc/puppetlabs/puppetdb/conf.d/database.ini`` \
 e altere as seguinte linhas:
@@ -173,20 +174,20 @@ Execute o comando abaixo para gerar os certificados a serem usados pelo PuppetDB
 
 ::
 
-  puppetdb ssl-setup
+  sudo puppetdb ssl-setup
 
 Reinicie o PuppetDB com o comando abaixo:
 
 ::
 
-  service puppetdb restart
+  sudo service puppetdb restart
 
 4. Ainda no servidor PuppetServer, instale o pacote ``puppetdb-termini`` com o \
 comando abaixo.
 
 ::
 
-  puppet resource package puppetdb-termini ensure=latest
+  sudo puppet resource package puppetdb-termini ensure=latest
 
 Crie o arquivo ``/etc/puppetlabs/puppet/puppetdb.conf`` e adicione o seguinte conteúdo:
 
@@ -219,13 +220,13 @@ Atribua as permissões corretas ao arquivo com o comando abaixo:
 
 ::
 
-  chown -R puppet:puppet `puppet config print confdir`
+  sudo chown -R puppet:puppet `puppet config print confdir`
 
 Reinicie o PuppetServer com o comando abaixo:
 
 ::
 
-  service puppetserver restart
+  sudo service puppetserver restart
 
 .. aviso::
 
@@ -267,9 +268,9 @@ instalados no Puppet-Server usando os comandos abaixo.
 
 ::
 
-  puppet module install puppetlabs-apache
-  puppet module install puppetlabs-apt
-  puppet module install puppet-puppetboard
+  sudo puppet module install puppetlabs-apache
+  sudo puppet module install puppetlabs-apt
+  sudo puppet module install puppet-puppetboard
 
 Agora edite o aquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp`` \
 e adicione o seguinte conteúdo:
@@ -328,7 +329,7 @@ Agora execute o comando abaixo.
 
 ::
 
-  puppet agent -t
+  sudo puppet agent -t
 
 Ao final da instalação, o PuppetBoard ficará acessível em: https://master.domain.com.br
 
@@ -379,7 +380,7 @@ Depois execute:
 
 ::
 
-  puppet agent -t
+  sudo puppet agent -t
 
 
 Mais informações sobre o PuppetBoard podem ser encontradas em: \
@@ -400,4 +401,4 @@ Reinicie o Puppet-Agent com o comando abaixo:
 
 ::
 
-  service puppet restart
+  sudo service puppet restart

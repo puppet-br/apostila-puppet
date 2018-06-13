@@ -37,7 +37,7 @@ Puppet, mas felizmente alguém já deve ter resolvido esse problema.
 
 ::
 
-  puppet module install trlinkin/sysctl
+  sudo puppet module install trlinkin/sysctl
 
   Notice: Preparing to install into \
     /etc/puppetlabs/code/environments/production/modules ...
@@ -50,7 +50,7 @@ Puppet, mas felizmente alguém já deve ter resolvido esse problema.
 
 ::
 
-  puppet apply -e "sysctl { 'net.ipv4.ip_forward': value => '1', enable=>true }"
+  sudo puppet apply -e "sysctl { 'net.ipv4.ip_forward': value => '1', enable=>true }"
 
 .. raw:: pdf
 
@@ -72,7 +72,7 @@ arquivo ``/etc/puppetlabs/code/environments/production/manifests/site.pp``.
 
 ::
 
-  puppet agent -t
+  sudo puppet agent -t
 
   Info: Retrieving plugin
   ...
@@ -92,7 +92,7 @@ Prática: módulo para autofsck do Puppet Forge
 
 ::
 
-  puppet module install jhoblitt/autofsck
+  sudo puppet module install jhoblitt/autofsck
 
   Notice: Preparing to install into \
    /etc/puppetlabs/code/environments/production/modules ...
@@ -114,4 +114,4 @@ Prática: módulo para autofsck do Puppet Forge
 
 ::
 
-  puppet agent -t
+  sudo puppet agent -t

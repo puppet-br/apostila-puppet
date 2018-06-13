@@ -1,7 +1,7 @@
 Histórico de mudanças
 =====================
 
-* Versão 2.4.5 lançada dia 11/06/2018
+* Versão 2.4.5 lançada dia 13/06/2018
 * Versão 2.4.4 lançada dia 27/03/2017
 * Versão 2.4.3 lançada dia 09/01/2017
 * Versão 2.4.2 lançada dia 05/01/2017
