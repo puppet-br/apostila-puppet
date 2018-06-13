@@ -127,10 +127,6 @@ No CentOS/Red Hat:
 
   sudo service postgresql-9.5 restart
 
-.. raw:: pdf
-
- PageBreak
-
 Agora crie o banco de dados e usuário para o puppetdb com a sequencia de \
 comandos abaixo.
 
@@ -334,10 +330,6 @@ Agora execute o comando abaixo.
 Ao final da instalação, o PuppetBoard ficará acessível em: https://master.domain.com.br
 
 .. image:: images/puppetboard.png
-
-.. raw:: pdf
-
- PageBreak
 
 É possível que você enfrente o problema abaixo na instalação do PuppetBoard no \
 CentOS/Red Hat 7.

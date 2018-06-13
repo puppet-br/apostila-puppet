@@ -132,12 +132,6 @@ executando o ``augtool``:
 como na linha de comando. Podemos associar o caminho no sistema de arquivos \
 com uma opção de configuração:
 
-.. raw:: pdf
-
- PageBreak
-
-::
-
   augtool> ls /files/etc/resolv.conf
 
   domain = outrodominio

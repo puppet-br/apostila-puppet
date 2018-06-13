@@ -118,7 +118,8 @@ Assim temos:
   obrigatórios em todos os outros casos.
 * Zero ou mais argumentos, todos separados por vírgula. Os argumentos podem ser \
   qualquer expressão que resolve um valor. Veja a documentação de cada função para \
-  obter o número de argumentos e seus tipos de dados: https://docs.puppet.com/puppet/latest/function.html.
+  obter o número de argumentos e seus tipos de dados: \
+  https://docs.puppet.com/puppet/latest/function.html.
 * Um parênteses de fechamento ( ``)`` ), caso tenha sido utilizado um parênteses \
   de abertura.
 * Opcionalmente, um lambda e um bloco de código, se a função aceitar.
@@ -182,8 +183,10 @@ retornar um valor.
 
 Todas as funções são executadas durante a compilação, o que significa que elas \
 só acessam o código e dados disponíveis no Puppet Master. Para fazer alterações \
-em um nó agente, você deve usar um ``resource`` (https://docs.puppet.com/puppet/latest/lang_resources.html). \
-Para coletar dados de um nó agente use um fato customizado (https://docs.puppet.com/facter/3.5/custom_facts.html).
+em um nó agente, você deve usar um ``resource`` \
+(https://docs.puppet.com/puppet/latest/lang_resources.html). \
+Para coletar dados de um nó agente use um fato customizado \
+(https://docs.puppet.com/facter/3.5/custom_facts.html).
 
 Funções de instrução embutidas
 ```````````````````````````````
@@ -203,7 +206,8 @@ sempre retornarão um valor indefinido ``undef``.
 
   |aviso| **Saiba mais sobre as funções**
 
-  Para obter mais informações sobre as funções acesse a página: https://docs.puppet.com/puppet/latest/lang_functions.html
+  Para obter mais informações sobre as funções acesse a página: \
+  https://docs.puppet.com/puppet/latest/lang_functions.html
 
 
 Prática: Usando as funções

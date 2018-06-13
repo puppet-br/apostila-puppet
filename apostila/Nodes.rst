@@ -17,7 +17,7 @@ Sintaxe para se declarar um node:
 
 .. code-block:: ruby
 
-  # vim /etc/puppetlabs/code/environments/production/manifests/site.pp
+  sudo vim /etc/puppetlabs/code/environments/production/manifests/site.pp
 
   node 'node1.domain.com.br' {
     package {'nano':
