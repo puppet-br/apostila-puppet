@@ -51,7 +51,7 @@ O ciclo de operação nesses casos é o seguinte:
 permanece em execução e se conecta a um servidor central (chamado \
 tipicamente de *master*) periodicamente (a cada 30 minutos, por padrão).
 
-2. O node solicita a sua configuração, que é copilada e enviada pelo master.
+2. O node solicita a sua configuração, que é compilada e enviada pelo master.
 
 3. Essa configuração "compilada" é chamada de catálogo.
 
